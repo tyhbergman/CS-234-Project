@@ -19,4 +19,6 @@ public class Wages extends Employees {
 		return netPay;
 	}
 	
+	// Used inheritance, needs to be revisited
+	
 }

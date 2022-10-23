@@ -2,6 +2,8 @@ package EmployeePack;
 
 public class Employees {
 
+	// should be close to done
+	
 	private String name;
 	private int empid; 
 	private String position;
