@@ -7,6 +7,7 @@ public class Employees {
 	private String position;
 	private double wage;
 	private String ssn;
+	private int hours;
 	
 	Employees(){
 		
@@ -52,8 +53,16 @@ public class Employees {
 		return ssn;
 	}
 	
+	public void setHours(int hours) {
+		this.hours = hours;
+	}
+	
+	public int getHours() {
+		return hours;
+	}
+	
 	//public String searchEmp() {
 		// Not complete atm
-	//}
+	//}	
 	
 }
