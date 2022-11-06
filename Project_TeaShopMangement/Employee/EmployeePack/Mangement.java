@@ -2,6 +2,8 @@ package EmployeePack;
 
 public class Mangement extends Employees {
 	
+	// Reworking currently
+	
 	 private int inventory;
 	 private String categories;
 	 private double timeframe;

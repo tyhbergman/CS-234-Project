@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Schedule {
+	// Needs to pull data from Employee class
 	private Map<String,ArrayList<String>> schedule;
 	
 	Schedule(){

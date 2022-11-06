@@ -2,7 +2,8 @@ package EmployeePack;
 
 public class Employees {
 
-	// should be close to done
+	// Search method not working yet
+	// Needs data to be fed in from Schedule
 	
 	private String name;
 	private int empid; 
