@@ -8,9 +8,9 @@ public class Apparel extends Product {
 	private String color;
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Apparel(String name, String color, double price, int quantity) {
+	public Apparel(String name, String color, double price, int quantity, String vendor) {
 		
-		super(name, price, quantity);
+		super(name, price, quantity, vendor);
 		//Automatically assign 'a' to productType for apparel
 		super.setProductType('a');
 		
@@ -20,9 +20,9 @@ public class Apparel extends Product {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Apparel(String name, String color, String productDesc, double price, double discount, double taxRate, int quantity) {
+	public Apparel(String name, String color, String productDesc, double price, double discount, double taxRate, int quantity, String vendor) {
 		
-		super(name, productDesc, price, discount, taxRate, quantity);
+		super(name, productDesc, price, discount, taxRate, quantity, vendor);
 		//Automatically assign 'a' to productType for apparel
 		super.setProductType('a');
 		

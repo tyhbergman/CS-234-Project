@@ -8,9 +8,9 @@ public class Food extends Product {
 	private boolean sugarFree;
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Food(String name, double price, int quantity) {
+	public Food(String name, double price, int quantity, String vendor) {
 		
-		super(name, price, quantity);
+		super(name, price, quantity, vendor);
 		//Automatically assign 'f' to productType for food
 		super.setProductType('f');
 		
@@ -20,9 +20,9 @@ public class Food extends Product {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Food(String name, boolean gluten, boolean sugarFree, String productDesc, double price, double discount, double taxRate, int quantity) {
+	public Food(String name, boolean gluten, boolean sugarFree, String productDesc, double price, double discount, double taxRate, int quantity, String vendor) {
 		
-		super(name, productDesc, price, discount, taxRate, quantity);
+		super(name, productDesc, price, discount, taxRate, quantity, vendor);
 		//Automatically assign 'f' to productType for food
 		super.setProductType('f');
 		

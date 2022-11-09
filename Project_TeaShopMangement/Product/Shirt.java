@@ -13,9 +13,9 @@ public class Shirt extends Apparel {
 	private boolean hoodie;
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Shirt(String name, String color, boolean longSleeve, boolean hoodie, double price, int sQuantity, int mQuantity, int lQuantity, int xLQuantity) {
+	public Shirt(String name, String color, boolean longSleeve, boolean hoodie, double price, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor) {
 		
-		super(name, color, price, (sQuantity+mQuantity+lQuantity+xLQuantity));
+		super(name, color, price, (sQuantity+mQuantity+lQuantity+xLQuantity), vendor);
 		
 		//Set apparelType to 's' for shirt
 		super.setApparelType('s');
@@ -31,9 +31,9 @@ public class Shirt extends Apparel {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Shirt(String name, String color, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity) {
+	public Shirt(String name, String color, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor) {
 		
-		super(name, color, productDesc, price, discount, taxRate, (sQuantity+mQuantity+lQuantity+xLQuantity));
+		super(name, color, productDesc, price, discount, taxRate, (sQuantity+mQuantity+lQuantity+xLQuantity), vendor);
 		
 		//Set apparelType to 's' for shirt
 		super.setApparelType('s');
