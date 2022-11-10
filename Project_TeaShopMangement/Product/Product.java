@@ -1,4 +1,4 @@
-import java.util.TreeSet;
+import java.util.ArrayList;
 
 /* Tea Shop Software
  * CS 234 - TB LG NA
@@ -17,12 +17,6 @@ public class Product {
 	private int quantity;
 	private String vendor;
 	
-	//Set of all products available in system. Organized by integer ID number
-	private TreeSet<Integer> productSet = new TreeSet<Integer>();
-	
-	//Cart System instance variables
-//	private static double[] cartItem = new double[4];
-//	private static ArrayList<double[]> cart = new ArrayList<double[]>();
 	
 	
 	//Express Constructor -- Crucial information only, description left blank
@@ -32,6 +26,7 @@ public class Product {
 		
 		
 		//Set unique ID with hash code of the name
+		//Also where product is added to productList
 		setId(name);
 		
 		//Automatically set productType to 'x' since no type is specified
@@ -108,10 +103,13 @@ public class Product {
 	}
 
 	private void setId(String name) {
+	
+		
+		
 		//Using Java's hashCode method to generate an integer ID from the name
 		this.id = Math.abs(name.hashCode());
 		//Add to productSet for later checks of availability
-		productSet.add(this.id);
+		//productSet.add(this.id);
 	}
 
 	public char getProductType() {
@@ -183,7 +181,8 @@ public class Product {
 	}
 	
 	public void delete(int id) {
-		productSet.remove(id);
+		//remove from array list 
+		//Set reference to null for deleteion via garbage collector?
 	}
 	
 }

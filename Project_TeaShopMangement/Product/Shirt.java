@@ -31,7 +31,7 @@ public class Shirt extends Apparel {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Shirt(String name, String color, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor) {
+	public Shirt(String name, String color, boolean longSleeve, boolean hoodie, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor) {
 		
 		super(name, color, productDesc, price, discount, taxRate, (sQuantity+mQuantity+lQuantity+xLQuantity), vendor);
 		

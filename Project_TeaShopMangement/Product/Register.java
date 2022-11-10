@@ -1,5 +1,8 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class Register {
 	private ArrayList<List> cart = new ArrayList<List>();
@@ -12,6 +15,8 @@ public class Register {
 	private int totalQuantity = 0;
 	private int transactions = 1;
 	
+	private int productIndex=0;
+	private Map<Integer,Product> productList = new HashMap<Integer,Product>();
 	
 	public void addToCart(Product n, int saleQuantity) {
 		this.saleQuantity = saleQuantity;
@@ -100,6 +105,28 @@ public class Register {
 		//Now actually clear the cart
 		cart.removeAll(cart);
 		System.out.println();
+	}
+
+	public Map<Integer,Product> getProductList() {
+		return productList;
+	}
+
+	public void setProductList(Map<Integer,Product> productList) {
+		this.productList = productList;
+	}
+	
+	public void printProductList() {
+		System.out.println(productList);
+	}
+
+	public int getAndIncrementProductIndex() {
+		productIndex++;
+		return productIndex-1;
+		
+	}
+
+	public void setProductIndex(int productIndex) {
+		this.productIndex = productIndex;
 	}
 	
 	
