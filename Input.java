@@ -15,27 +15,35 @@ import java.util.Collection;
 public class Input {
 
 	private int lineItemID;
-	private String name;
-	private String category;
+	private String vendorName;
+	private String vendorCategory;
 	private String input;
 	private double cost;
 	private double taxRate;
 	private double discount;
 	private double quantity;
+	//private double grossCost;
+	//private int lineItemCount;
 		
-	public Input (int lineItemID, String name, String category, String input, double cost, double quantity, double discount, double taxRate) {
+	public Input (int lineItemID, String vendorName, String vendorCategory, String input, double cost, double quantity, double discount, double taxRate) {
 	
 		this.lineItemID = lineItemID;
-		this.name = name;
-		this.category = category;
+		this.vendorName = vendorName;
+		this.vendorCategory = vendorCategory;
 		this.input = input;
 		this.cost = cost;
 		this.taxRate = taxRate;
 		this.discount = discount;
 		this.quantity = quantity;
+		//this.lineItemCount = 1;
+		//this.grossCost = 
+		getDiscountAmount(cost, discount);
 		getGrossCost(cost, quantity, discount);
 		getTaxAmount(taxRate, cost, quantity, discount);
 		getNetCost(taxRate, cost, quantity, discount);
+		//getTotalGrossCost(cost, quantity, discount);
+		
+		//getRunningGrossCost(cost, quantity, discount);
 
 	}
 	
@@ -135,6 +143,13 @@ public class Input {
 	
 	}
 	
+	public double getDiscountAmount(double cost, double discount) {
+	
+		double discountAmount = cost * discount;
+		return discountAmount;
+	
+	}
+	
 	public double getNetCost(double taxRate, double cost, double quantity, double discount) {
 	
 		double netCost = getGrossCost(cost, quantity, discount) + getTaxAmount(taxRate, cost, quantity, discount);
@@ -154,35 +169,71 @@ public class Input {
 	
 	}
 	
-	public void setName(String name) {
+	public void setVendorName(String vendorName) {
 	
-		this.name = name;
+		this.vendorName = vendorName;
 	
 	}
 
-	public String getName() {
+	public String getVendorName() {
 	
-		return name;
+		return vendorName;
 	
 	}
 	
-	public void setCategory(String category) {
+	public void setVendorCategory(String vendorCategory) {
 	
-		this.category = category;
+		this.vendorCategory = vendorCategory;
 		
 	}
 	
-	public String getCategory() {
+	public String getVendorCategory() {
 	
-		return category;
+		return vendorCategory;
 	
 	}
+	/**
+	public double getTotalGrossCost(double cost, double quantity, double discount) {
 	
+		double totalGrossCost = getGrossCost(cost, quantity, discount);
+		lineItemCount++;
+		return totalGrossCost + getGrossCost(cost, quantity, discount);
+	
+	}
+	*/
 	public String toString() {
 	
-		return lineItemID + " " + name + " " + category + " " + input + " $" + cost + " " + quantity + " " + (double) discount * 100 + "% " + (double) taxRate * 100 + "% $" + getGrossCost(cost, quantity, discount) + " $" + getTaxAmount(taxRate, cost, quantity, discount) + " $" + getNetCost(taxRate, cost, quantity, discount); 
+		return lineItemID + " | " + vendorName + " | " + vendorCategory + " | " + input + " | $" + 
+		cost + " | " + quantity + " | " + (double) discount * 100 + "% | " + 
+		(double) taxRate * 100 + "% | $" + getDiscountAmount(cost, discount) + " | $" + 
+		getGrossCost(cost, quantity, discount) + " | $" + 
+		getTaxAmount(taxRate, cost, quantity, discount) + " | $" + getNetCost(taxRate, cost, quantity, discount); 
 	
 	}
+	/**
+	public double getRunningGrossCost(double cost, double quantity, double discount) {
+	
+		List<Double> totalGrossCost = new ArrayList<Double>();
+		totalGrossCost.add(getGrossCost(cost, quantity, discount));
+		double total = totalGrossCost.get(0);
+		//int i = 1;
+		if (totalGrossCost.size() > 0)
+		{
+			//while(i < totalGrossCost.size())
+			for (int i = 0; i <totalGrossCost.size(); i++)
+			{
+			
+				total += totalGrossCost.get(i);
+				i++;
+		
+			}
+			
+		}
+		
+		return total;
+		
+	}
+	*/
 	/*
 	public double toDouble() {
 	
@@ -193,3 +244,4 @@ public class Input {
 	}
 	*/
 }
+
