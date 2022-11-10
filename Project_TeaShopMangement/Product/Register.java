@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class Register {
 	private ArrayList<List> cart = new ArrayList<List>();
-	private ArrayList<Object> cartItems = new ArrayList<Object>();
+	private ArrayList<Object> itemDetails = new ArrayList<Object>();
 	private double tempSubTotal;
 	private int saleQuantity;
 	private double tempTotal;
@@ -17,6 +17,30 @@ public class Register {
 	
 	private int productIndex=0;
 	private Map<Integer,Product> productList = new HashMap<Integer,Product>();
+	
+	/* 
+	 * 
+	 * The cart system uses ArrayList 'cart' to store ArrayLists of information
+	 * from each object 'itemDetails'. This information is crucial information
+	 * needed at time of sale (ID, name, price, tax rate, etc.)
+	 * 
+	 * These details are indexed in each itemDetails ArrayList :
+	 * 
+	 * index  |  information
+	 * ----------------------
+	 * 0      |  Name
+	 * 1	  |  Sale Quantity (quantity customer wants to purchase)
+	 * 2	  |  Price
+	 * 3      |  Tax Rate (Some products are taxed at different rates)
+	 * 4      |  Sub-total cost of that specific item at that quantity
+	 * 5      |  Total cost of that specific item at that quantity
+	 * 6      |  Memory reference of product 
+	 * 
+	 * 
+	 * addToCart is the method that alters the quantity of the Product
+	 * object. Clearing the cart is the only way to restore the quantity. 
+	 */
+	
 	
 	public void addToCart(Product n, int saleQuantity) {
 		this.saleQuantity = saleQuantity;
@@ -30,10 +54,10 @@ public class Register {
 		else {
 			
 			
-			cartItems.add(n.getName());
-			cartItems.add(saleQuantity);
-			cartItems.add(n.getPrice());
-			cartItems.add(n.getTaxRate());
+			itemDetails.add(n.getName());
+			itemDetails.add(saleQuantity);
+			itemDetails.add(n.getPrice());
+			itemDetails.add(n.getTaxRate());
 			
 			//Adjust quantity in product object
 			n.setQuantity(n.getQuantity()-saleQuantity);
@@ -41,15 +65,15 @@ public class Register {
 			tempSubTotal = n.getPrice()*saleQuantity;
 			tempTotal = tempSubTotal*n.getTaxRate();
 			
-			cartItems.add(tempSubTotal);
-			cartItems.add(tempTotal);
+			itemDetails.add(tempSubTotal);
+			itemDetails.add(tempTotal);
 
-			cartItems.add(n);
+			itemDetails.add(n);
 			
-			cart.add(new ArrayList(cartItems));
+			cart.add(new ArrayList(itemDetails));
 			
 			
-			cartItems.clear();
+			itemDetails.clear();
 			
 			}
 	}
@@ -65,6 +89,12 @@ public class Register {
 		} 
 		else 
 		{
+			
+			//Go through 'cart' and at each 'itemDetails' element
+			//gather specific information for the sale.
+			//Refer back to chart at top of page for 
+			//legend of index values of itemDetails
+			
 			for (int i = 0; i < cart.size(); i++) {
 				subTotal = (double)(cart.get(i).get(4)) + subTotal;
 				total = (double)(cart.get(i).get(5)) + total;
@@ -73,32 +103,50 @@ public class Register {
 				
 			}
 			
+			//Print the 'receipt'
+			
+			System.out.println("-----------------------------------------------");
 			System.out.println("Transaction #" + transactions + " succesful.");
 			System.out.println("\tTotal quantity of items sold: " + totalQuantity);
-			System.out.println("\tThe subtotal is $" + subTotal);
-			System.out.println("\tThe tax due is $" + (total-subTotal));
-			System.out.println("\tThe grand total is $" + total);
-		
+			System.out.printf("\tThe subtotal is $%5.2f", subTotal);
+			System.out.println();
+			System.out.printf("\tThe tax due is $%5.2f", (total-subTotal));
+			System.out.println();
+			System.out.printf("\tThe grand total is $%5.2f", total);
+			System.out.println();
+			System.out.println("-----------------------------------------------");
+			transactions++;
+			
+			
+			
 			/*
+			 * 
+			 * 
 			 * Write sale information to sale logs and vendor logs here
+			 *
+			 *
+			 *
 			 */
 			
+			
 
-			transactions++;
+			
 		}
 		
 		
-		
+		//Empty the cart after the sale
 		cart.removeAll(cart);
 		System.out.println();
 	}
 	
 	public void clearCart() {
 		//This monstrosity of a for loop simply adds back saleQuantity to the products available quantity
+		//Refer back to chart at top of page for 
+		//legend of index values of itemDetails
+		
 		int tempSaleQuantity;
 		for (int i = 0; i < cart.size(); i++) {
 			tempSaleQuantity = (int) cart.get(i).get(1);
-			System.out.println("Testing: " + cart.get(i));
 			((Product) cart.get(i).get(6)).setQuantity(   ((Product) cart.get(i).get(6)).getQuantity() + tempSaleQuantity   );
 		}
 		
@@ -106,22 +154,24 @@ public class Register {
 		cart.removeAll(cart);
 		System.out.println();
 	}
-
+	
+	/*
+	 * Getters and Setters
+	 */
+	
+	
 	public Map<Integer,Product> getProductList() {
 		return productList;
 	}
 
-	public void setProductList(Map<Integer,Product> productList) {
-		this.productList = productList;
-	}
-	
-	public void printProductList() {
-		System.out.println(productList);
-	}
-
 	public int getAndIncrementProductIndex() {
 		productIndex++;
-		return productIndex-1;
+		return (productIndex-1);
+		
+	}
+	
+	public int getProductIndex() {
+		return productIndex;
 		
 	}
 
