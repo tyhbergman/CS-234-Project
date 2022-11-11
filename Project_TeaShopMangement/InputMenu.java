@@ -1,5 +1,5 @@
 /*
-Input Tester
+Input Menu
 **/
 
 import java.util.*;
@@ -8,7 +8,6 @@ public class InputMenu {
 
 	public InputMenu() {}
 	
-		
 		public void inputMenu() {
 		
 		List<Input> inputDescription = new LinkedList<Input>();
@@ -18,32 +17,30 @@ public class InputMenu {
 		String name = "Generic Vendor";
 		String category = "Generic Product Category";
 		String input = "Generic Input";
-		String inputType = "T";
 		double inputCost = 0.00;
 		int inputQuantity = 0;
 		double inputDiscount = 0.00;
 		double taxRate = 0.00;
-		Input lineItem = new Input(lineItemID, name, category, input, inputType, inputCost, inputQuantity, inputDiscount, taxRate);
+		Input lineItem = new Input(lineItemID, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
 		inputDescription.add(lineItem);
+		
 		double gc = 0.0;
 		double ta = 0.0;
-		double nc = 0.0;
 		double da = 0.0;
-		List<Double> grossCostList = new LinkedList<Double>();
-		grossCostList.add(gc);
-		List<Double> taxAmountList = new LinkedList<Double>();
-		taxAmountList.add(ta);
-		List<Double> netCostList = new LinkedList<Double>();
-		netCostList.add(nc);
-		List<Double> discountAmountList = new LinkedList<Double>();
-		discountAmountList.add(da);
-		double grossCostTotal = 0.0;
-		double taxAmountTotal = 0.0;
-		double netCostTotal = 0.0;
-		double discountAmountTotal = 0.0;
+		double nc = 0.0;
+		Map<Integer, Double> grossCostTotal = new HashMap<>();
+		grossCostTotal.put(lineItemID, gc);
+		Map<Integer, Double> taxAmountTotal = new HashMap<>();
+		taxAmountTotal.put(lineItemID, ta);
+		Map<Integer, Double> discountAmountTotal = new HashMap<>();
+		discountAmountTotal.put(lineItemID, da);
+		Map<Integer, Double> netCostTotal = new HashMap<>();
+		netCostTotal.put(lineItemID, nc);
+
 		int choice;
 		do 
 		{
+		
 			System.out.println("----------------------------");
 			System.out.println("|       Inputs Menu        |");
 			System.out.println("----------------------------");
@@ -59,92 +56,63 @@ public class InputMenu {
 		
 			switch (choice)
 			{
+			
 				case 1: 
-					System.out.print("For the line item ID, enter 1 for the first line item and for further line items add 1 to the previous line item ID number entered.\n");
-					System.out.print("Enter the line item ID for this input: ");
+					System.out.print("Enter the line item ID for this input (as a nonnegative integer, ie, 0,1,2, 18, etc.): ");
 					lineItemID = c.nextInt();
+					if (lineItemID == lineItem.getLineItemID())
+					{
+						
+						System.out.println("Line item already exists. Please try again.");
+						System.out.print("Enter the line item ID for this input: ");
+						lineItemID = c.nextInt();
+						
+					}
 					System.out.print("Enter the name of the vendor receiving the input from: ");
 					name = s.nextLine();
 					System.out.print("Enter the category of goods/services the vendor is selling: ");
 					category = s.nextLine();
 					System.out.print("Enter the particular input that the vendor is providing: ");
 					input = s.nextLine();
-					System.out.print("Enter the product type (T, F, A, or X): ");
-					inputType = s.nextLine();
 					System.out.print("Enter the cost of the input: $");
 					inputCost = c.nextDouble();
 					System.out.print("Enter the quantity of the input: ");
 					inputQuantity = c.nextInt();
-					System.out.print("Enter the discount percentage on this input (write as a decimal): ");
+					System.out.print("Enter the discount percentage on this input (write as a decimal, ie, 0.05, 0.1, etc.): ");
 					inputDiscount = c.nextDouble();
-					System.out.print("Enter the tax rate applied to this input (write as a decimal): ");
+					System.out.print("Enter the tax rate applied to this input (write as a decimal, ie, 0.05, 0.1, etc.): ");
 					taxRate = c.nextDouble();
-					lineItem = new Input(lineItemID, name, category, input, inputType, inputCost, inputQuantity, inputDiscount, taxRate);
+					lineItem = new Input(lineItemID, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
 					inputDescription.add(lineItem);
+					
 					gc = lineItem.getGrossCost(inputCost, inputQuantity, inputDiscount);
-					grossCostList.add(gc);
+					grossCostTotal.put(lineItemID, gc);
 					ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity, inputDiscount);
-					taxAmountList.add(ta);
-					nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
-					netCostList.add(nc);
+					taxAmountTotal.put(lineItemID, ta);
 					da = lineItem.getDiscountAmount(inputCost, inputDiscount);
-					discountAmountList.add(da);
-					
-					double temp = 0.0;
-					for (int count = 0; count < grossCostList.size(); count++)
-					{
-		
-						temp += grossCostList.get(count);
-		
-					}
-				    grossCostTotal = temp;
-		
-					double temp1 = 0.0;
-					for (int count = 0; count < taxAmountList.size(); count++)
-					{
-		
-						temp1 += taxAmountList.get(count);
-		
-					}
-					taxAmountTotal = temp1;
-	
-					double temp2 = 0.0;
-					for (int count = 0; count < netCostList.size(); count++)
-					{
-		
-						temp2 += netCostList.get(count);
-						
-					}
-					netCostTotal = temp2;
-					
-					double temp3 = 0.0;
-					for (int count = 0; count < discountAmountList.size(); count++)
-					{
-					
-						temp3 += discountAmountList.get(count);
-
-					}
-					discountAmountTotal = temp3;
+					discountAmountTotal.put(lineItemID, da);
+					nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
+					netCostTotal.put(lineItemID, nc);
 				break;
 				case 2:
 					System.out.println("-------------------------------------------------");
 					System.out.println("|                Inputs Report                  |");
 					System.out.println("-------------------------------------------------");
 					System.out.println("-------------------------------------------------");
-					System.out.print("ID # \t| ");
-					System.out.print("\tVendor Name \t| ");
-					System.out.print("\tVendor Category \t| ");
-					System.out.print("\tInput \t| ");
-					System.out.print("\tInput Type \t| ");
-					System.out.print("\tCost ($) \t| ");
-					System.out.print("\tQuantity \t| ");
-					System.out.print("\tDiscount (%) \t| ");
-					System.out.print("\tTax Rate (%) \t| ");
-					System.out.print("\tDiscount Amount ($) \t| ");
-					System.out.print("\tGross Cost ($) \t| ");
-					System.out.print("\tTax Amount ($) \t| ");
-					System.out.print("\tNet Cost ($) \n");
+					System.out.print("ID # | ");
+					System.out.print("Vendor Name \t|");
+					System.out.print("Vendor Category \t|");
+					System.out.print("Input \t|");
+					System.out.print("Cost ($) \t|");
+					System.out.print("Quantity \t|");
+					System.out.print("Discount (%) \t|");
+					System.out.print("Tax Rate (%) \t|");
+					System.out.print("Discount Amount ($) \t|");
+					System.out.print("Gross Cost ($) \t|");
+					System.out.print("Tax Amount ($) \t|");
+					System.out.print("Net Cost ($) \n");
 					System.out.println("-------------------------------------------------");
+					
 					Iterator<Input> i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
@@ -154,35 +122,68 @@ public class InputMenu {
 					
 					}
 					System.out.println("-------------------------------------------------");
+
+					Set<Integer> keySet1 = grossCostTotal.keySet();
+					double grossCostSum = 0.0;
+					for (int key : keySet1)
+					{
+		
+						double value = grossCostTotal.get(key);
+						grossCostSum += value;
+		
+					}
+					System.out.printf("Total Gross Cost: $%.2f%n", grossCostSum);
 					
-					System.out.println("Total Discout Amount: $" + discountAmountTotal);
-					System.out.println("Total Gross Cost: $" + grossCostTotal);
-					System.out.println("Total Tax Amount: $" + taxAmountTotal);
-					System.out.println("Total Net Cost: $" + netCostTotal);
-					System.out.println();
-					System.out.println(discountAmountList);
-					System.out.println(grossCostList);
-					System.out.println(taxAmountList);
-					System.out.println(netCostList);
+					Set<Integer> keySet2 = discountAmountTotal.keySet();
+					double discountAmountSum = 0.0;
+					for (int key : keySet2)
+					{
+		
+						double value = discountAmountTotal.get(key);
+						discountAmountSum += value;
+		
+					}
+					System.out.printf("Total Discount Amount: $%.2f%n", discountAmountSum);
+					
+					Set<Integer> keySet3 = taxAmountTotal.keySet();
+					double taxAmountSum = 0.0;
+					for (int key : keySet3)
+					{
+		
+						double value = taxAmountTotal.get(key);
+						taxAmountSum += value;
+		
+					}
+					System.out.printf("Total Tax Amount: $%.2f%n", taxAmountSum);
+					
+					Set<Integer> keySet4 = netCostTotal.keySet();
+					double netCostSum = 0.0;
+					for (int key : keySet4)
+					{
+		
+						double value = netCostTotal.get(key);
+						netCostSum += value;
+		
+					}
+					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
 				break;
 				case 3: 
 					boolean found = false;
 					System.out.print("Enter the line item ID of the line item to search for: ");
 					int id = c.nextInt();
 					System.out.println("-------------------------------------------------");
-					System.out.print("ID # \t| ");
-					System.out.print("\tVendor Name \t| ");
-					System.out.print("\tVendor Category \t| ");
-					System.out.print("\tInput \t| ");
-					System.out.print("\tInput Type \t| ");
-					System.out.print("\tCost ($) \t| ");
-					System.out.print("\tQuantity \t| ");
-					System.out.print("\tDiscount (%) \t| ");
-					System.out.print("\tTax Rate (%) \t| ");
-					System.out.print("\tDiscount Amount ($) \t| ");
-					System.out.print("\tGross Cost ($) \t| ");
-					System.out.print("\tTax Amount ($) \t| ");
-					System.out.print("\tNet Cost ($) \n");
+					System.out.print("ID # | ");
+					System.out.print("Vendor Name \t|");
+					System.out.print("Vendor Category \t|");
+					System.out.print("Input \t|");
+					System.out.print("Cost ($) \t|");
+					System.out.print("Quantity \t|");
+					System.out.print("Discount (%) \t|");
+					System.out.print("Tax Rate (%) \t|");
+					System.out.print("Discount Amount ($) \t|");
+					System.out.print("Gross Cost ($) \t|");
+					System.out.print("Tax Amount ($) \t|");
+					System.out.print("Net Cost ($) \n");
 					System.out.println("-------------------------------------------------");
 				    i = inputDescription.iterator();
 					while(i.hasNext()) 
@@ -219,6 +220,10 @@ public class InputMenu {
 						{
 							
 							i.remove();
+							grossCostTotal.remove(v.getLineItemID());
+							taxAmountTotal.remove(v.getLineItemID());
+							discountAmountTotal.remove(v.getLineItemID());
+							netCostTotal.remove(v.getLineItemID());
 							found = true;
 						
 						}
@@ -226,14 +231,18 @@ public class InputMenu {
 					}
 					if (!found) 
 					{
-					
+						
+						System.out.println("-------------------------------------------------");
 						System.out.println("Line item not found");
-					
+						System.out.println("-------------------------------------------------");
+				
 					}
 					else
 					{
 					
+						System.out.println("-------------------------------------------------");
 						System.out.println("Line item deleted successfully");
+						System.out.println("-------------------------------------------------");
 					
 					}
 				break;
@@ -258,9 +267,6 @@ public class InputMenu {
 							System.out.print("Enter the new input that the vendor is selling ");
 							System.out.print("(enter the same input if no change): ");
 						    input = s.nextLine();
-						    System.out.print("Enter the new input type (T, F, A, or X): ");
-						    System.out.print("(enter the same input type if no change): ");
-							inputType = s.nextLine();
 							System.out.print("Enter the updated cost of the input ");
 							System.out.print("(enter the same cost if no change): $");
 							inputCost = c.nextDouble();
@@ -273,62 +279,17 @@ public class InputMenu {
 							System.out.print("Enter the tax rate (as a decimal) applied to this input ");
 							System.out.print("(enter the same tax rate if no change): ");
 							taxRate = c.nextDouble();
-							lineItem = new Input(lineItemID, name, category, input, inputType, inputCost, inputQuantity, inputDiscount, taxRate);
+							lineItem = new Input(id, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
 							descriptionIter.set(lineItem);
-							//descriptionIter.set(new Input(id, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate));
-						
+							
 							gc = lineItem.getGrossCost(inputCost, inputQuantity, inputDiscount);
-							grossCostList.add(gc);
 							ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity, inputDiscount);
-							taxAmountList.add(ta);
+							da = lineItem.getDiscountAmount(inputCost, inputDiscount);
 							nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
-							netCostList.add(nc);
-					
-							double uc = 0.0;
-							for (int count = 0; count < grossCostList.size(); count++)
-							{
-					
-								if (count == id)
-								{
-						
-									uc = grossCostList.set(count, gc);
-									//grossCostList.add(uc);
-						
-								}
-		
-							}
-							grossCostList.add(uc);
-							
-							double ut = 0.0;
-							for (int count = 0; count < taxAmountList.size(); count++)
-							{
-	
-								if (count == id)
-								{
-						
-									ut = taxAmountList.set(count, ta);
-									//taxAmountList.add(ut);
-						
-								}
-			
-							}
-							taxAmountList.add(ut);
-							
-							double un = 0.0;
-							for (int count = 0; count < netCostList.size(); count++)
-							{
-					
-								if (count == id)
-								{
-									
-									un = netCostList.set(count, nc);
-									//netCostList.add(un);
-							
-								}
-						
-							}
-							netCostList.add(un);
-							
+							grossCostTotal.replace(v.getLineItemID(), gc);
+							taxAmountTotal.replace(v.getLineItemID(), ta);
+							discountAmountTotal.replace(v.getLineItemID(), da);
+							netCostTotal.replace(v.getLineItemID(), nc);
 							found = true;
 						
 						}
@@ -355,14 +316,4 @@ public class InputMenu {
 	
 	}
 	
-	/**
-	public static void main(String[] args) {
-	
-		Menu();
-	
-	
-	}
-	*/
-	
-
 }
