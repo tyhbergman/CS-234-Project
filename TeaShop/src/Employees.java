@@ -28,16 +28,6 @@ public class Employees {
 		employees.get(name).add(type);
 	}
 	
-	public void addDefaultEmployee() {
-		employees.put("manager", new ArrayList<String>());
-		employees.get("manager").add("00001");
-		employees.get("manager").add("Default Employee Profile");
-		employees.get("manager").add("0.00");
-		employees.get("manager").add("1234");
-		employees.get("manager").add("0");
-		employees.get("manager").add("yes");
-	}
-	
 	public void printEmployeeInfo(String name) {
 		System.out.print("\n");
         ArrayList<String> info = employees.get(name);
