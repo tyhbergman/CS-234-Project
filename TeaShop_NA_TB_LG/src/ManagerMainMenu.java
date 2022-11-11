@@ -46,6 +46,7 @@ public class ManagerMainMenu {
 	}
 	
 	public void managerMainMenu(Register register, Employees employees, Employees schedule, String name) {
+		SaleMenu saleMenu = new SaleMenu();
 		ProductMenu productMenu = new ProductMenu();
 		InputMenu inputMenu = new InputMenu();
 		EmployeesMenu employeesMenu = new EmployeesMenu();
@@ -54,32 +55,38 @@ public class ManagerMainMenu {
 		System.out.println("\tMain Menu");
 		System.out.println();
 		
-		System.out.println("1.) Product Management");
-		System.out.println("2.) Input Management");
-		System.out.println("3.) Employee Management");
-		System.out.println("4.) Records");
-		System.out.println("5.) Log Out");
+		System.out.println("1.) Sale Menu");
+		System.out.println("2.) Product Management");
+		System.out.println("3.) Input Management");
+		System.out.println("4.) Employee Management");
+		System.out.println("5.) Records");
+		System.out.println("6.) Log Out");
 		
 		int x = scan.nextInt();
 		
 		switch (x) {
 		case 1:
-			productMenu.productMenu(register);
+			saleMenu.saleMenu(register, employees, schedule, productMenu, name);
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 2:
-			inputMenu.inputMenu(register);
+			productMenu.productMenu(register);
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 3:
+			inputMenu.inputMenu(register);
+			managerMainMenu(register, employees, schedule, name);
+			break;
+		case 4:
 			employeesMenu.employeesMenu(register, schedule, employees, name);
 			//employeeMainMenu(register, employees, name);
 			break;
-		case 4:
-			employees.printEmployeeInfo(name);
-			//employeeMainMenu(register, employees, name);
-			break;
 		case 5:
+			register.salesRecords(register);
+			employees.printEmployeeInfo(name);
+			managerMainMenu(register, employees, schedule, name);
+			break;
+		case 6:
 			System.out.println();
 			System.out.println("Logging out...");
 			SignIn signIn = new SignIn();
@@ -90,5 +97,6 @@ public class ManagerMainMenu {
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		}
+		
 	}
 }

@@ -201,6 +201,25 @@ public class Register {
 		System.out.println();
 	}
 	
+	public static void salesRecords(Register register) {
+		System.out.println("\tSales Records (to date)");
+		System.out.println();
+		System.out.println("Transaction ID\tTotal\t\tSub-Total\tTax\t\tQuantity of Items Purchased");
+		System.out.println("-------------------------------------------------------------------------------------------------------------");
+		for (int i = 0; i < register.getAllTransactions().size(); i++) {
+			
+			
+			System.out.printf("%03d\t\t$%5.2f\t\t$%5.2f\t\t$%5.2f\t\t%d",
+					register.getAllTransactions().get(i).get(0), register.getAllTransactions().get(i).get(1),
+					register.getAllTransactions().get(i).get(2), register.getAllTransactions().get(i).get(3),
+					register.getAllTransactions().get(i).get(4));
+			System.out.println();
+		}
+		
+		System.out.println();
+		
+	}
+	
 	/*
 	 * Getters and Setters
 	 */
@@ -252,6 +271,8 @@ public class Register {
 		this.getAllInputs().add(new ArrayList<Object>(inputDetails));
 		
 		}
+
+	
 }
 
 

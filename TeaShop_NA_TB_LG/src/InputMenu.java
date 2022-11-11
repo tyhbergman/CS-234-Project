@@ -123,7 +123,7 @@ public class InputMenu {
 					{
 					
 						Input v = i.next();
-						System.out.println(v);
+						System.out.println(v + "help lol");
 					
 					}
 					System.out.println("-------------------------------------------------");
