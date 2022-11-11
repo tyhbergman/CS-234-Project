@@ -1,16 +1,6 @@
 /**
-Project Vendor Superclass
+Project Input Superclass
 */
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.List;
-import java.util.LinkedList;
-import java.util.ArrayList;
-import java.util.ListIterator;
-import java.util.Collection;
 
 public class Input {
 
@@ -21,11 +11,10 @@ public class Input {
 	private double cost;
 	private double taxRate;
 	private double discount;
-	private double quantity;
-	//private double grossCost;
-	//private int lineItemCount;
+	private int quantity;
+
 		
-	public Input (int lineItemID, String vendorName, String vendorCategory, String input, double cost, double quantity, double discount, double taxRate) {
+	public Input (int lineItemID, String vendorName, String vendorCategory, String input, double cost, int quantity, double discount, double taxRate) {
 	
 		this.lineItemID = lineItemID;
 		this.vendorName = vendorName;
@@ -35,18 +24,13 @@ public class Input {
 		this.taxRate = taxRate;
 		this.discount = discount;
 		this.quantity = quantity;
-		//this.lineItemCount = 1;
-		//this.grossCost = 
 		getDiscountAmount(cost, discount);
 		getGrossCost(cost, quantity, discount);
 		getTaxAmount(taxRate, cost, quantity, discount);
 		getNetCost(taxRate, cost, quantity, discount);
-		//getTotalGrossCost(cost, quantity, discount);
-		
-		//getRunningGrossCost(cost, quantity, discount);
 
 	}
-	
+
 	public void setDiscount(double discount) {
 	
 		this.discount = discount;
@@ -76,14 +60,14 @@ public class Input {
 		this.input = input;
 	
 	}
-	
+
 	public String getInput() {
 	
 		return input;
 	
 	}
-
-	public void setQuantity(double quantity) {
+	
+	public void setQuantity(int quantity) {
 
 		if (quantity > 0.0)
 		{
@@ -100,7 +84,7 @@ public class Input {
 	
 	}
 	
-	public double getQuantity() {
+	public int getQuantity() {
 	
 		return quantity;
 	
@@ -192,56 +176,16 @@ public class Input {
 		return vendorCategory;
 	
 	}
-	/**
-	public double getTotalGrossCost(double cost, double quantity, double discount) {
-	
-		double totalGrossCost = getGrossCost(cost, quantity, discount);
-		lineItemCount++;
-		return totalGrossCost + getGrossCost(cost, quantity, discount);
-	
-	}
-	*/
+
 	public String toString() {
 	
-		return lineItemID + " | " + vendorName + " | " + vendorCategory + " | " + input + " | $" + 
-		cost + " | " + quantity + " | " + (double) discount * 100 + "% | " + 
-		(double) taxRate * 100 + "% | $" + getDiscountAmount(cost, discount) + " | $" + 
-		getGrossCost(cost, quantity, discount) + " | $" + 
-		getTaxAmount(taxRate, cost, quantity, discount) + " | $" + getNetCost(taxRate, cost, quantity, discount); 
+		return lineItemID + " | " + vendorName + " \t| " + vendorCategory + " \t| " + input + 
+		" \t| $" + cost + " \t| " + quantity + " \t| " + (double) discount * 100 + "% \t| " + 
+		(double) taxRate * 100 + "% \t| $" + getDiscountAmount(cost, discount) + " \t| $" + 
+		getGrossCost(cost, quantity, discount) + " \t| $" + getTaxAmount(taxRate, cost, quantity, discount) + 
+		" \t| $" + getNetCost(taxRate, cost, quantity, discount); 
 	
 	}
-	/**
-	public double getRunningGrossCost(double cost, double quantity, double discount) {
-	
-		List<Double> totalGrossCost = new ArrayList<Double>();
-		totalGrossCost.add(getGrossCost(cost, quantity, discount));
-		double total = totalGrossCost.get(0);
-		//int i = 1;
-		if (totalGrossCost.size() > 0)
-		{
-			//while(i < totalGrossCost.size())
-			for (int i = 0; i <totalGrossCost.size(); i++)
-			{
-			
-				total += totalGrossCost.get(i);
-				i++;
-		
-			}
-			
-		}
-		
-		return total;
-		
-	}
-	*/
-	/*
-	public double toDouble() {
-	
-		return getGrossCost(cost, quantity, discount);
-		return getTaxAmount(taxRate, cost, quantity, discount);
-		return getNetCost(taxRate, cost, quantity, discount);
-		
-	}
-	*/
+
 }
 
