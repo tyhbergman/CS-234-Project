@@ -6,7 +6,7 @@ public class EmployeeMainMenu {
 		
 	}
 	
-	public String employeeSignin(Register register, Employees employees) {
+	public String employeeSignin(Register register, Employees employees, Employees schedule) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Employee name");
 		String name = b.nextLine();
@@ -27,12 +27,12 @@ public class EmployeeMainMenu {
 			} else {
 				SignIn signIn = new SignIn();
 				System.out.println("Password Incorrect. Returning to log in page...");
-				signIn.signIn(register);
+				signIn.signIn(register, employees, schedule);
 			}
 		} else {
 			SignIn signIn = new SignIn();
 			System.out.println("User is not in system. Returning to log in page...");
-			signIn.signIn(register);
+			signIn.signIn(register, employees, schedule);
 		}
 		return " ";
 	}
@@ -63,7 +63,7 @@ public class EmployeeMainMenu {
 			System.out.println();
 			System.out.println("Logging out...");
 			SignIn signIn = new SignIn();
-			signIn.signIn(register);
+			signIn.signIn(register, employees, schedule);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");

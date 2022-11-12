@@ -3,6 +3,8 @@ public class MainMenu {
 	public static void main(String[] args) throws Exception {
 		Register store1 = new Register();
 		SignIn signIn = new SignIn();
+		Employees employees = new Employees();
+		Employees schedule = new Employees();
 		
 		Product x = new Product(store1, "Coconut Tea", 4.50, 30, "Jimmy's");
 		Tea a = new Tea(store1, "Coconut Tea", 4.50, 30, "Jimmy's");
@@ -14,7 +16,7 @@ public class MainMenu {
 		Hat g = new Hat(store1, "Logo Beanie", "Beanie", "Tan", 3.20, 80, "Banana Republic");
 		Food h = new Food(store1, "Butter Biscuits", 2, 20, "Anne's");
 		
-		signIn.signIn(store1);
+		signIn.signIn(store1, employees, schedule);
 
 	}
 	
