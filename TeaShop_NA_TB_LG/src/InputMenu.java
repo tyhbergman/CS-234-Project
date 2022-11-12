@@ -33,6 +33,7 @@ public class InputMenu {
 		double ta = 0.0;
 		double da = 0.0;
 		double nc = 0.0;
+		
 		Map<Integer, Double> grossCostTotal = new HashMap<>();
 		grossCostTotal.put(lineItemID, gc);
 		Map<Integer, Double> taxAmountTotal = new HashMap<>();
@@ -118,12 +119,36 @@ public class InputMenu {
 					System.out.print("Net Cost ($) \n");
 					System.out.println("-------------------------------------------------");
 					
+					
+					//Added here by Ty. Trying to figure out how to use your code Nick to utilize register.getAllInputs()
+					//or at least make your inputs read from it.
+					
+//					System.out.println("Input ID\tVendor\t\tName\t\t\tVendor Price\tPrice\t\tQuantity\tTax Rate\tDiscount");
+//					System.out.println("-------------------------------------------------------------------------------------------------------------");
+//					for (int i = 0; i < register.getAllInputs().size(); i++) {
+//						
+//						
+//						System.out.printf("%03d\t\t%.7s\t\t%.15s\t\t$%5.2f\t\t$%5.2f\t\t%d\t\t%2.2f",
+//								register.getAllInputs().get(i).get(0), register.getAllInputs().get(i).get(1),
+//								register.getAllInputs().get(i).get(2), register.getAllInputs().get(i).get(3),
+//								register.getAllInputs().get(i).get(4), register.getAllInputs().get(i).get(5),
+//								register.getAllInputs().get(i).get(6), register.getAllInputs().get(i).get(7));
+//						System.out.println();
+//					}
+//					
+//					System.out.println();
+//					mainMenu(register);
+					
+					
+					
+					
+					
 					Iterator<Input> i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
 						Input v = i.next();
-						System.out.println(v + "help lol");
+						System.out.println(v);
 					
 					}
 					System.out.println("-------------------------------------------------");
