@@ -285,6 +285,9 @@ public class EmployeesMenu {
 			break;
 		case 3: 
 			// View personal information
+			System.out.println(name);
+			employees.printEmployeeInfo("manager");
+
 			employees.printEmployeeInfo(name);
 			employeesMenu(register, employees, schedule, name);
 			break;
