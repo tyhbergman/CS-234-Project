@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -138,6 +139,14 @@ public class Register {
 			System.out.printf("\tThe grand total is \t$%5.2f", total);
 			System.out.println();
 			System.out.println("-----------------------------------------------");
+			
+			//String trans = file.addTrans(subTotal, totalQuantity, total);
+			//try {
+			//	file.write(trans);
+			//} catch (IOException e) {
+				// TODO Auto-generated catch block
+			//	e.printStackTrace();
+			//}
 			
 			//After each sale:
 			//Adding arrayList of transaction details as an 

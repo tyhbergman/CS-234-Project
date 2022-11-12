@@ -1,6 +1,5 @@
-import java.util.Scanner;
-
 public class MainMenu {
+
 
 	public static void main(String[] args) {
 		Register store1 = new Register();
@@ -15,9 +14,6 @@ public class MainMenu {
 		Tea f = new Tea(store1, "Passionfruit Tea", 5.02, 0, "Harry's");
 		Hat g = new Hat(store1, "Logo Beanie", "Beanie", "Tan", 3.20, 80, "Banana Republic");
 		Food h = new Food(store1, "Butter Biscuits", 2, 20, "Anne's");
-		
-		
-		
 		
 		signIn.signIn(store1);
 
