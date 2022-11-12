@@ -1615,7 +1615,7 @@ public class MainMenuSmash {
 
 	}
 	
-public static void inputMenu(Register register) {
+	public static void inputMenu(Register register) {
 		
 		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in);
