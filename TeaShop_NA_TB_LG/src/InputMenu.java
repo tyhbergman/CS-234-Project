@@ -163,7 +163,7 @@ public class InputMenu {
 					{
 						if (lineItemID == lineItem.getLineItemID() || lineItemID == lineItem1.getLineItemID() || 
 						lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
-						lineItemID == lineItem4.getLineItemID()) || lineItemID == lineItem5.getLineItemID() ||
+						lineItemID == lineItem4.getLineItemID() || lineItemID == lineItem5.getLineItemID() ||
 						lineItemID == lineItem6.getLineItemID() || lineItemID == lineItem7.getLineItemID() ||
 						lineItemID == lineItem8.getLineItemID())
 						{
