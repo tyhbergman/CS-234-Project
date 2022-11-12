@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ManagerMainMenu {
-	
+
 	public String managerSignIn(Register register, Employees employees) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Manager's name: ");
