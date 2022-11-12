@@ -1,10 +1,6 @@
 import java.util.Scanner;
 
 public class ManagerMainMenu {
-
-	ManagerMainMenu(){
-		
-	}
 	
 	public String managerSignIn(Register register, Employees employees) {
 		Scanner b = new Scanner(System.in);
@@ -50,9 +46,10 @@ public class ManagerMainMenu {
 		ProductMenu productMenu = new ProductMenu();
 		InputMenu inputMenu = new InputMenu();
 		EmployeesMenu employeesMenu = new EmployeesMenu();
+		SignIn signIn = new SignIn();
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("\tMain Menu");
+		System.out.println("\tManager Main Menu");
 		System.out.println();
 		
 		System.out.println("1.) Sale Menu");
@@ -74,12 +71,12 @@ public class ManagerMainMenu {
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 3:
-			inputMenu.inputMenu(register);
+			inputMenu.inputMenu();
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 4:
 			employeesMenu.employeesMenu(register, schedule, employees, name);
-			//employeeMainMenu(register, employees, name);
+			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 5:
 			register.salesRecords(register);
@@ -89,7 +86,7 @@ public class ManagerMainMenu {
 		case 6:
 			System.out.println();
 			System.out.println("Logging out...");
-			SignIn signIn = new SignIn();
+			signIn.signIn(register);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");

@@ -377,21 +377,21 @@ public class ProductMenu {
 			case 't':
 				System.out.println("\tYou've selected to add a tea product.");
 				System.out.println();
-				//addTea(register);
+				addTea(register);
 				break;
 				
 			case 'F':
 			case 'f':
 				System.out.println("\tYou've selected to add a food product.");
 				System.out.println();
-				//addFood(register);
+				addFood(register);
 				break;
 			
 			case 'A':
 			case 'a':
 				System.out.println("\tYou've selected to add an apparel product.");
 				System.out.println();
-				//chooseApparelType(register);
+				chooseApparelType(register);
 				break;
 			
 			case 'M':

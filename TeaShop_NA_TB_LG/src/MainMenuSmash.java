@@ -1615,7 +1615,7 @@ public class MainMenuSmash {
 
 	}
 	
-public static void inputMenu(Register register) {
+	public static void inputMenu(Register register) {
 		
 		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in);
@@ -1657,7 +1657,7 @@ public static void inputMenu(Register register) {
 			System.out.println("3. Search for a line item");
 			System.out.println("4. Delete a line item");
 			System.out.println("5. Update a line item");
-			System.out.println("0. Exit");
+			System.out.println("6. Return to Main Menu");
 			System.out.println("----------------------------");
 			choice = c.nextInt();
 		
@@ -1665,15 +1665,29 @@ public static void inputMenu(Register register) {
 			{
 			
 				case 1: 
-					System.out.print("Enter the line item ID for this input (as a nonnegative integer, ie, 0,1,2, 18, etc.): ");
+					System.out.print("Enter the line item ID for this input (as a nonnegative integer, ie, 0,1,2,18, etc.): ");
 					lineItemID = c.nextInt();
-					if (lineItemID == lineItem.getLineItemID())
+					boolean exists = false;
+					while (!exists)
 					{
+						if (lineItemID == lineItem.getLineItemID()) //|| lineItemID == lineItem1.getLineItemID() || 
+						//lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
+						//lineItemID == lineItem4.getLineItemID()) //|| lineItemID == lineItem5.getLineItemID() ||
+						//lineItemID == lineItem6.getLineItemID() || lineItemID == lineItem7.getLineItemID() ||
+						//lineItemID == lineItem8.getLineItemID())
+						{
 						
-						System.out.println("Line item already exists. Please try again.");
-						System.out.print("Enter the line item ID for this input: ");
-						lineItemID = c.nextInt();
+							System.out.println("Line item already exists. Please try again.");
+							System.out.print("Enter the line item ID for this input: ");
+							lineItemID = c.nextInt();
 						
+						}
+						else 
+						{
+							
+							exists = true;
+					
+						}
 					}
 					System.out.print("Enter the name of the vendor receiving the input from: ");
 					name = s.nextLine();
@@ -1685,18 +1699,18 @@ public static void inputMenu(Register register) {
 					inputCost = c.nextDouble();
 					System.out.print("Enter the quantity of the input: ");
 					inputQuantity = c.nextInt();
-					System.out.print("Enter the discount percentage on this input (write as a decimal, ie, 0.05, 0.1, etc.): ");
+					System.out.print("Enter the discount percentage on this input (write as a positive decimal less than 1, ie, 0.05, 0.1, etc.): ");
 					inputDiscount = c.nextDouble();
-					System.out.print("Enter the tax rate applied to this input (write as a decimal, ie, 0.05, 0.1, etc.): ");
+					System.out.print("Enter the tax rate applied to this input (write as a positive decimal less than 1, ie, 0.05, 0.1, etc.): ");
 					taxRate = c.nextDouble();
 					lineItem = new Input(lineItemID, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
 					inputDescription.add(lineItem);
 					
-					gc = lineItem.getGrossCost(inputCost, inputQuantity, inputDiscount);
+					gc = lineItem.getGrossCost(inputCost, inputQuantity);
 					grossCostTotal.put(lineItemID, gc);
-					ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity, inputDiscount);
+					ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity);
 					taxAmountTotal.put(lineItemID, ta);
-					da = lineItem.getDiscountAmount(inputCost, inputDiscount);
+					da = lineItem.getDiscountAmount(inputCost, inputQuantity, inputDiscount);
 					discountAmountTotal.put(lineItemID, da);
 					nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
 					netCostTotal.put(lineItemID, nc);
@@ -1706,17 +1720,17 @@ public static void inputMenu(Register register) {
 					System.out.println("|                Inputs Report                  |");
 					System.out.println("-------------------------------------------------");
 					System.out.println("-------------------------------------------------");
-					System.out.print("ID # | ");
-					System.out.print("Vendor Name \t|");
-					System.out.print("Vendor Category \t|");
-					System.out.print("Input \t|");
-					System.out.print("Cost ($) \t|");
-					System.out.print("Quantity \t|");
-					System.out.print("Discount (%) \t|");
-					System.out.print("Tax Rate (%) \t|");
-					System.out.print("Discount Amount ($) \t|");
-					System.out.print("Gross Cost ($) \t|");
-					System.out.print("Tax Amount ($) \t|");
+					System.out.print("ID | ");
+					System.out.print("Vendor Name |");
+					System.out.print("Vendor Category |");
+					System.out.print("Input Name |");
+					System.out.print("Unit Cost ($) |");
+					System.out.print("Quantity |");
+					System.out.print("Discount (%) |");
+					System.out.print("Tax Rate (%) |");
+					System.out.print("Discount Amount ($) |");
+					System.out.print("Gross Cost ($) |");
+					System.out.print("Tax Amount ($) |");
 					System.out.print("Net Cost ($) \n");
 					System.out.println("-------------------------------------------------");
 					
@@ -1725,7 +1739,7 @@ public static void inputMenu(Register register) {
 					{
 					
 						Input v = i.next();
-						System.out.println(v);
+						System.out.println(v + "help lol");
 					
 					}
 					System.out.println("-------------------------------------------------");
@@ -1773,26 +1787,31 @@ public static void inputMenu(Register register) {
 		
 					}
 					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
+					//System.out.println(grossCostTotal);
+					//System.out.println(discountAmountTotal);
+					//System.out.println(taxAmountTotal);
+					//System.out.println(netCostTotal);
+					//System.out.print("Would you like to export this report? (Y)es | (N)o: ");
 				break;
 				case 3: 
 					boolean found = false;
 					System.out.print("Enter the line item ID of the line item to search for: ");
 					int id = c.nextInt();
 					System.out.println("-------------------------------------------------");
-					System.out.print("ID # | ");
-					System.out.print("Vendor Name \t|");
-					System.out.print("Vendor Category \t|");
-					System.out.print("Input \t|");
-					System.out.print("Cost ($) \t|");
-					System.out.print("Quantity \t|");
-					System.out.print("Discount (%) \t|");
-					System.out.print("Tax Rate (%) \t|");
-					System.out.print("Discount Amount ($) \t|");
-					System.out.print("Gross Cost ($) \t|");
-					System.out.print("Tax Amount ($) \t|");
+					System.out.print("ID | ");
+					System.out.print("Vendor Name |");
+					System.out.print("Vendor Category |");
+					System.out.print("Input Name |");
+					System.out.print("Unit Cost ($) |");
+					System.out.print("Quantity |");
+					System.out.print("Discount (%) |");
+					System.out.print("Tax Rate (%) |");
+					System.out.print("Discount Amount ($) |");
+					System.out.print("Gross Cost ($) |");
+					System.out.print("Tax Amount ($) |");
 					System.out.print("Net Cost ($) \n");
 					System.out.println("-------------------------------------------------");
-				    i = inputDescription.iterator();
+				    	i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
@@ -1818,7 +1837,7 @@ public static void inputMenu(Register register) {
 					found = false;
 					System.out.print("Enter the line item ID of the line item to search for: ");
 					id = c.nextInt();
-				    i = inputDescription.iterator();
+				    	i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
@@ -1857,7 +1876,7 @@ public static void inputMenu(Register register) {
 					found = false;
 					System.out.print("Enter the line item ID of the line item to update: ");
 					id = c.nextInt();
-				    ListIterator<Input> descriptionIter = inputDescription.listIterator();
+				    	ListIterator<Input> descriptionIter = inputDescription.listIterator();
 					while(descriptionIter.hasNext()) 
 					{
 					
@@ -1880,18 +1899,18 @@ public static void inputMenu(Register register) {
 							System.out.print("Enter the updated quantity of the input ");
 							System.out.print("(enter the same quantity if no change): ");
 							inputQuantity = c.nextInt();
-							System.out.print("Enter the discount percentage (as a decimal) on this input ");
+							System.out.print("Enter the discount percentage (as a positive decimal less than 1, ie, 0.05, 0.1, etc.) on this input ");
 							System.out.print("(enter the same discount if no change): ");
 							inputDiscount = c.nextDouble();
-							System.out.print("Enter the tax rate (as a decimal) applied to this input ");
+							System.out.print("Enter the tax rate (as a positive decimal less than 1, ie, 0.05, 0.1, etc.) applied to this input ");
 							System.out.print("(enter the same tax rate if no change): ");
 							taxRate = c.nextDouble();
 							lineItem = new Input(id, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
 							descriptionIter.set(lineItem);
 							
-							gc = lineItem.getGrossCost(inputCost, inputQuantity, inputDiscount);
-							ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity, inputDiscount);
-							da = lineItem.getDiscountAmount(inputCost, inputDiscount);
+							gc = lineItem.getGrossCost(inputCost, inputQuantity);
+							ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity);
+							da = lineItem.getDiscountAmount(inputCost, inputQuantity, inputDiscount);
 							nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
 							grossCostTotal.replace(v.getLineItemID(), gc);
 							taxAmountTotal.replace(v.getLineItemID(), ta);
@@ -1905,21 +1924,27 @@ public static void inputMenu(Register register) {
 					
 					if (!found) 
 					{
-					
+						
+						System.out.println("-------------------------------------------------");
 						System.out.println("Line item not found");
+						System.out.println("-------------------------------------------------");
 					
 					}
 					else
 					{
-					
+						
+						System.out.println("-------------------------------------------------");
 						System.out.println("Line item updated successfully");
+						System.out.println("-------------------------------------------------");
 					
 					}
 				break;
-				
+				default:
+					System.out.println("Not a valid choice. Please try again.");
+				break;
 			}
 		
-		}while (choice != 0);
+		}while (choice != 6); return;
 	
 	}
 }

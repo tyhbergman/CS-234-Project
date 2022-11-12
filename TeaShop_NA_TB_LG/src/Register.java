@@ -202,10 +202,15 @@ public class Register {
 	}
 	
 	public static void salesRecords(Register register) {
+		double completeTotal = 0;
+		double completeSubTotal = 0;
+		double completeTax = 0;
+		int completeQuantitySold = 0;
+		
 		System.out.println("\tSales Records (to date)");
 		System.out.println();
 		System.out.println("Transaction ID\tTotal\t\tSub-Total\tTax\t\tQuantity of Items Purchased");
-		System.out.println("-------------------------------------------------------------------------------------------------------------");
+		System.out.println("--------------------------------------------------------------------------------------------------");
 		for (int i = 0; i < register.getAllTransactions().size(); i++) {
 			
 			
@@ -214,8 +219,20 @@ public class Register {
 					register.getAllTransactions().get(i).get(2), register.getAllTransactions().get(i).get(3),
 					register.getAllTransactions().get(i).get(4));
 			System.out.println();
+			
+			completeTotal = (double)register.getAllTransactions().get(i).get(1) + completeTotal;
+			completeSubTotal = (double)register.getAllTransactions().get(i).get(2) + completeSubTotal;
+			completeTax = (double)register.getAllTransactions().get(i).get(3) + completeTax;
+			completeQuantitySold = (int)register.getAllTransactions().get(i).get(4) + completeQuantitySold;
+			
+			
 		}
-		
+		System.out.println();
+		System.out.println();
+		System.out.println("Sum of Totals\t\tSum of Sub-totals\tSum of Tax\t\tSum of Product Sold");
+		System.out.println("--------------------------------------------------------------------------------------------------");
+		System.out.printf("$%7.2f\t\t$%7.2f\t\t$%7.2f\t\t%d\n",completeTotal,completeSubTotal,completeTax,completeQuantitySold);
+		System.out.println("--------------------------------------------------------------------------------------------------");
 		System.out.println();
 		
 	}

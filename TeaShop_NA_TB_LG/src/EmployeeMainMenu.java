@@ -40,7 +40,8 @@ public class EmployeeMainMenu {
 	}
 	
 	public void employeeMainMenu(Register register, Employees employees, Employees schedule, String name) {
-		ProductMenu productMenu = new ProductMenu();  
+		ProductMenu productMenu = new ProductMenu();
+		SaleMenu saleMenu = new SaleMenu();
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\tMain Menu");
@@ -54,7 +55,6 @@ public class EmployeeMainMenu {
 		
 		switch (x) {
 		case 1:
-			SaleMenu saleMenu = new SaleMenu();
 			saleMenu.saleMenu(register, employees, schedule, productMenu, name);
 			employeeMainMenu(register, employees, schedule, name);
 			break;
