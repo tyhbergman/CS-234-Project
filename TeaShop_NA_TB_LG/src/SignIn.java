@@ -6,10 +6,8 @@ public class SignIn {
 		
 	}
 	
-	public void signIn(Register register) {
+	public void signIn(Register register, Employees employees, Employees schedule) {
 		Scanner scan = new Scanner(System.in);
-		Employees employees = new Employees();
-		Employees schedule = new Employees();
 		employees.addDefaultEmployee();
 		
 		System.out.println("\tSign In");
@@ -23,12 +21,12 @@ public class SignIn {
 		switch (x) {
 		case 1:
 			EmployeeMainMenu employeeSignIn = new EmployeeMainMenu();
-			String name = employeeSignIn.employeeSignin(register, employees);
+			String name = employeeSignIn.employeeSignin(register, employees, schedule);
 			employeeSignIn.employeeMainMenu(register, employees, schedule, name);
 			break;
 		case 2:
 			ManagerMainMenu managerSignIn = new ManagerMainMenu();
-			name = managerSignIn.managerSignIn(register, employees);
+			name = managerSignIn.managerSignIn(register, employees, schedule);
 			managerSignIn.managerMainMenu(register, employees, schedule, name);
 			break;
 		case 3:
@@ -38,7 +36,7 @@ public class SignIn {
 		default:
 			System.out.println("Input error. Restarting...");
 			System.out.println();
-			signIn(register);
+			signIn(register, employees, schedule);
 			break;
 		}
 	}

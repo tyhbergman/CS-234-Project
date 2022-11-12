@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 public class ManagerMainMenu {
-
-	public String managerSignIn(Register register, Employees employees) {
+	
+	public String managerSignIn(Register register, Employees employees, Employees schedule) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Manager's name: ");
 		String name = b.nextLine();
@@ -26,17 +26,17 @@ public class ManagerMainMenu {
 				} else {
 					SignIn signIn = new SignIn();
 					System.out.println("Password Incorrect. Returning to log in page...");
-					signIn.signIn(register);
+					signIn.signIn(register, employees, schedule);
 				}
 			} else {
 				SignIn signIn = new SignIn();
 				System.out.println("User position is not set as manager. Returning to log in page...");
-				signIn.signIn(register);
+				signIn.signIn(register, employees, schedule);
 			}
 		} else {
 			SignIn signIn = new SignIn();
 			System.out.println("User is not in the system. Returning to log in page...");
-			signIn.signIn(register);
+			signIn.signIn(register, employees, schedule);
 		}
 		return " ";
 	}
@@ -86,7 +86,7 @@ public class ManagerMainMenu {
 		case 6:
 			System.out.println();
 			System.out.println("Logging out...");
-			signIn.signIn(register);
+			signIn.signIn(register, employees, schedule);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");
