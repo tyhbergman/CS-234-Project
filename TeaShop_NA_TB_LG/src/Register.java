@@ -102,7 +102,7 @@ public class Register {
 	 * 
 	 */
 	
-	public void sale(Persistence file) {
+	public void sale() {
 
 		totalQuantity = 0;
 		subTotal = 0;
@@ -140,13 +140,13 @@ public class Register {
 			System.out.println();
 			System.out.println("-----------------------------------------------");
 			
-			String trans = file.addTrans(subTotal, totalQuantity, total);
-			try {
-				file.write(trans);
-			} catch (IOException e) {
+			//String trans = file.addTrans(subTotal, totalQuantity, total);
+			//try {
+			//	file.write(trans);
+			//} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			//	e.printStackTrace();
+			//}
 			
 			//After each sale:
 			//Adding arrayList of transaction details as an 
