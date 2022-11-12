@@ -6,7 +6,7 @@ public class ManagerMainMenu {
 		
 	}
 	
-	public String managerSignIn(Register register, Employees employees) {
+	public String managerSignIn(Register register, Employees employees, Persistence file) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Manager's name: ");
 		String name = b.nextLine();
@@ -30,22 +30,22 @@ public class ManagerMainMenu {
 				} else {
 					SignIn signIn = new SignIn();
 					System.out.println("Password Incorrect. Returning to log in page...");
-					signIn.signIn(register);
+					signIn.signIn(register, file);
 				}
 			} else {
 				SignIn signIn = new SignIn();
 				System.out.println("User position is not set as manager. Returning to log in page...");
-				signIn.signIn(register);
+				signIn.signIn(register, file);
 			}
 		} else {
 			SignIn signIn = new SignIn();
 			System.out.println("User is not in the system. Returning to log in page...");
-			signIn.signIn(register);
+			signIn.signIn(register, file);
 		}
 		return " ";
 	}
 	
-	public void managerMainMenu(Register register, Employees employees, Employees schedule, String name) {
+	public void managerMainMenu(Register register, Employees employees, Employees schedule, String name, Persistence file) {
 		ProductMenu productMenu = new ProductMenu();
 		InputMenu inputMenu = new InputMenu();
 		EmployeesMenu employeesMenu = new EmployeesMenu();
@@ -65,14 +65,14 @@ public class ManagerMainMenu {
 		switch (x) {
 		case 1:
 			productMenu.productMenu(register);
-			managerMainMenu(register, employees, schedule, name);
+			managerMainMenu(register, employees, schedule, name, file);
 			break;
 		case 2:
 			inputMenu.inputMenu(register);
-			managerMainMenu(register, employees, schedule, name);
+			managerMainMenu(register, employees, schedule, name, file);
 			break;
 		case 3:
-			employeesMenu.employeesMenu(register, schedule, employees, name);
+			employeesMenu.employeesMenu(register, schedule, employees, name, file);
 			//employeeMainMenu(register, employees, name);
 			break;
 		case 4:
@@ -83,12 +83,12 @@ public class ManagerMainMenu {
 			System.out.println();
 			System.out.println("Logging out...");
 			SignIn signIn = new SignIn();
-			signIn.signIn(register);
+			signIn.signIn(register, file);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");
 			System.out.println();
-			managerMainMenu(register, employees, schedule, name);
+			managerMainMenu(register, employees, schedule, name, file);
 			break;
 		}
 	}

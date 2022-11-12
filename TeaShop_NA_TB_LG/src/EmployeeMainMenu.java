@@ -6,7 +6,7 @@ public class EmployeeMainMenu {
 		
 	}
 	
-	public String employeeSignin(Register register, Employees employees) {
+	public String employeeSignin(Register register, Employees employees, Persistence file) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Employee name");
 		String name = b.nextLine();
@@ -27,17 +27,17 @@ public class EmployeeMainMenu {
 			} else {
 				SignIn signIn = new SignIn();
 				System.out.println("Password Incorrect. Returning to log in page...");
-				signIn.signIn(register);
+				signIn.signIn(register, file);
 			}
 		} else {
 			SignIn signIn = new SignIn();
 			System.out.println("User is not in system. Returning to log in page...");
-			signIn.signIn(register);
+			signIn.signIn(register, file);
 		}
 		return " ";
 	}
 	
-	public void employeeMainMenu(Register register, Employees employees, Employees schedule, String name) {
+	public void employeeMainMenu(Register register, Employees employees, Employees schedule, String name, Persistence file) {
 		ProductMenu productMenu = new ProductMenu();  
 		Scanner scan = new Scanner(System.in);
 		
@@ -53,21 +53,22 @@ public class EmployeeMainMenu {
 		switch (x) {
 		case 1:
 			SaleMenu saleMenu = new SaleMenu();
-			saleMenu.saleMenu(register, employees, schedule, productMenu, name);
+			saleMenu.saleMenu(register, employees, schedule, productMenu, name, file);
 			break;
 		case 2:
 			employees.printEmployeeInfo(name);
-			employeeMainMenu(register, employees, schedule, name);
+			employeeMainMenu(register, employees, schedule, name, file);
 			break;
 		case 3:
 			System.out.println();
 			System.out.println("Logging out...");
 			SignIn signIn = new SignIn();
+			signIn.signIn(register, file);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");
 			System.out.println();
-			employeeMainMenu(register, employees, schedule, name);
+			employeeMainMenu(register, employees, schedule, name, file);
 			break;
 		}
 	}

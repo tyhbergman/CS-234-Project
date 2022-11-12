@@ -6,7 +6,7 @@ public class EmployeesMenu {
 		
 	}
 	
-	public static void employeesMenu(Register register, Employees employees, Employees schedule, String name) {
+	public static void employeesMenu(Register register, Employees employees, Employees schedule, String name, Persistence file) {
 		ManagerMainMenu managerMainMenu = new ManagerMainMenu();
 		int x; //counter variable
 		
@@ -73,7 +73,7 @@ public class EmployeesMenu {
 					
 					employees.addEmployee(newName, empid, position, wage, ssn, hours, type);
 					System.out.print("New employee has been created. \n\n");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 2:
 					// Edit current employee
@@ -166,10 +166,10 @@ public class EmployeesMenu {
 							break;
 						default:
 							System.out.println("Invalid input.");
-							employeesMenu(register, employees,schedule, name);
+							employeesMenu(register, employees,schedule, name, file);
 							break;
 					}
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 3:
 					// Delete employee
@@ -182,23 +182,23 @@ public class EmployeesMenu {
 					
 					employees.deleteEmployee(empName2);
 					System.out.print("Employee has been deleted.\n");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 4:
 					// Print all employee information
 					System.out.print("Employee Records");
 					employees.printEmployees();
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 5:
 					// Exit
 					System.out.println("Exiting Manage Employees...");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				default:
 					// Loop Error
 					System.out.println("Invaild Input.");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 			}
 			break;
@@ -249,7 +249,7 @@ public class EmployeesMenu {
 					
 					schedule.addShift(Name, shiftDay, shiftHourStart, shiftMinStart, shiftStartMeridiem, shiftHourEnd, shiftMinEnd, shiftEndMeridiem);
 					System.out.println("Shift has been added");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 2:
 					// Delete a shift 
@@ -262,7 +262,7 @@ public class EmployeesMenu {
 					String shiftDay2 = o.nextLine();
 					
 					schedule.removeShift(Name2, shiftDay2);
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 3:
 					// Remove an employee 
@@ -270,27 +270,27 @@ public class EmployeesMenu {
 					System.out.println("Enter the name of the employee: ");
 					String Name3 = y.nextLine();
 					schedule.remove(Name3);
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				case 4:
 					// Print entire schedule
 					schedule.printSchedule();
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 				default: 
 					System.out.println("Invaild Input.");
-					employeesMenu(register, employees, schedule, name);
+					employeesMenu(register, employees, schedule, name, file);
 					break;
 			}
 			break;
 		case 3: 
 			// View personal information
 			employees.printEmployeeInfo(name);
-			employeesMenu(register, employees, schedule, name);
+			employeesMenu(register, employees, schedule, name, file);
 			break;
 		case 4:
 			// Exit
-			managerMainMenu.managerMainMenu(register, employees, schedule, name);
+			managerMainMenu.managerMainMenu(register, employees, schedule, name, file);
 		default:
 			break;
 		}

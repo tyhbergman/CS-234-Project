@@ -2,15 +2,20 @@ public class MainMenu {
 
 	public static void main(String[] args) throws Exception {
 		Persistence file = new Persistence();
-		Register register = new Register();
+		Register store1 = new Register();
 		SignIn signIn = new SignIn();
 		
-		int line = file.findTransactionRecord(0);
-		System.out.println("000 found on: "+ line);
-		file = new Persistence();
-		int line2 = file.findTransactionRecord(1);
-		System.out.println("001 found on: "+ line2);
-		signIn.signIn(register);
+		Product x = new Tea(store1, "Coconut Tea", 4.50, 30, "Jimmy's");
+		Tea a = new Tea(store1, "Coconut Tea", 4.50, 30, "Jimmy's");
+		Tea b = new Tea(store1, "Matcha Tea", 5.02, 0, "Harry's");
+		Tea c = new Tea(store1, "Lemon Tea", 3.20, 80, "Jimmy's");
+		Food d = new Food(store1, "Cheesecake", 4.50, 10, "Anne's");
+		Shirt e = new Shirt(store1, "Sunset Logo", "Black", false, false, 4.50, 10,15, 15, 10, "Banana Republic");
+		Tea f = new Tea(store1, "Passonfruit", 5.02, 30, "Harry's");
+		Hat g = new Hat(store1, "Logo Beanie", "Beanie", "Tan", 3.20, 80, "Banana Republic");
+		Food h = new Food(store1, "Butter Biscuits", 2, 20, "Anne's");
+		
+		signIn.signIn(store1, file);
 
 	}
 	

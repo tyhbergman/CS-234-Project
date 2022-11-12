@@ -6,7 +6,7 @@ public class SaleMenu {
 		
 	}
 	
-	public void saleMenu(Register register, Employees employees, Employees schedule, ProductMenu productMenu, String name) {
+	public void saleMenu(Register register, Employees employees, Employees schedule, ProductMenu productMenu, String name, Persistence file) {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\tSale Menu");
@@ -32,33 +32,33 @@ public class SaleMenu {
 				System.out.print("Enter the desired quantity: ");
 				int tempQ = scan.nextInt();
 				register.addToCart(register.getProductList().get(temp), tempQ);
-				saleMenu(register, employees, schedule, productMenu, name);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 				break;
 			case 2:
-				register.sale();
-				saleMenu(register, employees, schedule, productMenu, name);
+				register.sale(file);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 				break;
 			case 3:
 				register.viewCart();
-				saleMenu(register, employees, schedule, productMenu, name);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 				break;
 			case 4:
 				register.clearCart();
-				saleMenu(register, employees, schedule, productMenu, name);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 				break;
 			case 5:
 				productMenu.getProductLog(register);
-				saleMenu(register, employees, schedule, productMenu, name);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 			case 6:
 				EmployeeMainMenu employeeSignIn = new EmployeeMainMenu();
 				System.out.println();
 				System.out.println("Exiting Sale Menu...");
-				employeeSignIn.employeeMainMenu(register, employees, schedule, name);
+				employeeSignIn.employeeMainMenu(register, employees, schedule, name, file);
 				break;
 			default:
 				System.out.println("Input error. Starting over.");
 				System.out.println();
-				saleMenu(register, employees, schedule, productMenu, name);
+				saleMenu(register, employees, schedule, productMenu, name, file);
 				break;
 		}
 	}
