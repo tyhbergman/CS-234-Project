@@ -14,7 +14,7 @@ public class Input {
 	private int quantity;
 
 		
-	Input (int lineItemID, String vendorName, String vendorCategory, String input, double cost, int quantity, double discount, double taxRate) {
+	public Input (int lineItemID, String vendorName, String vendorCategory, String input, double cost, int quantity, double discount, double taxRate) {
 	
 		this.lineItemID = lineItemID;
 		this.vendorName = vendorName;
@@ -24,9 +24,9 @@ public class Input {
 		this.taxRate = taxRate;
 		this.discount = discount;
 		this.quantity = quantity;
-		getDiscountAmount(cost, discount);
-		getGrossCost(cost, quantity, discount);
-		getTaxAmount(taxRate, cost, quantity, discount);
+		getDiscountAmount(cost, quantity, discount);
+		getGrossCost(cost, quantity);
+		getTaxAmount(taxRate, cost, quantity);
 		getNetCost(taxRate, cost, quantity, discount);
 
 	}
@@ -69,7 +69,7 @@ public class Input {
 	
 	public void setQuantity(int quantity) {
 
-		if (quantity > 0.0)
+		if (quantity >= 0)
 		{
 		
 			this.quantity = quantity;
@@ -78,7 +78,7 @@ public class Input {
 		else 
 		{
 		
-			System.out.println("Quantity must be greater than zero.");
+			System.out.println("Quantity must be at least zero.");
 		
 		}
 	
@@ -113,30 +113,69 @@ public class Input {
 	
 	}
 	
-	public double getGrossCost(double cost, double quantity, double discount) {
-	
-		double grossCost = (cost * (1 - discount) * quantity);
+	public double getGrossCost(double cost, int quantity) {
+
+		double grossCost = 0.0;
+		if (quantity <= 0)
+		{
+		
+			grossCost = 0.0;
+		
+		}
+		else 
+		{
+			
+			grossCost = cost * quantity;
+		
+		}
+		
 		return grossCost;
 	
 	}
 	
-	public double getTaxAmount(double taxRate, double cost, double quantity, double discount) {
+	public double getTaxAmount(double taxRate, double cost, int quantity) {
 	
-		double taxAmount = taxRate * getGrossCost(cost, quantity, discount);
+		double taxAmount = taxRate * getGrossCost(cost, quantity);
 		return taxAmount;
 	
 	}
 	
-	public double getDiscountAmount(double cost, double discount) {
+	public double getDiscountAmount(double cost, int quantity, double discount) {
 	
-		double discountAmount = cost * discount;
+		double discountAmount = 0.0;
+		if (discount <= 0.0)
+		{
+			
+			discountAmount = 0.0;
+		
+		}
+		else
+		{
+		
+			discountAmount = getGrossCost(cost, quantity) * discount;
+		
+		}
+		
 		return discountAmount;
 	
 	}
 	
-	public double getNetCost(double taxRate, double cost, double quantity, double discount) {
+	public double getNetCost(double taxRate, double cost, int quantity, double discount) {
 	
-		double netCost = getGrossCost(cost, quantity, discount) + getTaxAmount(taxRate, cost, quantity, discount);
+		double netCost = 0.0;
+		if (discount <= 0.0)
+		{
+		
+			netCost = getGrossCost(cost, quantity) + getTaxAmount(taxRate, cost, quantity);
+		
+		}
+		else
+		{
+			
+			netCost = (getGrossCost(cost, quantity) - getDiscountAmount(cost, quantity, discount)) + getTaxAmount(taxRate, cost, quantity);
+			
+		}
+
 		return netCost;
 	
 	}
@@ -179,14 +218,12 @@ public class Input {
 
 	public String toString() {
 	
-		return lineItemID + " | " + vendorName + " \t| " + vendorCategory + " \t| " + input + 
-		" \t| $" + cost + " \t| " + quantity + " \t| " + (double) discount * 100 + "% \t| " + 
-		(double) taxRate * 100 + "% \t| $" + getDiscountAmount(cost, discount) + " \t| $" + 
-		getGrossCost(cost, quantity, discount) + " \t| $" + getTaxAmount(taxRate, cost, quantity, discount) + 
-		" \t| $" + getNetCost(taxRate, cost, quantity, discount); 
+		return lineItemID + " | " + vendorName + "| " + vendorCategory + "| " + input + 
+		"| $" + cost + "| " + quantity + "| " + (double) discount * 100 + "%| " + 
+		(double) taxRate * 100 + "% | $" + getDiscountAmount(cost, quantity, discount) + " | $" + 
+		getGrossCost(cost, quantity) + "| $" + getTaxAmount(taxRate, cost, quantity) + 
+		"| $" + getNetCost(taxRate, cost, quantity, discount); 
 	
 	}
 
 }
-
-
