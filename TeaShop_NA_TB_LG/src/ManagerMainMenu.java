@@ -42,9 +42,11 @@ public class ManagerMainMenu {
 	}
 	
 	public void managerMainMenu(Register register, Employees employees, Employees schedule, String name) {
+		SaleMenu saleMenu = new SaleMenu();
 		ProductMenu productMenu = new ProductMenu();
 		InputMenu inputMenu = new InputMenu();
 		EmployeesMenu employeesMenu = new EmployeesMenu();
+		SignIn signIn = new SignIn();
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\tMain Menu");
@@ -78,7 +80,6 @@ public class ManagerMainMenu {
 		case 5:
 			System.out.println();
 			System.out.println("Logging out...");
-			SignIn signIn = new SignIn();
 			signIn.signIn(register);
 			break;
 		default:
