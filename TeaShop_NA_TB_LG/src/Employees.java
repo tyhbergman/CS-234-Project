@@ -270,9 +270,11 @@ public class Employees {
 	
 	public void printSchedule() {
 		System.out.print("\n");
-		for(Entry<String, Map<String, ArrayList<String>>> entry: schedule.entrySet()) {
-	        String key=entry.getKey();
-	        System.out.print(schedule);
-		}
+		System.out.print(schedule);
+	}
+
+	public void remove(String name) {
+		schedule.remove(name);
+		
 	}
 }

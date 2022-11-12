@@ -83,6 +83,7 @@ public class ManagerMainMenu {
 			System.out.println();
 			System.out.println("Logging out...");
 			SignIn signIn = new SignIn();
+			signIn.signIn(register);
 			break;
 		default:
 			System.out.println("Input error. Resetting...");
