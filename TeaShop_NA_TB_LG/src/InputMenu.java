@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class InputMenu {
 	
-	InputMenu(){
+	public InputMenu(){
 		
 	}
 
-	public static void inputMenu(Register register) {
+	public static void inputMenu() {
 		
 		Input header = new Input();
 		List<Input> inputDescription = new LinkedList<Input>();
@@ -356,7 +356,7 @@ public class InputMenu {
 					found = false;
 					System.out.print("Enter the line item ID of the line item to update: ");
 					id = c.nextInt();
-				    ListIterator<Input> descriptionIter = inputDescription.listIterator();
+				    	ListIterator<Input> descriptionIter = inputDescription.listIterator();
 					while(descriptionIter.hasNext()) 
 					{
 					
