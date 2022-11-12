@@ -54,7 +54,7 @@ public class Employees {
         
         
         
-        
+        System.out.println(name);
         info = employees.get(name);
         String empid = info.get(0);
         String position = info.get(1);

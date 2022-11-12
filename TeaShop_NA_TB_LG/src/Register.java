@@ -201,7 +201,7 @@ public class Register {
 		System.out.println();
 	}
 	
-	public static void salesRecords(Register register) {
+	public void salesRecords(Register register) {
 		double completeTotal = 0;
 		double completeSubTotal = 0;
 		double completeTax = 0;
