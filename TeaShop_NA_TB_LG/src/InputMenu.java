@@ -273,10 +273,10 @@ public class InputMenu {
 		
 					}
 					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
-					System.out.println(grossCostTotal);
-					System.out.println(discountAmountTotal);
-					System.out.println(taxAmountTotal);
-					System.out.println(netCostTotal);
+					//System.out.println(grossCostTotal);
+					//System.out.println(discountAmountTotal);
+					//System.out.println(taxAmountTotal);
+					//System.out.println(netCostTotal);
 				break;
 				case 3: 
 					boolean found = false;
