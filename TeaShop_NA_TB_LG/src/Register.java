@@ -297,6 +297,8 @@ public class Register {
 		this.getAllInputs().add(new ArrayList<Object>(inputDetails));
 		
 		}
+
+	
 }
 
 

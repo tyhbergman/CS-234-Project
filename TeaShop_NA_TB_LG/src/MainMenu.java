@@ -1,6 +1,7 @@
 public class MainMenu {
 
-	public static void main(String[] args) throws Exception {
+
+	public static void main(String[] args) {
 		Register store1 = new Register();
 		SignIn signIn = new SignIn();
 		

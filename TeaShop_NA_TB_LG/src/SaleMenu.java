@@ -32,6 +32,7 @@ public class SaleMenu {
 				System.out.print("Enter the desired quantity: ");
 				int tempQ = scan.nextInt();
 				register.addToCart(register.getProductList().get(temp), tempQ);
+				System.out.println();
 				saleMenu(register, employees, schedule, productMenu, name);
 				break;
 			case 2:
@@ -49,11 +50,10 @@ public class SaleMenu {
 			case 5:
 				productMenu.getProductLog(register);
 				saleMenu(register, employees, schedule, productMenu, name);
+				break;
 			case 6:
-				EmployeeMainMenu employeeSignIn = new EmployeeMainMenu();
 				System.out.println();
 				System.out.println("Exiting Sale Menu...");
-				employeeSignIn.employeeMainMenu(register, employees, schedule, name);
 				break;
 			default:
 				System.out.println("Input error. Starting over.");
