@@ -13,7 +13,7 @@ public class InputMenu {
 		
 	}
 
-	public static void inputMenu(Register register) {
+	public static void inputMenu() {
 		
 		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in);
