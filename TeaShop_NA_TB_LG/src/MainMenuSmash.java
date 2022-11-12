@@ -1617,32 +1617,125 @@ public class MainMenuSmash {
 	
 	public static void inputMenu(Register register) {
 		
+		Input header = new Input();
 		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in);
 		Scanner s = new Scanner(System.in);
+		
+		//Initializing parameter variables
 		int lineItemID = 0;
 		String name = "Generic Vendor";
-		String category = "Generic Product Category";
+		String category = "Generic Category";
 		String input = "Generic Input";
-		double inputCost = 0.00;
+		double inputCost = 0.0;
 		int inputQuantity = 0;
 		double inputDiscount = 0.00;
 		double taxRate = 0.00;
-		Input lineItem = new Input(lineItemID, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
-		inputDescription.add(lineItem);
-		
 		double gc = 0.0;
 		double ta = 0.0;
 		double da = 0.0;
 		double nc = 0.0;
-		Map<Integer, Double> grossCostTotal = new HashMap<>();
-		grossCostTotal.put(lineItemID, gc);
-		Map<Integer, Double> taxAmountTotal = new HashMap<>();
-		taxAmountTotal.put(lineItemID, ta);
-		Map<Integer, Double> discountAmountTotal = new HashMap<>();
-		discountAmountTotal.put(lineItemID, da);
-		Map<Integer, Double> netCostTotal = new HashMap<>();
-		netCostTotal.put(lineItemID, nc);
+		Input lineItem = new Input(lineItemID, name, category, input, inputCost, inputQuantity, inputDiscount, taxRate);
+		inputDescription.add(lineItem);
+		
+		//Dummy information that is used to display the initial cost report
+		Input lineItem1 = new Input(1, "Jimmy's", "Tea Products", "Coconut Tea Supplies", 4.00, 60, 0.0, 0.05);
+		inputDescription.add(lineItem1);
+		double gc1 = lineItem1.getGrossCost(4.00, 60);
+		double ta1 = lineItem1.getTaxAmount(0.05, 4.00, 60);
+		double da1 = lineItem1.getDiscountAmount(4.00, 60, 0.1);
+		double nc1 = lineItem1.getNetCost(0.05, 4.00, 60, 0.1);
+		Input lineItem2 = new Input(2, "Harry's", "Tea Products", "Matcha Tea Supplies", 4.50, 0, 0.0, 0.05);
+		inputDescription.add(lineItem2);
+		double gc2 = lineItem2.getGrossCost(4.50, 0);
+		double ta2 = lineItem2.getTaxAmount(0.05, 4.50, 0);
+		double da2 = lineItem2.getDiscountAmount(4.50, 0, 0.0);
+		double nc2 = lineItem2.getNetCost(0.05, 4.50, 0, 0.0);
+		Input lineItem3 = new Input(3, "Jimmy's", "Tea Products", "Lemon Tea Supplies", 3.00, 80, 0.0, 0.05);
+		inputDescription.add(lineItem3);
+		double gc3 = lineItem3.getGrossCost(3.00, 80);
+		double ta3 = lineItem3.getTaxAmount(0.05, 3.00, 80);
+		double da3 = lineItem3.getDiscountAmount(3.00, 80, 0.0);
+		double nc3 = lineItem3.getNetCost(0.05, 3.00, 80, 0.0);
+		Input lineItem4 = new Input(4, "Anne's", "Food Products", "Cheesecake Supplies", 4.00, 10, 0.0, 0.05);
+		inputDescription.add(lineItem4);
+		double gc4 = lineItem4.getGrossCost(4.00, 10);
+		double ta4 = lineItem4.getTaxAmount(0.05, 4.00, 10);
+		double da4 = lineItem4.getDiscountAmount(4.00, 10, 0.04);
+		double nc4 = lineItem4.getNetCost(0.05, 4.00, 10, 0.04);
+		Input lineItem5 = new Input(5, "Banana Republic", "Apparel Products", "Shirts", 4.00, 50, 0.0, 0.05);
+		inputDescription.add(lineItem5);
+		double gc5 = lineItem5.getGrossCost(4.00, 50);
+		double ta5 = lineItem5.getTaxAmount(0.05, 4.00, 50);
+		double da5 = lineItem5.getDiscountAmount(4.00, 50, 0.0);
+		double nc5 = lineItem5.getNetCost(0.05, 4.00, 50, 0.0);
+		Input lineItem6 = new Input(6, "Harry's", "Tea Products", "Passionfruit Tea Supplies", 4.50, 0, 0.0, 0.05);
+		inputDescription.add(lineItem6);
+		double gc6 = lineItem6.getGrossCost(4.50, 0);
+		double ta6 = lineItem6.getTaxAmount(0.05, 4.50, 0);
+		double da6 = lineItem6.getDiscountAmount(4.50, 0, 0.0);
+		double nc6 = lineItem6.getNetCost(0.05, 4.50, 0, 0.0);
+		Input lineItem7 = new Input(7, "Banana Republic", "Apparel Products", "Hats", 2.80, 80, 0.0, 0.05);
+		inputDescription.add(lineItem7);
+		double gc7 = lineItem7.getGrossCost(2.80, 80);
+		double ta7 = lineItem7.getTaxAmount(0.05, 2.80, 80);
+		double da7 = lineItem7.getDiscountAmount(2.80, 80, 0.0);
+		double nc7 = lineItem7.getNetCost(0.05, 2.80, 80, 0.0);
+		Input lineItem8 = new Input(8, "Anne's", "Food Products", "Butter Biscuits", 1.50, 20, 0.0, 0.05);
+		inputDescription.add(lineItem8);
+		double gc8 = lineItem8.getGrossCost(1.50, 20);
+		double ta8 = lineItem8.getTaxAmount(0.05, 1.50, 20);
+		double da8 = lineItem8.getDiscountAmount(1.50, 20, 0.0);
+		double nc8 = lineItem8.getNetCost(0.05, 1.50, 20, 0.0);
+		//End Dummy information
+		
+		Map<Integer, Double> grossCostTotal = new HashMap<>(); //Declaring map for Total Gross Cost
+		grossCostTotal.put(lineItemID, gc); //Initializing map 
+		//Total Gross Cost calculation with the dummy information from above
+		grossCostTotal.put(1, gc1);
+		grossCostTotal.put(2, gc2);
+		grossCostTotal.put(3, gc3);
+		grossCostTotal.put(4, gc4);
+		grossCostTotal.put(5, gc5);
+		grossCostTotal.put(6, gc6);
+		grossCostTotal.put(7, gc7);
+		grossCostTotal.put(8, gc8);
+		
+		Map<Integer, Double> taxAmountTotal = new HashMap<>(); //Declaring map for Total Tax Amount
+		taxAmountTotal.put(lineItemID, ta); //Initializing map
+		//Total Tax Amount calculation with the dummy information from above
+		taxAmountTotal.put(1, ta1);
+		taxAmountTotal.put(2, ta2);
+		taxAmountTotal.put(3, ta3);
+		taxAmountTotal.put(4, ta4);
+		taxAmountTotal.put(5, ta5);
+		taxAmountTotal.put(6, ta6);
+		taxAmountTotal.put(7, ta7);
+		taxAmountTotal.put(8, ta8);
+		
+		Map<Integer, Double> discountAmountTotal = new HashMap<>(); //Declaring map for Total Discount Amount
+		discountAmountTotal.put(lineItemID, da); //Initializing map
+		//Total Discount Amount calculation with the dummy information from above
+		discountAmountTotal.put(1, da1);
+		discountAmountTotal.put(2, da2);
+		discountAmountTotal.put(3, da3);
+		discountAmountTotal.put(4, da4);
+		discountAmountTotal.put(5, da5);
+		discountAmountTotal.put(6, da6);
+		discountAmountTotal.put(7, da7);
+		discountAmountTotal.put(8, da8);
+		
+		Map<Integer, Double> netCostTotal = new HashMap<>(); //Declaring map for Total Net Cost Amount
+		netCostTotal.put(lineItemID, nc); //Initializing map
+		//Total Net Cost calculation with the dummy information from above
+		netCostTotal.put(1, nc1);
+		netCostTotal.put(2, nc2);
+		netCostTotal.put(3, nc3);
+		netCostTotal.put(4, nc4);
+		netCostTotal.put(5, nc5);
+		netCostTotal.put(6, nc6);
+		netCostTotal.put(7, nc7);
+		netCostTotal.put(8, nc8);
 
 		int choice;
 		do 
@@ -1651,7 +1744,7 @@ public class MainMenuSmash {
 			System.out.println("----------------------------");
 			System.out.println("|       Inputs Menu        |");
 			System.out.println("----------------------------");
-			System.out.println("Select your option");
+			System.out.println("Select your option (only enter the below listed integers, ie, 1,2,3,4,5,or 6)");
 			System.out.println("1. Add an input");
 			System.out.println("2. Display each line item");
 			System.out.println("3. Search for a line item");
@@ -1670,11 +1763,11 @@ public class MainMenuSmash {
 					boolean exists = false;
 					while (!exists)
 					{
-						if (lineItemID == lineItem.getLineItemID()) //|| lineItemID == lineItem1.getLineItemID() || 
-						//lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
-						//lineItemID == lineItem4.getLineItemID()) //|| lineItemID == lineItem5.getLineItemID() ||
-						//lineItemID == lineItem6.getLineItemID() || lineItemID == lineItem7.getLineItemID() ||
-						//lineItemID == lineItem8.getLineItemID())
+						if (lineItemID == lineItem.getLineItemID() || lineItemID == lineItem1.getLineItemID() || 
+						lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
+						lineItemID == lineItem4.getLineItemID() || lineItemID == lineItem5.getLineItemID() ||
+						lineItemID == lineItem6.getLineItemID() || lineItemID == lineItem7.getLineItemID() ||
+						lineItemID == lineItem8.getLineItemID())
 						{
 						
 							System.out.println("Line item already exists. Please try again.");
@@ -1695,9 +1788,9 @@ public class MainMenuSmash {
 					category = s.nextLine();
 					System.out.print("Enter the particular input that the vendor is providing: ");
 					input = s.nextLine();
-					System.out.print("Enter the cost of the input: $");
+					System.out.print("Enter the unit cost of the input: $");
 					inputCost = c.nextDouble();
-					System.out.print("Enter the quantity of the input: ");
+					System.out.print("Enter the quantity of the input (as a nonnegative integer, ie, 0, 10, 100, etc.): ");
 					inputQuantity = c.nextInt();
 					System.out.print("Enter the discount percentage on this input (write as a positive decimal less than 1, ie, 0.05, 0.1, etc.): ");
 					inputDiscount = c.nextDouble();
@@ -1719,27 +1812,22 @@ public class MainMenuSmash {
 					System.out.println("-------------------------------------------------");
 					System.out.println("|                Inputs Report                  |");
 					System.out.println("-------------------------------------------------");
-					System.out.println("-------------------------------------------------");
-					System.out.print("ID | ");
-					System.out.print("Vendor Name |");
-					System.out.print("Vendor Category |");
-					System.out.print("Input Name |");
-					System.out.print("Unit Cost ($) |");
-					System.out.print("Quantity |");
-					System.out.print("Discount (%) |");
-					System.out.print("Tax Rate (%) |");
-					System.out.print("Discount Amount ($) |");
-					System.out.print("Gross Cost ($) |");
-					System.out.print("Tax Amount ($) |");
-					System.out.print("Net Cost ($) \n");
-					System.out.println("-------------------------------------------------");
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------------------------------");;
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------\n");
+					header.displayHeaders();
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------------------------------");;
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------\n");
 					
 					Iterator<Input> i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
 						Input v = i.next();
-						System.out.println(v + "help lol");
+						System.out.println(v);
 					
 					}
 					System.out.println("-------------------------------------------------");
@@ -1787,31 +1875,25 @@ public class MainMenuSmash {
 		
 					}
 					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
-					//System.out.println(grossCostTotal);
-					//System.out.println(discountAmountTotal);
-					//System.out.println(taxAmountTotal);
-					//System.out.println(netCostTotal);
-					//System.out.print("Would you like to export this report? (Y)es | (N)o: ");
+					System.out.println(grossCostTotal);
+					System.out.println(discountAmountTotal);
+					System.out.println(taxAmountTotal);
+					System.out.println(netCostTotal);
 				break;
 				case 3: 
 					boolean found = false;
 					System.out.print("Enter the line item ID of the line item to search for: ");
 					int id = c.nextInt();
-					System.out.println("-------------------------------------------------");
-					System.out.print("ID | ");
-					System.out.print("Vendor Name |");
-					System.out.print("Vendor Category |");
-					System.out.print("Input Name |");
-					System.out.print("Unit Cost ($) |");
-					System.out.print("Quantity |");
-					System.out.print("Discount (%) |");
-					System.out.print("Tax Rate (%) |");
-					System.out.print("Discount Amount ($) |");
-					System.out.print("Gross Cost ($) |");
-					System.out.print("Tax Amount ($) |");
-					System.out.print("Net Cost ($) \n");
-					System.out.println("-------------------------------------------------");
-				    	i = inputDescription.iterator();
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------------------------------");;
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------\n");
+					header.displayHeaders();
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------------------------------");;
+					System.out.print("-------------------------------------------------");
+					System.out.print("-------------------------\n");
+				    i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
@@ -1837,7 +1919,7 @@ public class MainMenuSmash {
 					found = false;
 					System.out.print("Enter the line item ID of the line item to search for: ");
 					id = c.nextInt();
-				    	i = inputDescription.iterator();
+				    i = inputDescription.iterator();
 					while(i.hasNext()) 
 					{
 					
@@ -1876,7 +1958,7 @@ public class MainMenuSmash {
 					found = false;
 					System.out.print("Enter the line item ID of the line item to update: ");
 					id = c.nextInt();
-				    	ListIterator<Input> descriptionIter = inputDescription.listIterator();
+				    ListIterator<Input> descriptionIter = inputDescription.listIterator();
 					while(descriptionIter.hasNext()) 
 					{
 					
@@ -1917,14 +1999,14 @@ public class MainMenuSmash {
 							discountAmountTotal.replace(v.getLineItemID(), da);
 							netCostTotal.replace(v.getLineItemID(), nc);
 							found = true;
-						
+							
 						}
 						
 					}
 					
 					if (!found) 
 					{
-						
+					
 						System.out.println("-------------------------------------------------");
 						System.out.println("Line item not found");
 						System.out.println("-------------------------------------------------");
@@ -1936,12 +2018,18 @@ public class MainMenuSmash {
 						System.out.println("-------------------------------------------------");
 						System.out.println("Line item updated successfully");
 						System.out.println("-------------------------------------------------");
-					
+						
 					}
 				break;
 				default:
-					System.out.println("Not a valid choice. Please try again.");
+						if (choice != 6)
+						{
+						
+							System.out.println("Not a valid choice. Please try again.");
+						
+						}
 				break;
+				
 			}
 		
 		}while (choice != 6); return;
