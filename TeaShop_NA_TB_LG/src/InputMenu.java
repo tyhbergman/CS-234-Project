@@ -26,6 +26,7 @@ public class InputMenu {
 	private double totalTaxAmount;
 	private double totalDiscountAmount;
 	private double totalNetCost;
+	private List<Input> inputDescription;
 	
 	/**
 		Constructs an input menu with the total gross cost of all of the inputs purchased,
@@ -39,6 +40,7 @@ public class InputMenu {
 		this.totalTaxAmount = 0.0;
 		this.totalDiscountAmount = 0.0;
 		this.totalNetCost = 0.0;
+		this.inputDescription = new LinkedList<>();
 
 	}
 	
@@ -47,7 +49,6 @@ public class InputMenu {
 		//Declares an empty constructor to display the line item headers
 		Input header = new Input(); 
 		//Declares a linked list of the inputs to display each line item
-		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in); //Used for numerical values
 		Scanner s = new Scanner(System.in); //Used for string or char values
 		

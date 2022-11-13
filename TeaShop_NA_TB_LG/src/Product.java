@@ -163,11 +163,6 @@ public class Product {
 		if(quantity>0) { setAvailable(true); }
 		else { setAvailable(false); }
 	}
-
-	public void delete(int id) {
-		//remove from array list 
-		//Set reference to null for deletion via garbage collector?
-	}
 	
 }
 

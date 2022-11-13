@@ -82,7 +82,7 @@ public class ManagerMainMenu {
 			register.salesRecords(register);
 			System.out.println();
 			System.out.println("\t\t| Employee Records |");
-			employees.printEmployeeInfo(name);
+			employees.printEmployees();
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 6:

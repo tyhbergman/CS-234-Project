@@ -8,7 +8,6 @@ public class SignIn {
 	
 	public void signIn(Register register, Employees employees, Employees schedule) {
 		Scanner scan = new Scanner(System.in);
-		employees.addDefaultEmployee();
 		
 		System.out.println("\tTea Shop Sign In");
 		System.out.println();
