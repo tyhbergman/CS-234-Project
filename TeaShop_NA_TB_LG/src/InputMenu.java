@@ -200,6 +200,7 @@ public class InputMenu {
 					boolean exists = false;
 					while (!exists) //Checks if the line item is already existing
 					{
+						
 						if (lineItemID == lineItem.getLineItemID() || lineItemID == lineItem1.getLineItemID() || 
 						lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
 						lineItemID == lineItem4.getLineItemID() || lineItemID == lineItem5.getLineItemID() ||
@@ -218,6 +219,7 @@ public class InputMenu {
 							exists = true;
 					
 						}
+						
 					}
 					System.out.print("Enter the name of the vendor receiving the input from: ");
 					name = s.nextLine();
@@ -336,29 +338,30 @@ public class InputMenu {
 					while (!done)
 					{
 					
-					if (export == 'Y' || export == 'y')
-					{
+						if (export == 'Y' || export == 'y')
+						{
 					
-						displayCostTotals();
-						return;
+							displayCostTotals();
+							return;
 					
-					}
-					else if (export == 'N' || export == 'n')
-					{
+						}
+						else if (export == 'N' || export == 'n')
+						{
 					
-						System.out.println("Please continue navigating the menu.");
-						done = true; 
+							System.out.println("Please continue navigating the menu.");
+							done = true; 
 					
-					}
-					else
-					{
+						}
+						else
+						{
 					
-						System.out.println("Not a valid option. Please try again.");
-						System.out.println("Would you like to export the cost report? (Y)es | (N)o: ");
-						export = s.next().charAt(0);
-						s.nextLine();
+							System.out.println("Not a valid option. Please try again.");
+							System.out.println("Would you like to export the cost report? (Y)es | (N)o: ");
+							export = s.next().charAt(0);
+							s.nextLine();
 					
-					}		
+						}
+						
 					}			
 				break;
 				case 3: 
