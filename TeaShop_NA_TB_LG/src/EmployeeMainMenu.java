@@ -12,11 +12,11 @@ public class EmployeeMainMenu {
 			// Gets password from employee
 			Scanner c = new Scanner(System.in);
 			System.out.println("Enter Password");
-			String SSN = c.nextLine();
+			String pass = c.nextLine();
 			
 			// Checks for correct password
-			String SSNCheck = employees.getSSN(name);
-			if(SSN.equals(SSNCheck)) {
+			String passCheck = employees.getPass(name);
+			if(pass.equals(passCheck)) {
 				// Log in successful
 				System.out.println("Employee log in successful.");
 				System.out.println();

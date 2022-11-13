@@ -56,8 +56,8 @@ public class EmployeesMenu {
 					String hours = j.nextLine();
 					
 					Scanner k = new Scanner(System.in);
-					System.out.println("Enter new employee's social security number: ");
-					String ssn = k.nextLine();
+					System.out.println("Enter new employee's password: ");
+					String pass = k.nextLine();
 					
 					String type = "no";
 					Scanner l = new Scanner(System.in);
@@ -67,7 +67,7 @@ public class EmployeesMenu {
 						type = "yes";
 					}										
 					
-					employees.addEmployee(newName, empid, position, wage, ssn, hours, type);
+					employees.addEmployee(newName, empid, position, wage, pass, hours, type);
 					System.out.print("New employee has been created. \n\n");
 					employeesMenu(register, employees, schedule, name);
 					break;
@@ -84,7 +84,7 @@ public class EmployeesMenu {
 					System.out.println("3.) Position");
 					System.out.println("4.) Wage");
 					System.out.println("5.) Hours");
-					System.out.println("6.) Social Security Number");
+					System.out.println("6.) Password");
 					System.out.println("7.) Manager Status");
 					x = o.nextInt();
 					
@@ -137,11 +137,11 @@ public class EmployeesMenu {
 						case 6:
 							// Change social security number
 							Scanner u = new Scanner(System.in);
-							System.out.println("Enter the employee's new social security number: ");
-							String ssn2 = u.nextLine();
+							System.out.println("Enter the employee's new password: ");
+							String pass2 = u.nextLine();
 							
-							employees.changeSSN(empName, ssn2);
-							System.out.print("Employee's ssn has been updated.\n");
+							employees.changePass(empName, pass2);
+							System.out.print("Employee's password has been updated.\n");
 							break;
 						case 7:
 							// Change employee's position rank
