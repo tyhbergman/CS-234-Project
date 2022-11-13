@@ -88,22 +88,24 @@ public class Employees {
 	}
 	
 	public void deleteEmployee(Employees tempEmployee) {
-
 		
-		
-		
-		
-		//Check to make sure the user isn't deleting the only employee left
+		//Check to make sure the user knows they're deleting the only employee left
 		if(employees.size()==1) {
-			System.out.println("There's only one employee left! Add another employee to perform deletion.");
+			System.out.println("Warning!");
+			System.out.println("There's only one employee left! If you delete the last user");
+			System.out.println("a default manager profile will be created.");
 			System.out.println();
-		} else {
-			Scanner w = new Scanner(System.in);
-			System.out.println("Enter inactive employee's name: ");
-			String empName2 = w.nextLine();
+		}
+		Scanner w = new Scanner(System.in);
+		System.out.println("Enter inactive employee's name: ");
+		String empName2 = w.nextLine();
 			
-			employees.remove(empName2);
-			System.out.print("Employee has been deleted.\n");
+		employees.remove(empName2);
+		System.out.print("Employee has been deleted.\n");
+		
+		if(employees.isEmpty()) {
+			//If all employees are deleted, add back the default employee
+			addDefaultEmployee();
 		}
 	}
 	

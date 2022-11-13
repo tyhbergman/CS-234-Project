@@ -30,14 +30,13 @@ public class SaleMenu {
 				if(!register.getProductList().containsKey(temp)) {
 					System.out.println("Error! Product with that ID not in system. Try again.");
 					System.out.println();
-					saleMenu(register, employees, schedule, productMenu, name);
-					break;
-				}
+				} else {
 				
 				System.out.print("Enter the desired quantity: ");
 				int tempQ = scan.nextInt();
 				register.addToCart(register.getProductList().get(temp), tempQ);
 				System.out.println();
+				}
 				saleMenu(register, employees, schedule, productMenu, name);
 				break;
 			case 2:

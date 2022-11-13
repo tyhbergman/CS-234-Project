@@ -194,6 +194,7 @@ public class EmployeesMenu {
 					break;
 			}
 			break;
+			
 		case 2:
 			// Manage employee schedules
 			Scanner e = new Scanner(System.in);
@@ -283,7 +284,7 @@ public class EmployeesMenu {
 			break;
 		case 4:
 			// Exit
-			managerMainMenu.managerMainMenu(register, employees, schedule, name);
+			break;
 		default:
 			break;
 		}

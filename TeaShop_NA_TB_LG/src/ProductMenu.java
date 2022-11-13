@@ -52,6 +52,7 @@ public class ProductMenu {
 				break;
 				
 			default:
+				break;
 		}
 	}
 	
@@ -637,6 +638,7 @@ public class ProductMenu {
 					System.out.println();
 					
 					productMenu(register);
+					
 					break;
 			
 					

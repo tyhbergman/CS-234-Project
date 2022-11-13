@@ -83,11 +83,11 @@ public class ManagerMainMenu {
 			System.out.println();
 			System.out.println("\t\t| Employee Records |");
 			employees.printEmployees();
-			managerMainMenu(register, employees, schedule, name);
-			//inputMenu.displayCostTotals();
+			inputMenu.displayCostTotals();
 			System.out.println();
 			System.out.println("*** Exporting cost report is still under development ***");
 			System.out.println();
+			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 6:
 			System.out.println();
