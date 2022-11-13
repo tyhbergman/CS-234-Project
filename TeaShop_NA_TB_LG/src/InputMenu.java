@@ -42,8 +42,8 @@ public class InputMenu {
 		inputDescription.add(lineItem1);
 		double gc1 = lineItem1.getGrossCost(4.00, 60);
 		double ta1 = lineItem1.getTaxAmount(0.05, 4.00, 60);
-		double da1 = lineItem1.getDiscountAmount(4.00, 60, 0.1);
-		double nc1 = lineItem1.getNetCost(0.05, 4.00, 60, 0.1);
+		double da1 = lineItem1.getDiscountAmount(4.00, 60, 0.0);
+		double nc1 = lineItem1.getNetCost(0.05, 4.00, 60, 0.0);
 		Input lineItem2 = new Input(2, "Harry's", "Tea Products", "Matcha Tea Supplies", 4.50, 0, 0.0, 0.05);
 		inputDescription.add(lineItem2);
 		double gc2 = lineItem2.getGrossCost(4.50, 0);
@@ -60,8 +60,8 @@ public class InputMenu {
 		inputDescription.add(lineItem4);
 		double gc4 = lineItem4.getGrossCost(4.00, 10);
 		double ta4 = lineItem4.getTaxAmount(0.05, 4.00, 10);
-		double da4 = lineItem4.getDiscountAmount(4.00, 10, 0.04);
-		double nc4 = lineItem4.getNetCost(0.05, 4.00, 10, 0.04);
+		double da4 = lineItem4.getDiscountAmount(4.00, 10, 0.0);
+		double nc4 = lineItem4.getNetCost(0.05, 4.00, 10, 0.0);
 		Input lineItem5 = new Input(5, "Banana Republic", "Apparel Products", "Shirts", 4.00, 50, 0.0, 0.05);
 		inputDescription.add(lineItem5);
 		double gc5 = lineItem5.getGrossCost(4.00, 50);
