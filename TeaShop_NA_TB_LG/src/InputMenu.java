@@ -1,4 +1,3 @@
-
 /**
 Input Menu
 */
@@ -134,19 +133,6 @@ public class InputMenu {
 		grossCostTotal.put(7, gc7);
 		grossCostTotal.put(8, gc8);
 		
-		//Map to capture the tax amount of each line item
-		Map<Integer, Double> taxAmountTotal = new HashMap<>(); //Declaring map for Total Tax Amount
-		taxAmountTotal.put(lineItemID, ta); //Initializing map
-		//Total Tax Amount calculation with the dummy information from above
-		taxAmountTotal.put(1, ta1);
-		taxAmountTotal.put(2, ta2);
-		taxAmountTotal.put(3, ta3);
-		taxAmountTotal.put(4, ta4);
-		taxAmountTotal.put(5, ta5);
-		taxAmountTotal.put(6, ta6);
-		taxAmountTotal.put(7, ta7);
-		taxAmountTotal.put(8, ta8);
-		
 		//Map to capture the discount amount of each line item
 		Map<Integer, Double> discountAmountTotal = new HashMap<>(); //Declaring map for Total Discount Amount
 		discountAmountTotal.put(lineItemID, da); //Initializing map
@@ -159,6 +145,19 @@ public class InputMenu {
 		discountAmountTotal.put(6, da6);
 		discountAmountTotal.put(7, da7);
 		discountAmountTotal.put(8, da8);
+		
+		//Map to capture the tax amount of each line item
+		Map<Integer, Double> taxAmountTotal = new HashMap<>(); //Declaring map for Total Tax Amount
+		taxAmountTotal.put(lineItemID, ta); //Initializing map
+		//Total Tax Amount calculation with the dummy information from above
+		taxAmountTotal.put(1, ta1);
+		taxAmountTotal.put(2, ta2);
+		taxAmountTotal.put(3, ta3);
+		taxAmountTotal.put(4, ta4);
+		taxAmountTotal.put(5, ta5);
+		taxAmountTotal.put(6, ta6);
+		taxAmountTotal.put(7, ta7);
+		taxAmountTotal.put(8, ta8);
 		
 		//Map to capture the net cost amount of each line item
 		Map<Integer, Double> netCostTotal = new HashMap<>(); //Declaring map for Total Net Cost Amount
@@ -187,7 +186,7 @@ public class InputMenu {
 			System.out.println("3. Search for a line item");
 			System.out.println("4. Delete a line item");
 			System.out.println("5. Update a line item");
-			System.out.println("6. Return to Main Menu");
+			System.out.println("6. Return to Manager Menu");
 			System.out.println("----------------------------");
 			choice = c.nextInt();
 		
@@ -200,7 +199,6 @@ public class InputMenu {
 					boolean exists = false;
 					while (!exists) //Checks if the line item is already existing
 					{
-						
 						if (lineItemID == lineItem.getLineItemID() || lineItemID == lineItem1.getLineItemID() || 
 						lineItemID == lineItem2.getLineItemID() || lineItemID == lineItem3.getLineItemID() ||
 						lineItemID == lineItem4.getLineItemID() || lineItemID == lineItem5.getLineItemID() ||
@@ -219,7 +217,6 @@ public class InputMenu {
 							exists = true;
 					
 						}
-						
 					}
 					System.out.print("Enter the name of the vendor receiving the input from: ");
 					name = s.nextLine();
@@ -281,53 +278,25 @@ public class InputMenu {
 					//Sums up all the values in the gross cost map to get the total gross cost
 					//for all inputs purchased
 					Set<Integer> keySet1 = grossCostTotal.keySet();
-					double grossCostSum = 0.0;
-					for (int key : keySet1)
-					{
-		
-						double value = grossCostTotal.get(key);
-						grossCostSum += value;
-		
-					}
+					double grossCostSum = calculateTotals(grossCostTotal);
 					this.totalGrossCost = grossCostSum;
 					System.out.printf("Total Gross Cost: $%.2f%n", grossCostSum);
 					//Sums up all the values in the discount amount map to get the total
 					//discount amount for all inputs purchased
 					Set<Integer> keySet2 = discountAmountTotal.keySet();
-					double discountAmountSum = 0.0;
-					for (int key : keySet2)
-					{
-		
-						double value = discountAmountTotal.get(key);
-						discountAmountSum += value;
-		
-					}
+					double discountAmountSum = calculateTotals(discountAmountTotal);
 					this.totalDiscountAmount = discountAmountSum;
 					System.out.printf("Total Discount Amount: $%.2f%n", discountAmountSum);
 					//Sums up all the values in the tax amount map to get the total discount
 					//amount for all inputs purchased
 					Set<Integer> keySet3 = taxAmountTotal.keySet();
-					double taxAmountSum = 0.0;
-					for (int key : keySet3)
-					{
-		
-						double value = taxAmountTotal.get(key);
-						taxAmountSum += value;
-		
-					}
+					double taxAmountSum = calculateTotals(taxAmountTotal);
 					this.totalTaxAmount = taxAmountSum;
 					System.out.printf("Total Tax Amount: $%.2f%n", taxAmountSum);
 					//Sums up all the values in the net cost amount map to get the total 
 					//net cost amount for all inputs purchased
 					Set<Integer> keySet4 = netCostTotal.keySet();
-					double netCostSum = 0.0;
-					for (int key : keySet4)
-					{
-		
-						double value = netCostTotal.get(key);
-						netCostSum += value;
-		
-					}
+					double netCostSum = calculateTotals(netCostTotal);
 					this.totalNetCost = netCostSum;
 					//Asks the user if they want to export the total costs as a report
 					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
@@ -360,8 +329,7 @@ public class InputMenu {
 							export = s.next().charAt(0);
 							s.nextLine();
 					
-						}
-						
+						}		
 					}			
 				break;
 				case 3: 
@@ -487,16 +455,17 @@ public class InputMenu {
 							ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity);
 							da = lineItem.getDiscountAmount(inputCost, inputQuantity, inputDiscount);
 							nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
+							
 							grossCostTotal.replace(v.getLineItemID(), gc);
 							taxAmountTotal.replace(v.getLineItemID(), ta);
 							discountAmountTotal.replace(v.getLineItemID(), da);
 							netCostTotal.replace(v.getLineItemID(), nc);
-							//
+							
 							this.totalGrossCost = gc;
 							this.totalTaxAmount = ta;
 							this.totalDiscountAmount = da;
 							this.totalNetCost = nc;
-							//
+							
 							found = true;
 							
 						}
@@ -533,6 +502,28 @@ public class InputMenu {
 		
 		}while (choice != 6); return;
 	
+	}
+	
+	/**
+		Private method to be used only for calculating the totals from each cost item.
+		@param the cost map
+		@return the total of the values in the map
+	*/
+	
+	private double calculateTotals(Map<Integer, Double> total) {
+	
+		Set<Integer> keySet = total.keySet();
+		double amountSum = 0.0;
+		for (int key : keySet)
+		{
+		
+			double value = total.get(key);
+			amountSum += value;
+		
+		}
+		double totalAmount = amountSum;
+		return totalAmount;
+		
 	}
 
 	/**
