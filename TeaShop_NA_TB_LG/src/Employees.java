@@ -46,7 +46,7 @@ public class Employees {
         String empid = info.get(0);
         String position = info.get(1);
         String wage = info.get(2);
-        String ssn = info.get(3);
+        String pass = info.get(3);
         String hours = info.get(4);
         String type = info.get(5);
             
@@ -55,7 +55,7 @@ public class Employees {
         System.out.print("\n     Id: " + empid);
         System.out.print("\n     Position: " + position);
         System.out.print("\n     Wage: " + wage);
-        System.out.print("\n     SSN: " + ssn);
+        System.out.print("\n     Password: " + pass);
         System.out.print("\n     Hours: " + hours);
         System.out.print("\n     isManager Type: " + type);
         System.out.print("\n");
@@ -70,7 +70,7 @@ public class Employees {
             String empid = info.get(0);
             String position = info.get(1);
             String wage = info.get(2);
-            String ssn = info.get(3);
+            String pass = info.get(3);
             String hours = info.get(4);
             String type = info.get(5);
             
@@ -79,7 +79,7 @@ public class Employees {
             System.out.print("\n     Id: " + empid);
             System.out.print("\n     Position: " + position);
             System.out.print("\n     Wage: " + wage);
-            System.out.print("\n     SSN: " + ssn);
+            System.out.print("\n     Password: " + pass);
             System.out.print("\n     Hours: " + hours);
             System.out.print("\n     isManager Type: " + type);
             System.out.print("\n");
@@ -139,16 +139,16 @@ public class Employees {
 		return wage;
 	}
 	
-	public void changeSSN(String name, String ssn) {
+	public void changePass(String name, String pass) {
 		ArrayList<String> info = employees.get(name);
-		info.set(3, ssn);
+		info.set(3, pass);
 		employees.put(name, info);
 	}
 	
-	public String getSSN(String name) {
+	public String getPass(String name) {
 		ArrayList<String> info = employees.get(name);
-		String ssn = info.get(3);
-		return ssn;
+		String pass = info.get(3);
+		return pass;
 	}
 	
 	public void changeHours(String name, String hours) {

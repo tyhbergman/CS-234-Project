@@ -14,12 +14,12 @@ public class ManagerMainMenu {
 			if(managerStatusCheck == "yes") {
 				// Gets password from manager
 				Scanner c = new Scanner(System.in);
-				System.out.println("Enter Manager's last 4 digits of their SSN: ");
-				String SSN = c.nextLine();
+				System.out.println("Enter Password: ");
+				String pass = c.nextLine();
 				
 				// Checks for correct password
-				String SSNCheck = employees.getSSN(name);
-				if(SSN.equals(SSNCheck)) {
+				String passCheck = employees.getPass(name);
+				if(pass.equals(passCheck)) {
 					// Log in successful
 					System.out.println("Manager log in successful\n");
 					return name;
