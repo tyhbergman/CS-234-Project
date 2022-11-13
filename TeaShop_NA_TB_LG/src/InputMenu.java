@@ -223,9 +223,9 @@ public class InputMenu {
 					name = s.nextLine();
 					System.out.print("Enter the category of goods/services the vendor is selling, ie, food products, tea products, etc.: ");
 					category = s.nextLine();
-					System.out.print("Enter the particular input that the vendor is providing, ie, green tea formula: ");
+					System.out.print("Enter the particular input that the vendor is providing, ie, green tea formula, black tea formula, etc.: ");
 					input = s.nextLine();
-					System.out.print("Enter the unit cost of the input: $");
+					System.out.print("Enter the unit cost of the input (as a nonnegative number, ie, 1.5, 30.0, etc.): $");
 					inputCost = c.nextDouble();
 					System.out.print("Enter the quantity of the input (as a nonnegative integer, ie, 0, 10, 100, etc.): ");
 					inputQuantity = c.nextInt();
@@ -259,12 +259,12 @@ public class InputMenu {
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					header.displayHeaders();
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					
 					//Creates an iterator to go through the linked list to display all the line items
 					Iterator<Input> i = inputDescription.iterator();
@@ -369,12 +369,12 @@ public class InputMenu {
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					header.displayHeaders();
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 				    i = inputDescription.iterator();
 				    //Checks if the line item is in the linked list
 					while(i.hasNext()) 
@@ -459,16 +459,16 @@ public class InputMenu {
 							System.out.print("Enter the new name of the vendor ");
 							System.out.print("(enter the same name if no change): ");
 							name = s.nextLine();
-							System.out.print("Enter the new category of goods/services the vendor is selling ");
+							System.out.print("Enter the new category of goods/services the vendor is selling, ie, food products, tea products, etc. ");
 							System.out.print("(enter the same category if no change): ");
 							category = s.nextLine();
-							System.out.print("Enter the new input that the vendor is selling ");
+							System.out.print("Enter the new input that the vendor is selling, ie, green tea formula, black tea formula, etc.");
 							System.out.print("(enter the same input if no change): ");
 						    input = s.nextLine();
-							System.out.print("Enter the updated cost of the input ");
+							System.out.print("Enter the updated cost (as a nonnegative number, ie, 1.5, 30.0, etc.) of the input ");
 							System.out.print("(enter the same cost if no change): $");
 							inputCost = c.nextDouble();
-							System.out.print("Enter the updated quantity of the input ");
+							System.out.print("Enter the updated quantity (as a nonnegative integer, ie, 0, 10, 100, etc.) of the input ");
 							System.out.print("(enter the same quantity if no change): ");
 							inputQuantity = c.nextInt();
 							System.out.print("Enter the discount percentage (as a positive decimal less than 1, ie, 0.05, 0.1, etc.) on this input ");
