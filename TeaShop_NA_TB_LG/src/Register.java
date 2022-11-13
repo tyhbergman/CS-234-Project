@@ -10,8 +10,6 @@ public class Register {
 	private ArrayList<Object> itemDetails = new ArrayList<Object>();
 	private ArrayList<List> allTransactions = new ArrayList<List>();
 	private ArrayList<Object> transactionDetails = new ArrayList<Object>();
-	private ArrayList<List> allInputs = new ArrayList<List>();
-	private ArrayList<Object> inputDetails = new ArrayList<Object>();
 	private double tempSubTotal;
 	private int saleQuantity;
 	private double tempTotal;
@@ -216,7 +214,7 @@ public class Register {
 		double completeTax = 0;
 		int completeQuantitySold = 0;
 		
-		System.out.println("\tSales Records (to date)");
+		System.out.println("\t\t| Sales Records (to date) |");
 		System.out.println();
 		System.out.println("Transaction ID\tTotal\t\tSub-Total\tTax\t\tQuantity of Items Purchased");
 		System.out.println("--------------------------------------------------------------------------------------------------");
@@ -273,31 +271,101 @@ public class Register {
 	public ArrayList<List> getAllTransactions() {
 		return allTransactions;
 	}
-
-	public ArrayList<List> getAllInputs() {
-		return allInputs;
-	}
-
-	public void setAllInputs(ArrayList<List> allInputs) {
-		this.allInputs = allInputs;
-	}
-
-	public ArrayList<Object> getInputDetails() {
-		return inputDetails;
-	}
-
-	public void setInputDetails(ArrayList<Object> inputDetails) {
-		this.inputDetails = inputDetails;
-		
-	}
 	
-	public void addInputDetails(ArrayList<Object> inputDetails) {
+	public void sale(boolean x) {
+		/*
+		 * 
+		 * METHOD IS PURELY FOR DUMMY INFO ONLY
+		 * easiest way to not print the receipts 
+		 * initially.
+		 * 
+		 * normally sale() method is called without parameters,
+		 * but dummy information will call sale(true)
+		 * which calls this method instead via method
+		 * overloading. This method will not print receipts
+		 * but stores transaction information the same.
+		 * 
+		 * 
+		 * 
+		 */
 		
 		
-		this.getAllInputs().add(new ArrayList<Object>(inputDetails));
+		totalQuantity = 0;
+		subTotal = 0;
+		total = 0;
 		
-		}
+		if(cart.isEmpty()) {
+			System.out.println("Cart is empty!");
+		} 
+		else 
+		{
+			
+			//Go through 'cart' and at each 'itemDetails' element
+			//gather specific information for the sale.
+			//Refer back to chart at top of page for 
+			//legend of index values of itemDetails
+			
+			for (int i = 0; i < cart.size(); i++) {
+				subTotal = (double)(cart.get(i).get(4)) + subTotal;
+				total = (double)(cart.get(i).get(5)) + total;
+				totalQuantity = (int)(cart.get(i).get(1)) + totalQuantity;
+				
+				
+			}
+			
+			//Print the 'receipt'
+			
+//			System.out.println("-----------------------------------------------");
+//			System.out.println("Transaction #" + transactions + " succesful.");
+//			System.out.println("\tTotal items sold: \t" + totalQuantity);
+//			System.out.printf("\tThe subtotal is \t$%5.2f", subTotal);
+//			System.out.println();
+//			System.out.printf("\tThe tax due is \t\t$%5.2f", (total-subTotal));
+//			System.out.println();
+//			System.out.printf("\tThe grand total is \t$%5.2f", total);
+//			System.out.println();
+//			System.out.println("-----------------------------------------------");
+//			
+			//String trans = file.addTrans(subTotal, totalQuantity, total);
+			//try {
+			//	file.write(trans);
+			//} catch (IOException e) {
+				// TODO Auto-generated catch block
+			//	e.printStackTrace();
+			//}
+			
+			//After each sale:
+			//Adding arrayList of transaction details as an 
+			//element of the ArrayList 'allTransactions'
+			transactionDetails.add(transactions);
+			transactionDetails.add(total);
+			transactionDetails.add(subTotal);
+			transactionDetails.add(total-subTotal);
+			transactionDetails.add(totalQuantity);
+			
+			allTransactions.add(new ArrayList(transactionDetails));
+			
+			transactionDetails.clear();
+			
+			
+			/*
+			 * 
+			 * 
+			 * Write sale information to  vendor logs here
+			 *
+			 *
+			 *
+			 */
+			
+			
 
+			transactions++;
+		}
+		
+		
+		//Empty the cart after the sale
+		cart.removeAll(cart);
+	}
 	
 }
 

@@ -42,19 +42,6 @@ public class Employees {
 		System.out.print("\n");
         ArrayList<String> info;
         
-        /*
-         * info is null error
-         */
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        System.out.println(name);
         info = employees.get(name);
         String empid = info.get(0);
         String position = info.get(1);

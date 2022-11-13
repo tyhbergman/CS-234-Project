@@ -13,14 +13,12 @@ public class Shirt extends Apparel {
 	private boolean hoodie;
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Shirt(Register register, String name, String color, boolean longSleeve, boolean hoodie, double price, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor) {
+	public Shirt(Register register, String name, String color, boolean longSleeve, boolean hoodie, double price, int sQuantity, int mQuantity, int lQuantity, int xLQuantity) {
 		
-		super(register, name, color, price, (sQuantity+mQuantity+lQuantity+xLQuantity), vendor);
+		super(register, name, color, price, (sQuantity+mQuantity+lQuantity+xLQuantity));
 		
 		//Set apparelType to 's' for shirt
 		super.setApparelType('s');
-		super.setVendorPrice(price*0.87);	//default 0.87 in order to get about a 15% mark-up from
-											//vendor price based on original given price
 		
 		setSQuantity(sQuantity);
 		setMQuantity(mQuantity);
@@ -33,9 +31,9 @@ public class Shirt extends Apparel {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Shirt(Register register, String name, String color, boolean longSleeve, boolean hoodie, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity, String vendor, double vendorPrice) {
+	public Shirt(Register register, String name, String color, boolean longSleeve, boolean hoodie, String productDesc, double price, double discount, double taxRate, int sQuantity, int mQuantity, int lQuantity, int xLQuantity) {
 		
-		super(register, name, color, productDesc, price, discount, taxRate, (sQuantity+mQuantity+lQuantity+xLQuantity), vendor, vendorPrice);
+		super(register, name, color, productDesc, price, discount, taxRate, (sQuantity+mQuantity+lQuantity+xLQuantity));
 		
 		//Set apparelType to 's' for shirt
 		super.setApparelType('s');

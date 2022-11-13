@@ -60,14 +60,14 @@ public class ProductMenu {
 	}
 	
 	public static void getProductLog(Register register) {
-		System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\t\tVendor Price\tQuantity\tVendor");
+		System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\tQuantity");
 		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		Set<Entry<Integer,Product>> entrySet = register.getProductList().entrySet();
 		for (Entry<Integer, Product> entry : entrySet) {
 			
-			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t$%5.2f\t\t%d\t\t%.15s",
-					entry.getKey(), entry.getValue().getProductType(), entry.getValue().getName(), entry.getValue().getPrice(), 
-					entry.getValue().getVendorPrice(), entry.getValue().getQuantity(), entry.getValue().getVendor());
+			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t%d",
+					entry.getKey(), entry.getValue().getProductType(), entry.getValue().getName(), 
+					entry.getValue().getPrice(), entry.getValue().getQuantity());
 			System.out.println();
 		}
 		System.out.println();
@@ -81,13 +81,12 @@ public class ProductMenu {
 		
 		if(register.getProductList().containsKey(x)) {
 			System.out.println("Item to be changed: ");
-			System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\t\tVendor Price\tQuantity\tVendor");
+			System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\tQuantity");
 			System.out.println("-------------------------------------------------------------------------------------------------------------");
-			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t$%5.2f\t\t%d\t\t%.15s",
+			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t%d",
 					register.getProductList().get(x).getId(), register.getProductList().get(x).getProductType(),
 					register.getProductList().get(x).getName(), register.getProductList().get(x).getPrice(),
-					register.getProductList().get(x).getVendorPrice(), register.getProductList().get(x).getQuantity(),
-					register.getProductList().get(x).getVendor());
+					register.getProductList().get(x).getQuantity());
 			
 			System.out.println();
 			
@@ -95,10 +94,8 @@ public class ProductMenu {
 			System.out.println("1.) Name");
 			System.out.println("2.) Quantity");
 			System.out.println("3.) Price");
-			System.out.println("4.) Vendor Price");
-			System.out.println("5.) Vendor");
-			System.out.println("6.) Tax Rate");
-			System.out.println("7.) Discount");
+			System.out.println("4.) Tax Rate");
+			System.out.println("5.) Discount");
 			
 			System.out.println("Option: ");
 			int y = scan.nextInt();
@@ -114,15 +111,9 @@ public class ProductMenu {
 				modifyPrice(register, x);
 				break;
 			case 4:
-				modifyVendorPrice(register, x);
-				break;
-			case 5:
-				modifyVendor(register, x);
-				break;
-			case 6:
 				modifyTaxRate(register, x);
 				break;
-			case 7:
+			case 5:
 				modifyDiscount(register, x);
 				break;
 			default:
@@ -152,7 +143,8 @@ public class ProductMenu {
 		System.out.println("Is " + temp + "correct?");
 		System.out.println("(Y)es | (N)o");
 		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
+		char y = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (y) {
 		case 'Y':
@@ -183,7 +175,8 @@ public class ProductMenu {
 		System.out.println("Is " + temp + "correct?");
 		System.out.println("(Y)es | (N)o");
 		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
+		char y = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (y) {
 		case 'Y':
@@ -204,69 +197,6 @@ public class ProductMenu {
 		}
 		
 	}
-
-	private static void modifyVendor(Register register, int x) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Current vendor is: " + register.getProductList().get(x).getVendor());
-		System.out.println("Enter the new vendor: ");
-		String temp = scan.nextLine();
-		
-		System.out.println("Is " + temp + "correct?");
-		System.out.println("(Y)es | (N)o");
-		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
-		
-		switch (y) {
-		case 'Y':
-		case 'y':
-			register.getProductList().get(x).setVendor(temp);
-			System.out.println("Vendor successfully changed to " + register.getProductList().get(x).getVendor());
-			break;
-		case 'N':
-		case 'n':
-			System.out.println("Starting over.");
-			modifyVendor(register, x);
-			break;
-		default:
-			System.out.println("Input error. Starting over.");
-			System.out.println();
-			modifyVendor(register, x);
-			break;
-		}
-		
-	}
-
-	private static void modifyVendorPrice(Register register, int x) {
-		Scanner scan = new Scanner(System.in);
-		System.out.println("Current vendor price is: " + register.getProductList().get(x).getVendorPrice());
-		System.out.println("Enter the new vendor price: ");
-		double temp = scan.nextDouble();
-		
-		System.out.println("Is $" + temp + "correct?");
-		System.out.println("(Y)es | (N)o");
-		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
-		
-		switch (y) {
-		case 'Y':
-		case 'y':
-			register.getProductList().get(x).setVendorPrice(temp);
-			System.out.println("Vendor price successfully changed to " + register.getProductList().get(x).getVendorPrice());
-			break;
-		case 'N':
-		case 'n':
-			System.out.println("Starting over.");
-			modifyVendorPrice(register, x);
-			break;
-		default:
-			System.out.println("Input error. Starting over.");
-			System.out.println();
-			modifyVendorPrice(register, x);
-			break;
-		}
-		
-	}
-
 	private static void modifyPrice(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current price is: " + register.getProductList().get(x).getPrice());
@@ -276,7 +206,8 @@ public class ProductMenu {
 		System.out.println("Is $" + temp + "correct?");
 		System.out.println("(Y)es | (N)o");
 		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
+		char y = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (y) {
 		case 'Y':
@@ -307,7 +238,8 @@ public class ProductMenu {
 		System.out.println("Is " + temp + "correct?");
 		System.out.println("(Y)es | (N)o");
 		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
+		char y = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (y) {
 		case 'Y':
@@ -338,7 +270,8 @@ public class ProductMenu {
 		System.out.println("Is " + temp + "correct?");
 		System.out.println("(Y)es | (N)o");
 		scan.nextLine();
-		char y = scan.nextLine().charAt(0);
+		char y = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (y) {
 		case 'Y':
@@ -369,7 +302,8 @@ public class ProductMenu {
 		System.out.println("\tWhat is the type of product?");
 		System.out.println("(T)ea | (F)ood | (A)pparel | (M)isc");
 		
-		c = scan.nextLine().charAt(0);
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		System.out.println();
 		
 		switch (c) {
@@ -417,7 +351,6 @@ public class ProductMenu {
 		String name;
 		int quantity;
 		double price;
-		String vendor;
 		
 		char c; char d; char e;//switch variables
 		
@@ -430,19 +363,16 @@ public class ProductMenu {
 		System.out.println("Price of product: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		
 		System.out.println();
 		
 		
 		System.out.println("Is the following correct?");
-		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
-		c = scan.nextLine().charAt(0);
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -453,7 +383,8 @@ public class ProductMenu {
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
 			
-			d = scan.nextLine().charAt(0);
+			d = scan.next().charAt(0);
+			scan.nextLine();
 			
 			switch (d) {
 				case 'Y':
@@ -462,15 +393,6 @@ public class ProductMenu {
 					String productDesc;
 					double discount;
 					double taxRate;
-					double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
 					
 					System.out.println("Enter the product description: ");
 					productDesc = scan.nextLine();
@@ -482,11 +404,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Product tempProductLong = new Product(register, name, productDesc, price, discount, taxRate, quantity, vendor);
+					Product tempProductLong = new Product(register, name, productDesc, price, discount, taxRate, quantity);
 					
 					System.out.println();
 					System.out.println("Product created!");
-					System.out.println("Its memory location is: " + tempProductLong);
 					System.out.println();
 					
 					productMenu(register);
@@ -496,11 +417,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Product tempProduct = new Product(register, name, price, quantity, vendor);
+					Product tempProduct = new Product(register, name, price, quantity);
 					
 					System.out.println();
 					System.out.println("Product created!");
-					System.out.println("Its memory location is: " + tempProduct);
 					System.out.println();
 					
 					productMenu(register);
@@ -534,13 +454,12 @@ public class ProductMenu {
 		int x = scan.nextInt();
 		
 		if(register.getProductList().containsKey(x)) {
-			System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\t\tVendor Price\tQuantity\tVendor");
+			System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\t\tQuantity");
 			System.out.println("-------------------------------------------------------------------------------------------------------------");
-			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t$%5.2f\t\t%d\t\t%.15s",
+			System.out.printf("%03d\t%s\t\t%.15s\t\t$%5.2f\t\t%d",
 					register.getProductList().get(x).getId(), register.getProductList().get(x).getProductType(),
 					register.getProductList().get(x).getName(), register.getProductList().get(x).getPrice(),
-					register.getProductList().get(x).getVendorPrice(), register.getProductList().get(x).getQuantity(),
-					register.getProductList().get(x).getVendor());
+					register.getProductList().get(x).getQuantity());
 			
 			System.out.println();
 		} else {
@@ -564,7 +483,8 @@ public class ProductMenu {
 			
 			System.out.println("Are you sure you really want to remove product " + register.getProductList().get(x).getName() + "?");
 			System.out.println("(Y)es | (N)o");
-			char c = scan.nextLine().charAt(0);
+			char c = scan.next().charAt(0);
+			scan.nextLine();
 			
 			switch (c) {
 			case 'Y':
@@ -598,7 +518,6 @@ public class ProductMenu {
 		String name;
 		int quantity;
 		double price;
-		String vendor;
 		
 		char c; char d; char e;//switch variables
 		
@@ -611,19 +530,17 @@ public class ProductMenu {
 		System.out.println("Price of tea product: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		
 		System.out.println();
 		
 		
 		System.out.println("Is the following correct?");
-		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
-		c = scan.nextLine().charAt(0);
+		
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -634,7 +551,8 @@ public class ProductMenu {
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
 			
-			d = scan.nextLine().charAt(0);
+			d = scan.next().charAt(0);
+			scan.nextLine();
 			
 			switch (d) {
 				case 'Y':
@@ -645,19 +563,11 @@ public class ProductMenu {
 					boolean seasonal = false;
 					String productDesc;
 					double discount;
-					double taxRate;double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
+					double taxRate;
 					
 					System.out.println("Tea contains caffeine? (Y)es | (N)o");
+					e = scan.next().charAt(0);
 					scan.nextLine();
-					e = scan.nextLine().charAt(0);
 					switch(e) {
 					case 'Y':
 					case 'y':
@@ -676,7 +586,8 @@ public class ProductMenu {
 					
 					
 					System.out.println("Tea contains sugar? (Y)es | (N)o");
-					e = scan.nextLine().charAt(0);
+					e = scan.next().charAt(0);
+					scan.nextLine();
 					switch(e) {
 						case 'Y':
 						case 'y':
@@ -694,7 +605,8 @@ public class ProductMenu {
 					}
 					
 					System.out.println("Tea is seasonal? (Y)es | (N)o");
-					e = scan.nextLine().charAt(0);
+					e = scan.next().charAt(0);
+					scan.nextLine();
 					switch(e) {
 					case 'Y':
 					case 'y':
@@ -715,7 +627,6 @@ public class ProductMenu {
 					
 					System.out.println("Enter the product description: ");
 					productDesc = scan.nextLine();
-					scan.nextLine();
 					
 					System.out.println("Enter the discount value for future sales (default discount is 0.15): ");
 					discount = scan.nextDouble();
@@ -723,11 +634,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Tea tempTeaLong = new Tea(register, name, caffeine, sugarFree, seasonal, productDesc, price, discount, taxRate, quantity, vendor, vendorPrice);
+					Tea tempTeaLong = new Tea(register, name, caffeine, sugarFree, seasonal, productDesc, price, discount, taxRate, quantity);
 					
 					System.out.println();
 					System.out.println("Tea product created!");
-					System.out.println("Its memory location is: " + tempTeaLong);
 					System.out.println();
 					
 					productMenu(register);
@@ -737,11 +647,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Tea tempTea = new Tea(register, name, price, quantity, vendor);
+					Tea tempTea = new Tea(register, name, price, quantity);
 					
 					System.out.println();
 					System.out.println("Tea product created!");
-					System.out.println("Its memory location is: " + tempTea);
 					System.out.println();
 					
 					productMenu(register);
@@ -776,7 +685,6 @@ public class ProductMenu {
 		String name;
 		int quantity;
 		double price;
-		String vendor;
 		
 		char c; char d; char e; //switch variables
 		
@@ -789,18 +697,13 @@ public class ProductMenu {
 		System.out.println("Price of food product: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		System.out.println();
-		
-		
 		System.out.println("Is the following correct?");
-		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Quantity: " + quantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
-		c = scan.nextLine().charAt(0);
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -808,7 +711,8 @@ public class ProductMenu {
 			System.out.println("Would you like to enter additional product information?");
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
-			d = scan.nextLine().charAt(0);
+			d = scan.next().charAt(0);
+			scan.nextLine();
 				switch (d) {
 				case 'Y':
 				case 'y':
@@ -818,18 +722,10 @@ public class ProductMenu {
 					String productDesc;
 					double discount;
 					double taxRate;
-					double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
 					
 					System.out.println("Food contains gluten? (Y)es | (N)o");
-					e = scan.nextLine().charAt(0);
+					e = scan.next().charAt(0);
+					scan.nextLine();
 					switch(e) {
 					case 'Y':
 					case 'y':
@@ -847,7 +743,8 @@ public class ProductMenu {
 					}
 					
 					System.out.println("Food is sugar free? (Y)es | (N)o");
-					e = scan.nextLine().charAt(0);
+					e = scan.next().charAt(0);
+					scan.nextLine();
 					switch(e) {
 					case 'Y':
 					case 'y':
@@ -874,11 +771,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Food tempFoodLong = new Food(register, name, gluten, sugarFree, productDesc, price, discount, taxRate, quantity, vendor, vendorPrice);
+					Food tempFoodLong = new Food(register, name, gluten, sugarFree, productDesc, price, discount, taxRate, quantity);
 					
 					System.out.println();
 					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempFoodLong);
 					System.out.println();
 					
 					productMenu(register);
@@ -887,11 +783,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Food tempFood = new Food(register, name, price, quantity, vendor);
+					Food tempFood = new Food(register, name, price, quantity);
 					
 					System.out.println();
 					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempFood);
 					System.out.println();
 					
 					productMenu(register);
@@ -925,6 +820,7 @@ public class ProductMenu {
 		System.out.println("What is the type of apparel?");
 		System.out.println("(S)hirt or hoodie | (H)at | (M)isc apparel");
 		char e = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (e) {
 		case 'S':
@@ -945,7 +841,7 @@ public class ProductMenu {
 		default:
 			System.out.println("Input error. Starting over.");
 			System.out.println();
-			addApparel(register);
+			chooseApparelType(register);
 			break;
 		}
 		
@@ -958,7 +854,6 @@ public class ProductMenu {
 		String color;
 		int quantity;
 		double price;
-		String vendor;
 		
 		char c; char d; //switch variables
 		
@@ -974,19 +869,14 @@ public class ProductMenu {
 		System.out.println("Price of apparel product: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		System.out.println();
-		
-		
 		System.out.println("Is the following correct?");
 		
-		System.out.println("Name: " + name + " | Color: " + color + " | Quantity: " + quantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Color: " + color + " | Quantity: " + quantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
 		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -995,6 +885,7 @@ public class ProductMenu {
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
 			d = scan.next().charAt(0);
+			scan.nextLine();
 				switch (d) {
 				case 'Y':
 				case 'y':
@@ -1002,15 +893,6 @@ public class ProductMenu {
 					String productDesc;
 					double discount;
 					double taxRate;
-					double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
 					
 					System.out.println("Enter the product description: ");
 					productDesc = scan.nextLine();
@@ -1022,11 +904,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Apparel tempApparelLong = new Apparel(register, name, color, productDesc, price, discount, taxRate, quantity, vendor, vendorPrice);
+					Apparel tempApparelLong = new Apparel(register, name, color, productDesc, price, discount, taxRate, quantity);
 					
 					System.out.println();
-					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempApparelLong);
+					System.out.println("Apparel product created!");
 					System.out.println();
 					
 					productMenu(register);
@@ -1035,11 +916,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Apparel tempApparel = new Apparel(register, name, color, price, quantity, vendor);
+					Apparel tempApparel = new Apparel(register, name, color, price, quantity);
 					
 					System.out.println();
-					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempApparel);
+					System.out.println("Apparel product created!");
 					System.out.println();
 					
 					productMenu(register);
@@ -1083,7 +963,6 @@ public class ProductMenu {
 		int xLQuantity;
 		int totalQuantity;
 		double price;
-		String vendor;
 		
 		char c; char d; char e; //switch variables
 		
@@ -1096,7 +975,8 @@ public class ProductMenu {
 		color = scan.nextLine();
 		
 		System.out.println("Shirt is long sleeve? (Y)es | (N)o");
-		e = scan.nextLine().charAt(0);
+		e = scan.next().charAt(0);
+		scan.nextLine();
 		switch(e) {
 		case 'Y':
 		case 'y':
@@ -1114,7 +994,8 @@ public class ProductMenu {
 		}
 		
 		System.out.println("Shirt is a hoodie? (Y)es | (N)o");
-		e = scan.nextLine().charAt(0);
+		e = scan.next().charAt(0);
+		scan.nextLine();
 		switch(e) {
 		case 'Y':
 		case 'y':
@@ -1148,19 +1029,14 @@ public class ProductMenu {
 		System.out.println("Price of apparel product: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		System.out.println();
-		
-		
 		System.out.println("Is the following correct?");
 		
-		System.out.println("Name: " + name + " | Color: " + color + " | Total Quantity: " + totalQuantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Color: " + color + " | Total Quantity: " + totalQuantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
-		c = scan.nextLine().charAt(0);
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -1168,7 +1044,8 @@ public class ProductMenu {
 			System.out.println("Would you like to enter additional product information?");
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
-			d = scan.nextLine().charAt(0);
+			d = scan.next().charAt(0);
+			scan.nextLine();
 				switch (d) {
 				case 'Y':
 				case 'y':
@@ -1176,15 +1053,6 @@ public class ProductMenu {
 					String productDesc;
 					double discount;
 					double taxRate;
-					double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
 					
 					System.out.println("Enter the shirt description: ");
 					productDesc = scan.nextLine();
@@ -1196,11 +1064,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Shirt tempShirtLong = new Shirt(register, name, color, longSleeve, hoodie, productDesc, price, discount, taxRate, sQuantity, mQuantity, lQuantity, xLQuantity, vendor, vendorPrice);
+					Shirt tempShirtLong = new Shirt(register, name, color, longSleeve, hoodie, productDesc, price, discount, taxRate, sQuantity, mQuantity, lQuantity, xLQuantity);
 					
 					System.out.println();
 					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempShirtLong);
 					System.out.println();
 					
 					productMenu(register);
@@ -1209,11 +1076,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Shirt tempShirt = new Shirt(register, name, color, longSleeve, hoodie, price, sQuantity, mQuantity, lQuantity, xLQuantity, vendor);
+					Shirt tempShirt = new Shirt(register, name, color, longSleeve, hoodie, price, sQuantity, mQuantity, lQuantity, xLQuantity);
 					
 					System.out.println();
 					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempShirt);
 					System.out.println();
 					
 					productMenu(register);
@@ -1252,7 +1118,6 @@ public class ProductMenu {
 		String color;
 		int quantity;
 		double price;
-		String vendor;
 		
 		char c; char d; char e; //switch variables
 		
@@ -1273,19 +1138,14 @@ public class ProductMenu {
 		System.out.println("Price of hat: ");
 		price = scan.nextDouble();
 		
-		System.out.println("Name of vendor: ");
-		scan.nextLine();
-		vendor = scan.nextLine();
-		System.out.println();
-		
-		
 		System.out.println("Is the following correct?");
 		
-		System.out.println("Name: " + name + " | Color: " + color + " | Quantity: " + quantity + " | Price: $" + price + " | Vendor: " + vendor);
+		System.out.println("Name: " + name + " | Color: " + color + " | Quantity: " + quantity + " | Price: $" + price);
 		System.out.println();
 		
 		System.out.println("(Y)es | (N)o");
-		c = scan.nextLine().charAt(0);
+		c = scan.next().charAt(0);
+		scan.nextLine();
 		
 		switch (c) {
 		case 'Y':
@@ -1293,7 +1153,8 @@ public class ProductMenu {
 			System.out.println("Would you like to enter additional product information?");
 			System.out.println("(Choosing \"No\" will give the product default values.)");
 			System.out.println("(Y)es | (N)o");
-			d = scan.nextLine().charAt(0);
+			d = scan.next().charAt(0);
+			scan.nextLine();
 				switch (d) {
 				case 'Y':
 				case 'y':
@@ -1301,15 +1162,6 @@ public class ProductMenu {
 					String productDesc;
 					double discount;
 					double taxRate;
-					double vendorPrice;
-					
-					System.out.println("Enter the vendor price: ");
-					vendorPrice = scan.nextDouble();
-					while (vendorPrice>price) {
-						System.out.println("Error. The vendor price cannot exceed the sale price ($" + price + ").");
-						System.out.println("Enter the vendor price: ");
-						vendorPrice = scan.nextDouble();
-					}
 					
 					System.out.println("Enter the hat description: ");
 					productDesc = scan.nextLine();
@@ -1321,11 +1173,10 @@ public class ProductMenu {
 					System.out.println("Enter the tax rate (default tax rate is 1.08): ");
 					taxRate = scan.nextDouble();
 					
-					Hat tempHatLong = new Hat(register, name, hatType, color, productDesc, price, discount, taxRate, quantity, vendor, vendorPrice);
+					Hat tempHatLong = new Hat(register, name, hatType, color, productDesc, price, discount, taxRate, quantity);
 					
 					System.out.println();
-					System.out.println("Food product created!");
-					System.out.println("Its memory location is: " + tempHatLong);
+					System.out.println("Hat product created!");
 					System.out.println();
 					
 					productMenu(register);
@@ -1334,11 +1185,10 @@ public class ProductMenu {
 				case 'N':
 				case 'n':
 					
-					Hat tempHat = new Hat(register, name, hatType, color, price, quantity, vendor);
+					Hat tempHat = new Hat(register, name, hatType, color, price, quantity);
 					
 					System.out.println();
 					System.out.println("Hat product created!");
-					System.out.println("Its memory location is: " + tempHat);
 					System.out.println();
 					
 					productMenu(register);

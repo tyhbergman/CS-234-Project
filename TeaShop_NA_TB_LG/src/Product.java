@@ -15,14 +15,12 @@ public class Product {
 	private double taxRate;
 	private boolean available;
 	private int quantity;
-	private String vendor;
-	private double vendorPrice;
 
 	private ArrayList<Object> inputDetails = new ArrayList<Object>();
 	
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Product(Register register, String name, double price, int quantity, String vendor) {
+	public Product(Register register, String name, double price, int quantity) {
 		
 		setName(name);
 		
@@ -37,9 +35,6 @@ public class Product {
 		setQuantity(quantity);
 		setProductDesc("");
 		setDiscount(0.15);
-		setVendor(vendor);
-		setVendorPrice(price*0.87); //default 0.87 in order to get about a 15% mark-up from
-									//vendor price based on original given price
 		
 		//Tax rate assigned by product type with default tax values
 		switch (productType) {
@@ -66,29 +61,10 @@ public class Product {
 			
 		}
 		
-		/*
-		 * INPUT INITIALIZATION
-		 */
-		Input tempInput = new Input(id, vendor, vendor, name, vendorPrice, quantity, discount, taxRate);
-		
-		
-		inputDetails.add(id);
-		inputDetails.add(vendor);	
-		//inputDetails.add(vendor);	maybe do product type?
-		inputDetails.add(name);
-		inputDetails.add(vendorPrice);
-		inputDetails.add(price);
-		inputDetails.add(quantity);	
-		inputDetails.add(discount);	
-		inputDetails.add(taxRate);
-		inputDetails.add(tempInput);
-		
-		register.addInputDetails(inputDetails);
-		
 		
 	}
 	//Full Constructor -- For full control on product information
-	public Product(Register register, String name, String productDesc, double price, double discount, double taxRate, int quantity, String vendor) {
+	public Product(Register register, String name, String productDesc, double price, double discount, double taxRate, int quantity) {
 		
 		setName(name);
 		
@@ -103,24 +79,6 @@ public class Product {
 		setDiscount(discount);
 		setTaxRate(taxRate);
 		setQuantity(quantity);
-		setVendor(vendor);
-		setVendorPrice(vendorPrice);
-		
-		Input tempInput = new Input(id, vendor, vendor, name, vendorPrice, quantity, discount, taxRate);
-		
-		
-		inputDetails.add(id);
-		inputDetails.add(vendor);	
-		inputDetails.add(name);
-		inputDetails.add(vendorPrice);
-		inputDetails.add(price);
-		inputDetails.add(quantity);	
-		inputDetails.add(discount);	
-		inputDetails.add(taxRate);
-		inputDetails.add(tempInput);
-		
-		register.addInputDetails(inputDetails);
-		
 	}
 	
 	//Empty Constructor to avoid compile errors
@@ -206,25 +164,9 @@ public class Product {
 		else { setAvailable(false); }
 	}
 
-	public String getVendor() {
-		return vendor;
-	}
-
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-	
 	public void delete(int id) {
 		//remove from array list 
 		//Set reference to null for deletion via garbage collector?
-	}
-
-	public double getVendorPrice() {
-		return vendorPrice;
-	}
-
-	public void setVendorPrice(double vendorPrice) {
-		this.vendorPrice = vendorPrice;
 	}
 	
 }

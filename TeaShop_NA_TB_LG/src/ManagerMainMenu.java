@@ -80,12 +80,15 @@ public class ManagerMainMenu {
 			break;
 		case 5:
 			register.salesRecords(register);
+			System.out.println();
+			System.out.println("\t\t| Employee Records |");
 			employees.printEmployeeInfo(name);
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 6:
 			System.out.println();
 			System.out.println("Logging out...");
+			System.out.println();
 			signIn.signIn(register, employees, schedule);
 			break;
 		default:
