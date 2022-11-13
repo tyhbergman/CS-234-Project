@@ -8,13 +8,11 @@ public class Apparel extends Product {
 	private String color;
 	
 	//Express Constructor -- Crucial information only, description left blank
-	public Apparel(Register register, String name, String color, double price, int quantity, String vendor) {
+	public Apparel(Register register, String name, String color, double price, int quantity) {
 		
-		super(register, name, price, quantity, vendor);
+		super(register, name, price, quantity);
 		//Automatically assign 'a' to productType for apparel
-		super.setProductType('a');
-		super.setVendorPrice(price*0.87);	//default 0.87 in order to get about a 15% mark-up from
-											//vendor price based on original given price
+		super.setProductType('a');	
 		
 		//Automatically set apparelType to 'x' since no type is specified
 		setApparelType('x');
@@ -22,12 +20,11 @@ public class Apparel extends Product {
 	}
 	
 	//Full Constructor -- For full control on product information
-	public Apparel(Register register, String name, String color, String productDesc, double price, double discount, double taxRate, int quantity, String vendor, double vendorPrice) {
+	public Apparel(Register register, String name, String color, String productDesc, double price, double discount, double taxRate, int quantity) {
 		
-		super(register, name, productDesc, price, discount, taxRate, quantity, vendor);
+		super(register, name, productDesc, price, discount, taxRate, quantity);
 		//Automatically assign 'a' to productType for apparel
 		super.setProductType('a');
-		setVendorPrice(vendorPrice);
 		
 		//Automatically set apparelType to 'x' since no type is specified
 		setApparelType('x');

@@ -40,7 +40,9 @@ public class Employees {
 	
 	public void printEmployeeInfo(String name) {
 		System.out.print("\n");
-        ArrayList<String> info = employees.get(name);
+        ArrayList<String> info;
+        
+        info = employees.get(name);
         String empid = info.get(0);
         String position = info.get(1);
         String wage = info.get(2);

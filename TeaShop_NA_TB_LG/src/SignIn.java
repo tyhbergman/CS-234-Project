@@ -10,7 +10,7 @@ public class SignIn {
 		Scanner scan = new Scanner(System.in);
 		employees.addDefaultEmployee();
 		
-		System.out.println("\tSign In");
+		System.out.println("\tTea Shop Sign In");
 		System.out.println();
 		System.out.println("1.) Employee Log In");
 		System.out.println("2.) Manager Log In");

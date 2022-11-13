@@ -23,6 +23,7 @@ public class EmployeeMainMenu {
 			if(SSN.equals(SSNCheck)) {
 				// Log in successful
 				System.out.println("Employee log in successful.");
+				System.out.println();
 				return name;
 			} else {
 				SignIn signIn = new SignIn();
@@ -34,11 +35,13 @@ public class EmployeeMainMenu {
 			System.out.println("User is not in system. Returning to log in page...");
 			signIn.signIn(register, employees, schedule);
 		}
+		System.out.println();
 		return " ";
 	}
 	
 	public void employeeMainMenu(Register register, Employees employees, Employees schedule, String name) {
-		ProductMenu productMenu = new ProductMenu();  
+		ProductMenu productMenu = new ProductMenu();
+		SaleMenu saleMenu = new SaleMenu();
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("\tMain Menu");
@@ -52,8 +55,8 @@ public class EmployeeMainMenu {
 		
 		switch (x) {
 		case 1:
-			SaleMenu saleMenu = new SaleMenu();
 			saleMenu.saleMenu(register, employees, schedule, productMenu, name);
+			employeeMainMenu(register, employees, schedule, name);
 			break;
 		case 2:
 			employees.printEmployeeInfo(name);
@@ -61,7 +64,7 @@ public class EmployeeMainMenu {
 			break;
 		case 3:
 			System.out.println();
-			System.out.println("Logging out...");
+			System.out.println("Logging out...\n");
 			SignIn signIn = new SignIn();
 			signIn.signIn(register, employees, schedule);
 			break;
