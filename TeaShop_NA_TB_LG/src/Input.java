@@ -390,13 +390,10 @@ public class Input {
 
 	public String toString() {
 		
-		this.discount = discount * 100;
-		this.taxRate = taxRate * 100;
-		
 		String str = String.format("%3s | %20s | %20s | %30s | $%10.2f | %10d | $%10.2f%% | %10.2f%% | $%16.2f | $%12.2f | $%12.2f | $%10.2f",
-		lineItemID, vendorName, vendorCategory, input, cost, quantity, discount, taxRate, 
+		lineItemID, vendorName, vendorCategory, input, cost, quantity, (double) discount * 100, (double) taxRate * 100, 
 		getDiscountAmount(cost, quantity, discount), getGrossCost(cost, quantity),
-		getNetCost(taxRate, cost, quantity, discount), getNetCost(taxRate, cost, quantity, discount));
+		getTaxAmount(taxRate, cost, quantity), getNetCost(taxRate, cost, quantity, discount));
 		
 		return str;
 	
