@@ -4,10 +4,6 @@ import java.util.Map.Entry;
 
 public class ProductMenu {
 	
-	ProductMenu(){
-		
-	}
-	
 	public void productMenu(Register register) {
 		
 		int x; //counter variable

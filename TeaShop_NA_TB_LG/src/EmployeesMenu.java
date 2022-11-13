@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class EmployeesMenu {
 
-	EmployeesMenu(){
-		
-	}
-	
 	public void employeesMenu(Register register, Employees employees, Employees schedule, String name) {
 		ManagerMainMenu managerMainMenu = new ManagerMainMenu();
 		int x; //counter variable

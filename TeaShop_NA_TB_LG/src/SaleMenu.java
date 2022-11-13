@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class SaleMenu {
 	
-	SaleMenu(){
-		
-	}
-	
 	public void saleMenu(Register register, Employees employees, Employees schedule, ProductMenu productMenu, String name) {
 		Scanner scan = new Scanner(System.in);
 		
