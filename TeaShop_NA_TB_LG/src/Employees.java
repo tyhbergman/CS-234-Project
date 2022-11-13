@@ -289,11 +289,10 @@ public class Employees {
 	
 	public void printSchedule() {
 		System.out.print("\n");
-		System.out.print(schedule);
+		System.out.println(schedule);
 	}
 
 	public void remove(String name) {
 		schedule.remove(name);
-		
 	}
 }

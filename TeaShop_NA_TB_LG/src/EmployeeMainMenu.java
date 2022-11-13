@@ -2,10 +2,6 @@ import java.util.Scanner;
 
 public class EmployeeMainMenu {
 	
-	EmployeeMainMenu(){
-		
-	}
-	
 	public String employeeSignin(Register register, Employees employees, Employees schedule) {
 		Scanner b = new Scanner(System.in);
 		System.out.println("Enter Employee name");
