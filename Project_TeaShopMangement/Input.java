@@ -378,10 +378,9 @@ public class Input {
 	
 	public void displayHeaders() {
 	
-		System.out.print("ID|     Vendor    |     Category     |     Input     | Unit Cost | ");
-		System.out.print("Quantity | Discount(%) | Tax Rate(%) | Discount Amount($) |");
-		System.out.print("Gross Cost($) | Tax Amount($) | Net Cost($)\n");
-
+		System.out.printf("%3s | %20s | %20s | %30s | %10s | %10s | %10s | %10s | %10s | %10s | %10s | %10s\n",
+		 "ID", "Vendor", "Category", "Input", "Unit Cost($)", "Quantity", "Discount(%)", "Tax Rate(%)", "Discount Amount($)",
+		 "Gross Cost($)", "Tax Amount($)", "Net Cost($)");
 	}
 	
 	/**
@@ -390,13 +389,13 @@ public class Input {
 	*/
 
 	public String toString() {
-	
-		return lineItemID + " | " + vendorName + "| " + vendorCategory + "| " + input + 
-		"| $" + cost + "|     " + quantity + "   | " + (double) discount * 100 + "%   |   " + 
-		(double) taxRate * 100 + "%    |   $" + (double) Math.round(getDiscountAmount(cost, quantity, discount)*100)/100 + 
-		"      |      $" + (double) Math.round(getGrossCost(cost, quantity)*100)/100 + "       |    $" + 
-		(double) Math.round(getTaxAmount(taxRate, cost, quantity)*100)/100 + "    | $" + 
-		(double) Math.round(getNetCost(taxRate, cost, quantity, discount)*100)/100; 
+		
+		String str = String.format("%3s | %20s | %20s | %30s | $%10.2f | %10d | $%10.2f%% | %10.2f%% | $%16.2f | $%12.2f | $%12.2f | $%10.2f",
+		lineItemID, vendorName, vendorCategory, input, cost, quantity, (double) discount * 100, (double) taxRate * 100, 
+		getDiscountAmount(cost, quantity, discount), getGrossCost(cost, quantity),
+		getTaxAmount(taxRate, cost, quantity), getNetCost(taxRate, cost, quantity, discount));
+		
+		return str;
 	
 	}
 
