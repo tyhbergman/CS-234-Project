@@ -29,6 +29,15 @@ public class SaleMenu {
 			case 1:
 				System.out.print("Enter the ID of item: ");
 				int temp = scan.nextInt();
+				
+				//Check if item is in system before adding to cart
+				if(!register.getProductList().containsKey(temp)) {
+					System.out.println("Error! Product with that ID not in system. Try again.");
+					System.out.println();
+					saleMenu(register, employees, schedule, productMenu, name);
+					break;
+				}
+				
 				System.out.print("Enter the desired quantity: ");
 				int tempQ = scan.nextInt();
 				register.addToCart(register.getProductList().get(temp), tempQ);
@@ -54,12 +63,14 @@ public class SaleMenu {
 			case 6:
 				System.out.println();
 				System.out.println("Exiting Sale Menu...");
+				System.out.println();
 				break;
 			default:
 				System.out.println("Input error. Starting over.");
 				System.out.println();
 				saleMenu(register, employees, schedule, productMenu, name);
 				break;
+				
 		}
 	}
 }

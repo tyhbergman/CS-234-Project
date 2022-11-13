@@ -8,7 +8,7 @@ public class ProductMenu {
 		
 	}
 	
-	public static void productMenu(Register register) {
+	public void productMenu(Register register) {
 		
 		int x; //counter variable
 		
@@ -59,7 +59,7 @@ public class ProductMenu {
 		}
 	}
 	
-	public static void getProductLog(Register register) {
+	public void getProductLog(Register register) {
 		System.out.println("ID\tProduct Type\tProduct Name\t\tPrice\tQuantity");
 		System.out.println("-------------------------------------------------------------------------------------------------------------");
 		Set<Entry<Integer,Product>> entrySet = register.getProductList().entrySet();
@@ -73,7 +73,7 @@ public class ProductMenu {
 		System.out.println();
 	}
 	
-	public static void modifyProduct(Register register) {
+	public void modifyProduct(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("What is the ID of the product you want to modify?");
@@ -133,8 +133,7 @@ public class ProductMenu {
 		productMenu(register);
 	}	
 
-	
-	private static void modifyDiscount(Register register, int x) {
+	private void modifyDiscount(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current discount: " + register.getProductList().get(x).getDiscount());
 		System.out.println("Enter the new discount: ");
@@ -166,7 +165,7 @@ public class ProductMenu {
 		
 	}
 
-	private static void modifyTaxRate(Register register, int x) {
+	private void modifyTaxRate(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current tax rate is: " + register.getProductList().get(x).getTaxRate());
 		System.out.println("Enter the new tax rate: ");
@@ -197,7 +196,8 @@ public class ProductMenu {
 		}
 		
 	}
-	private static void modifyPrice(Register register, int x) {
+	
+	private void modifyPrice(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current price is: " + register.getProductList().get(x).getPrice());
 		System.out.println("Enter the new price: ");
@@ -229,7 +229,7 @@ public class ProductMenu {
 		
 	}
 
-	private static void modifyQuantity(Register register, int x) {
+	private void modifyQuantity(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current quantity is: " + register.getProductList().get(x).getQuantity());
 		System.out.println("Enter the new quantity: ");
@@ -261,7 +261,7 @@ public class ProductMenu {
 		
 	}
 
-	private static void modifyName(Register register, int x) {
+	private void modifyName(Register register, int x) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Current name is: " + register.getProductList().get(x).getName());
 		System.out.println("Enter the new name: ");
@@ -292,7 +292,7 @@ public class ProductMenu {
 		}
 	}
 
-	public static void chooseProductType(Register register) {
+	public void chooseProductType(Register register) {
 		Scanner scan = new Scanner(System.in);
 		char c;
 		
@@ -345,7 +345,7 @@ public class ProductMenu {
 		
 	}
 	
-	public static void addProduct(Register register) {
+	public void addProduct(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;
@@ -448,7 +448,7 @@ public class ProductMenu {
 		}
 	}
 	
-	public static void getProduct(Register register) {
+	public void getProduct(Register register) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What is the ID of the product you want to review?");
 		int x = scan.nextInt();
@@ -472,7 +472,7 @@ public class ProductMenu {
 		productMenu(register);
 	}
 	
-	public static void delete(Register register) {
+	public void delete(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("What is the ID of the product you want to delete?");
@@ -512,7 +512,7 @@ public class ProductMenu {
 		
 	}
 
-	public static void addTea(Register register) {
+	public void addTea(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;
@@ -679,7 +679,7 @@ public class ProductMenu {
 		
 	}
 
-	public static void addFood(Register register) {
+	public void addFood(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;
@@ -815,7 +815,7 @@ public class ProductMenu {
 		
 	}
 
-	public static void chooseApparelType(Register register) {
+	public void chooseApparelType(Register register) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("What is the type of apparel?");
 		System.out.println("(S)hirt or hoodie | (H)at | (M)isc apparel");
@@ -847,7 +847,7 @@ public class ProductMenu {
 		
 	}
 
-	public static void addApparel(Register register) {
+	public void addApparel(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;
@@ -950,7 +950,7 @@ public class ProductMenu {
 		
 	}
 	
-	public static void addShirt(Register register) {
+	public void addShirt(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;
@@ -1110,7 +1110,7 @@ public class ProductMenu {
 		
 	}
 
-	public static void addHat(Register register) {
+	public void addHat(Register register) {
 		Scanner scan = new Scanner(System.in);
 		
 		String name;

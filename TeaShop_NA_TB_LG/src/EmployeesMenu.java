@@ -6,7 +6,7 @@ public class EmployeesMenu {
 		
 	}
 	
-	public static void employeesMenu(Register register, Employees employees, Employees schedule, String name) {
+	public void employeesMenu(Register register, Employees employees, Employees schedule, String name) {
 		ManagerMainMenu managerMainMenu = new ManagerMainMenu();
 		int x; //counter variable
 		
@@ -285,8 +285,6 @@ public class EmployeesMenu {
 			break;
 		case 3: 
 			// View personal information
-			System.out.println(name);
-			employees.printEmployeeInfo("manager");
 
 			employees.printEmployeeInfo(name);
 			employeesMenu(register, employees, schedule, name);

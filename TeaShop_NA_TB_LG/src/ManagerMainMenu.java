@@ -75,7 +75,7 @@ public class ManagerMainMenu {
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 4:
-			employeesMenu.employeesMenu(register, schedule, employees, name);
+			employeesMenu.employeesMenu(register, employees, schedule, name);
 			managerMainMenu(register, employees, schedule, name);
 			break;
 		case 5:
