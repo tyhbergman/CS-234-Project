@@ -1,6 +1,6 @@
-/*
-Input Tester
-**/
+/**
+Input Menu
+*/
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +26,7 @@ public class InputMenu {
 	private double totalTaxAmount;
 	private double totalDiscountAmount;
 	private double totalNetCost;
+	private List<Input> inputDescription;
 	
 	/**
 		Constructs an input menu with the total gross cost of all of the inputs purchased,
@@ -39,6 +40,7 @@ public class InputMenu {
 		this.totalTaxAmount = 0.0;
 		this.totalDiscountAmount = 0.0;
 		this.totalNetCost = 0.0;
+		this.inputDescription = new LinkedList<>();
 
 	}
 	
@@ -47,7 +49,6 @@ public class InputMenu {
 		//Declares an empty constructor to display the line item headers
 		Input header = new Input(); 
 		//Declares a linked list of the inputs to display each line item
-		List<Input> inputDescription = new LinkedList<Input>();
 		Scanner c = new Scanner(System.in); //Used for numerical values
 		Scanner s = new Scanner(System.in); //Used for string or char values
 		
@@ -133,19 +134,6 @@ public class InputMenu {
 		grossCostTotal.put(7, gc7);
 		grossCostTotal.put(8, gc8);
 		
-		//Map to capture the tax amount of each line item
-		Map<Integer, Double> taxAmountTotal = new HashMap<>(); //Declaring map for Total Tax Amount
-		taxAmountTotal.put(lineItemID, ta); //Initializing map
-		//Total Tax Amount calculation with the dummy information from above
-		taxAmountTotal.put(1, ta1);
-		taxAmountTotal.put(2, ta2);
-		taxAmountTotal.put(3, ta3);
-		taxAmountTotal.put(4, ta4);
-		taxAmountTotal.put(5, ta5);
-		taxAmountTotal.put(6, ta6);
-		taxAmountTotal.put(7, ta7);
-		taxAmountTotal.put(8, ta8);
-		
 		//Map to capture the discount amount of each line item
 		Map<Integer, Double> discountAmountTotal = new HashMap<>(); //Declaring map for Total Discount Amount
 		discountAmountTotal.put(lineItemID, da); //Initializing map
@@ -158,6 +146,19 @@ public class InputMenu {
 		discountAmountTotal.put(6, da6);
 		discountAmountTotal.put(7, da7);
 		discountAmountTotal.put(8, da8);
+		
+		//Map to capture the tax amount of each line item
+		Map<Integer, Double> taxAmountTotal = new HashMap<>(); //Declaring map for Total Tax Amount
+		taxAmountTotal.put(lineItemID, ta); //Initializing map
+		//Total Tax Amount calculation with the dummy information from above
+		taxAmountTotal.put(1, ta1);
+		taxAmountTotal.put(2, ta2);
+		taxAmountTotal.put(3, ta3);
+		taxAmountTotal.put(4, ta4);
+		taxAmountTotal.put(5, ta5);
+		taxAmountTotal.put(6, ta6);
+		taxAmountTotal.put(7, ta7);
+		taxAmountTotal.put(8, ta8);
 		
 		//Map to capture the net cost amount of each line item
 		Map<Integer, Double> netCostTotal = new HashMap<>(); //Declaring map for Total Net Cost Amount
@@ -186,7 +187,7 @@ public class InputMenu {
 			System.out.println("3. Search for a line item");
 			System.out.println("4. Delete a line item");
 			System.out.println("5. Update a line item");
-			System.out.println("6. Return to Main Menu");
+			System.out.println("6. Return to Manager Menu");
 			System.out.println("----------------------------");
 			choice = c.nextInt();
 		
@@ -222,9 +223,9 @@ public class InputMenu {
 					name = s.nextLine();
 					System.out.print("Enter the category of goods/services the vendor is selling, ie, food products, tea products, etc.: ");
 					category = s.nextLine();
-					System.out.print("Enter the particular input that the vendor is providing, ie, green tea formula: ");
+					System.out.print("Enter the particular input that the vendor is providing, ie, green tea formula, black tea formula, etc.: ");
 					input = s.nextLine();
-					System.out.print("Enter the unit cost of the input: $");
+					System.out.print("Enter the unit cost of the input (as a nonnegative number, ie, 1.5, 30.0, etc.): $");
 					inputCost = c.nextDouble();
 					System.out.print("Enter the quantity of the input (as a nonnegative integer, ie, 0, 10, 100, etc.): ");
 					inputQuantity = c.nextInt();
@@ -258,12 +259,12 @@ public class InputMenu {
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					header.displayHeaders();
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					
 					//Creates an iterator to go through the linked list to display all the line items
 					Iterator<Input> i = inputDescription.iterator();
@@ -278,53 +279,25 @@ public class InputMenu {
 					//Sums up all the values in the gross cost map to get the total gross cost
 					//for all inputs purchased
 					Set<Integer> keySet1 = grossCostTotal.keySet();
-					double grossCostSum = 0.0;
-					for (int key : keySet1)
-					{
-		
-						double value = grossCostTotal.get(key);
-						grossCostSum += value;
-		
-					}
+					double grossCostSum = calculateTotals(grossCostTotal);
 					this.totalGrossCost = grossCostSum;
 					System.out.printf("Total Gross Cost: $%.2f%n", grossCostSum);
 					//Sums up all the values in the discount amount map to get the total
 					//discount amount for all inputs purchased
 					Set<Integer> keySet2 = discountAmountTotal.keySet();
-					double discountAmountSum = 0.0;
-					for (int key : keySet2)
-					{
-		
-						double value = discountAmountTotal.get(key);
-						discountAmountSum += value;
-		
-					}
+					double discountAmountSum = calculateTotals(discountAmountTotal);
 					this.totalDiscountAmount = discountAmountSum;
 					System.out.printf("Total Discount Amount: $%.2f%n", discountAmountSum);
 					//Sums up all the values in the tax amount map to get the total discount
 					//amount for all inputs purchased
 					Set<Integer> keySet3 = taxAmountTotal.keySet();
-					double taxAmountSum = 0.0;
-					for (int key : keySet3)
-					{
-		
-						double value = taxAmountTotal.get(key);
-						taxAmountSum += value;
-		
-					}
+					double taxAmountSum = calculateTotals(taxAmountTotal);
 					this.totalTaxAmount = taxAmountSum;
 					System.out.printf("Total Tax Amount: $%.2f%n", taxAmountSum);
 					//Sums up all the values in the net cost amount map to get the total 
 					//net cost amount for all inputs purchased
 					Set<Integer> keySet4 = netCostTotal.keySet();
-					double netCostSum = 0.0;
-					for (int key : keySet4)
-					{
-		
-						double value = netCostTotal.get(key);
-						netCostSum += value;
-		
-					}
+					double netCostSum = calculateTotals(netCostTotal);
 					this.totalNetCost = netCostSum;
 					//Asks the user if they want to export the total costs as a report
 					System.out.printf("Total Net Cost: $%.2f%n", netCostSum);
@@ -335,29 +308,29 @@ public class InputMenu {
 					while (!done)
 					{
 					
-					if (export == 'Y' || export == 'y')
-					{
+						if (export == 'Y' || export == 'y')
+						{
 					
-						displayCostTotals();
-						return;
+							displayCostTotals();
+							return;
 					
-					}
-					else if (export == 'N' || export == 'n')
-					{
+						}
+						else if (export == 'N' || export == 'n')
+						{
 					
-						System.out.println("Please continue navigating the menu.");
-						done = true; 
+							System.out.println("Please continue navigating the menu.");
+							done = true; 
 					
-					}
-					else
-					{
+						}
+						else
+						{
 					
-						System.out.println("Not a valid option. Please try again.");
-						System.out.println("Would you like to export the cost report? (Y)es | (N)o: ");
-						export = s.next().charAt(0);
-						s.nextLine();
+							System.out.println("Not a valid option. Please try again.");
+							System.out.println("Would you like to export the cost report? (Y)es | (N)o: ");
+							export = s.next().charAt(0);
+							s.nextLine();
 					
-					}		
+						}		
 					}			
 				break;
 				case 3: 
@@ -368,12 +341,12 @@ public class InputMenu {
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 					header.displayHeaders();
 					System.out.print("-------------------------------------------------");
 					System.out.print("-------------------------------------------------");;
 					System.out.print("-------------------------------------------------");
-					System.out.print("-------------------------\n");
+					System.out.print("-------------------------------------------------\n");
 				    i = inputDescription.iterator();
 				    //Checks if the line item is in the linked list
 					while(i.hasNext()) 
@@ -458,16 +431,16 @@ public class InputMenu {
 							System.out.print("Enter the new name of the vendor ");
 							System.out.print("(enter the same name if no change): ");
 							name = s.nextLine();
-							System.out.print("Enter the new category of goods/services the vendor is selling ");
+							System.out.print("Enter the new category of goods/services the vendor is selling, ie, food products, tea products, etc. ");
 							System.out.print("(enter the same category if no change): ");
 							category = s.nextLine();
-							System.out.print("Enter the new input that the vendor is selling ");
+							System.out.print("Enter the new input that the vendor is selling, ie, green tea formula, black tea formula, etc.");
 							System.out.print("(enter the same input if no change): ");
 						    input = s.nextLine();
-							System.out.print("Enter the updated cost of the input ");
+							System.out.print("Enter the updated cost (as a nonnegative number, ie, 1.5, 30.0, etc.) of the input ");
 							System.out.print("(enter the same cost if no change): $");
 							inputCost = c.nextDouble();
-							System.out.print("Enter the updated quantity of the input ");
+							System.out.print("Enter the updated quantity (as a nonnegative integer, ie, 0, 10, 100, etc.) of the input ");
 							System.out.print("(enter the same quantity if no change): ");
 							inputQuantity = c.nextInt();
 							System.out.print("Enter the discount percentage (as a positive decimal less than 1, ie, 0.05, 0.1, etc.) on this input ");
@@ -483,16 +456,17 @@ public class InputMenu {
 							ta = lineItem.getTaxAmount(taxRate, inputCost, inputQuantity);
 							da = lineItem.getDiscountAmount(inputCost, inputQuantity, inputDiscount);
 							nc = lineItem.getNetCost(taxRate, inputCost, inputQuantity, inputDiscount);
+							
 							grossCostTotal.replace(v.getLineItemID(), gc);
 							taxAmountTotal.replace(v.getLineItemID(), ta);
 							discountAmountTotal.replace(v.getLineItemID(), da);
 							netCostTotal.replace(v.getLineItemID(), nc);
-							//
+							
 							this.totalGrossCost = gc;
 							this.totalTaxAmount = ta;
 							this.totalDiscountAmount = da;
 							this.totalNetCost = nc;
-							//
+							
 							found = true;
 							
 						}
@@ -530,6 +504,28 @@ public class InputMenu {
 		}while (choice != 6); return;
 	
 	}
+	
+	/**
+		Private method to be used only for calculating the totals from each cost item.
+		@param the cost map
+		@return the total of the values in the map
+	*/
+	
+	private double calculateTotals(Map<Integer, Double> total) {
+	
+		Set<Integer> keySet = total.keySet();
+		double amountSum = 0.0;
+		for (int key : keySet)
+		{
+		
+			double value = total.get(key);
+			amountSum += value;
+		
+		}
+		double totalAmount = amountSum;
+		return totalAmount;
+		
+	}
 
 	/**
 		Report to display the total cost totals when the user wants to export the report.
@@ -543,8 +539,8 @@ public class InputMenu {
 		System.out.println("Cost Totals");
 		System.out.println("-----------------------------");
 		System.out.printf("Total Gross Cost: $%.2f%n", totalGrossCost);
-		System.out.printf("Total Tax Amount: $%.2f%n", totalTaxAmount);
 		System.out.printf("Total Discount Amount: $%.2f%n", totalDiscountAmount);
+		System.out.printf("Total Tax Amount: $%.2f%n", totalTaxAmount);
 		System.out.printf("Total Net Cost: $%.2f%n", totalNetCost);
 		System.out.println("-----------------------------");
 
@@ -596,4 +592,3 @@ public class InputMenu {
 	}
 
 }
-
