@@ -172,16 +172,12 @@ public class EmployeesMenu {
 					employeesMenu(register, employees, schedule, name);
 					break;
 				case 3:
-					// Delete employee
+					// Delete employee, show current employees first
 					System.out.print("Current employees");
 					employees.printEmployees();
+					System.out.println();
 					
-					Scanner w = new Scanner(System.in);
-					System.out.println("Enter inactive employee's name: ");
-					String empName2 = w.nextLine();
-					
-					employees.deleteEmployee(empName2);
-					System.out.print("Employee has been deleted.\n");
+					employees.deleteEmployee(employees);
 					employeesMenu(register, employees, schedule, name);
 					break;
 				case 4:

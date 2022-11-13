@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
@@ -86,8 +87,24 @@ public class Employees {
         }
 	}
 	
-	public void deleteEmployee(String name) {
-		employees.remove(name);
+	public void deleteEmployee(Employees tempEmployee) {
+
+		
+		
+		
+		
+		//Check to make sure the user isn't deleting the only employee left
+		if(employees.size()==1) {
+			System.out.println("There's only one employee left! Add another employee to perform deletion.");
+			System.out.println();
+		} else {
+			Scanner w = new Scanner(System.in);
+			System.out.println("Enter inactive employee's name: ");
+			String empName2 = w.nextLine();
+			
+			employees.remove(empName2);
+			System.out.print("Employee has been deleted.\n");
+		}
 	}
 	
 	public void changeName(String name, String newName) {

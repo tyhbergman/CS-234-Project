@@ -7,6 +7,8 @@ public class MainMenu {
 		Employees employees = new Employees();
 		Employees schedule = new Employees();
 		
+		employees.addDefaultEmployee();
+		
 		Product x = new Product(store1, "Tea Strainer", 14.25, 10);
 		Tea a = new Tea(store1, "Coconut Tea", 4.50, 30);
 		Tea b = new Tea(store1, "Matcha Tea", 5.02, 0);
