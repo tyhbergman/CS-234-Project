@@ -198,7 +198,7 @@ public class Employees {
 	}
 	
 	public String isManager(String name) {
-		ArrayList<String> info = employees.get(name);
+                ArrayList<String> info = employees.get(name);
 		String type = info.get(5);
 		return type;
 	}

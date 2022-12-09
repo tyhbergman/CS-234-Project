@@ -804,8 +804,10 @@ public class MainWindow extends javax.swing.JFrame {
 	SignIn signIn = new SignIn();
 	Employees employees = new Employees();
 	Employees schedule = new Employees();
+        
+        employees.addDefaultEmployee();
 		
-	employees.addDefaultEmployee();
+	//employees.addDefaultEmployee();
 	
 	signIn.signIn(store1, employees, schedule);
         
@@ -2994,8 +2996,16 @@ public class MainWindow extends javax.swing.JFrame {
         normal.ManagerMainMenu managerSignIn = new ManagerMainMenu();
         String a = username.getText();
         String b = password.getText();
+        
+        
+        
         String temp = managerSignIn.managerSignIn(store1, employees, schedule, a, b);
-
+        
+        employees.printEmployees();
+        
+        //String isManager = employees.isManager(a);
+        
+        
         //SIGN IN
         //Check for credentials
         if(temp.equals("success"))
@@ -3958,10 +3968,15 @@ public class MainWindow extends javax.swing.JFrame {
         // updates row
         int row = jTable1.getSelectedRow();
         boolean end = false;
+        
+        String tempName = "";
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
 
+        String oName = model.getValueAt(jTable1.getSelectedRow(), 0).toString();
+        String oPass = model.getValueAt(jTable1.getSelectedRow(), 5).toString();
+        
         if (row < 0)
         {
             JOptionPane.showMessageDialog(this,
@@ -3977,7 +3992,10 @@ public class MainWindow extends javax.swing.JFrame {
             String hours = empManagementHours.getText();
             String pass = empManagementPWField.getText();
             String type = "";
-
+            
+            
+            
+                //ORIGINAL
             for(int i=0; i<jTable1.getRowCount(); i++){
                 if(name.equals(jTable1.getValueAt(i, 0))){
                     JOptionPane.showMessageDialog(this,
@@ -4033,6 +4051,11 @@ public class MainWindow extends javax.swing.JFrame {
                 model.setValueAt(type, jTable1.getSelectedRow(), 6);
 
                 model2.setValueAt(name, jTable1.getSelectedRow(), 0);
+                
+                employees.changeName(oName, name);
+                //employees.changePass(name, pass);
+                employees.changePosition(name, position);
+                employees.changeWage(name, wage);
             }
 
             updateCSVEmployee();
@@ -4102,6 +4125,7 @@ public class MainWindow extends javax.swing.JFrame {
             DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
             model.addRow(new Object[]{name, id, position, wage, hours, pass, type});
             model2.addRow(new Object[]{name});
+            employees.addEmployee(name, id, position, wage, pass, hours, type);
         }
 
         clear();
@@ -4808,6 +4832,10 @@ public class MainWindow extends javax.swing.JFrame {
                     
                     totalHours = totalHours + Double.parseDouble(hours);
                     
+                    //add Employee to system
+                    employees.addEmployee(name, id, position, wage, pass, hours, type);
+                    System.out.println("name check is " + employees.nameCheck(name) + " for " + name);
+                    System.out.println(name + " is a manager:" + type);
                     
                     if(type.contains("Yes")){
                         managerCount++;

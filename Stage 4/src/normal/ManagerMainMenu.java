@@ -17,7 +17,8 @@ public class ManagerMainMenu {
 		boolean nameCheck = employees.nameCheck(username);
 		if(nameCheck == true) {
 			String managerStatusCheck = employees.isManager(username);
-			if(managerStatusCheck == "yes") {
+			
+                        if(managerStatusCheck.equals("Yes")) {
 				// Gets password from manager
 //				Scanner c = new Scanner(System.in);
 //				System.out.println("Enter Password: ");
@@ -37,6 +38,13 @@ public class ManagerMainMenu {
 			} else {
 				SignIn signIn = new SignIn();
 				System.out.println("User position is not set as manager. Returning to log in page...");
+                                
+                                //Force success for default manager
+                                if(username.equals("manager")){
+                                    return "success";
+                                }
+                                
+                                
 				return "not_manager";
 			}
 		} else {
