@@ -42,7 +42,7 @@ public class MainWindow extends javax.swing.JFrame {
     private final String filenameEmployee = "EmployeesList.csv";
     private final String filenameBusiness = "Business.csv";
     private final String transactionlist = "transactionlist.csv";
-    private final String filenameInput = "inputsdummy.csv";
+    private final String filenameInput = "inputlist.csv";
     private final String filenameProduct = "productlist.csv";
     private final String delimiter = ",";
     //END INPUT VARIABLES
@@ -605,7 +605,7 @@ public class MainWindow extends javax.swing.JFrame {
     
     public void redrawProductTable(String tableType){
         if (tableType.contains("employee")){
-            productTable.setModel(new javax.swing.table.DefaultTableModel(
+            empProductLog.setModel(new javax.swing.table.DefaultTableModel(
                      getProductListLite(store1),
             new String [] {
                 "ID", "Name", "Price", "Quantity"
@@ -750,7 +750,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         
         
-        jScrollPane6.setViewportView(transactionsRecordsTable);
+        scrollPaneTranactionRecords.setViewportView(transactionsRecordsTable);
         
         if (transactionsRecordsTable.getColumnModel().getColumnCount() > 0) {
             transactionsRecordsTable.getColumnModel().getColumn(0).setMinWidth(40);
@@ -860,12 +860,12 @@ public class MainWindow extends javax.swing.JFrame {
         menuItemReturntoMM = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         bgEmployeeManagement = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        frameTeaShop = new javax.swing.JPanel();
         signInWindow = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         username = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblPW = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
         empSignIn = new javax.swing.JButton();
         manSignIn = new javax.swing.JButton();
@@ -875,16 +875,16 @@ public class MainWindow extends javax.swing.JFrame {
         notManagerLabel = new javax.swing.JLabel();
         bgPicture = new javax.swing.JLabel();
         employeeSaleMenu = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        panelEmployee = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        empCartScrollTable = new javax.swing.JScrollPane();
         cartTable = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        productTable = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblEmpCartTable = new javax.swing.JLabel();
+        lblEmpProductLogTitle = new javax.swing.JLabel();
+        empScrollPaneProductLog = new javax.swing.JScrollPane();
+        empProductLog = new javax.swing.JTable();
+        lblEmpQuantity = new javax.swing.JLabel();
+        lblEmpID = new javax.swing.JLabel();
         selectedID = new javax.swing.JTextField();
         selectedQuantity = new javax.swing.JSpinner();
         btnAddToCart = new javax.swing.JButton();
@@ -893,40 +893,40 @@ public class MainWindow extends javax.swing.JFrame {
         taxAmount = new javax.swing.JTextField();
         totalAmount = new javax.swing.JTextField();
         btnSale = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lblEmpTax = new javax.swing.JLabel();
+        lblEmpTotal = new javax.swing.JLabel();
+        lblEmpSubTotal = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
         bgEmployeeSaleMenu = new javax.swing.JLabel();
         managerMenuWindow = new javax.swing.JTabbedPane();
         saleMenuTab = new javax.swing.JPanel();
         titlePanel = new javax.swing.JPanel();
         menuTitleLabel = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        manScrollPanelCartTable = new javax.swing.JScrollPane();
         cartTableForManager = new javax.swing.JTable();
         cartLabel = new javax.swing.JLabel();
         productLogLabel = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        manScrollPaneProductLog = new javax.swing.JScrollPane();
         productTableForManager = new javax.swing.JTable();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblManQuantity = new javax.swing.JLabel();
+        lblManID = new javax.swing.JLabel();
         selectedIDForManager = new javax.swing.JTextField();
         selectedQuantityForManager = new javax.swing.JSpinner();
-        btnAddToCart1 = new javax.swing.JButton();
-        btnClearCart1 = new javax.swing.JButton();
+        btnAddToCartManager = new javax.swing.JButton();
+        btnClearCartManager = new javax.swing.JButton();
         subTotalAmountForManager = new javax.swing.JTextField();
         taxAmountForManager = new javax.swing.JTextField();
         totalAmountForManager = new javax.swing.JTextField();
-        btnSale1 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        btnLogOut1 = new javax.swing.JButton();
+        btnSaleManager = new javax.swing.JButton();
+        lblManTax = new javax.swing.JLabel();
+        lblManTotal = new javax.swing.JLabel();
+        lblManSub = new javax.swing.JLabel();
+        btnLogOutManager = new javax.swing.JButton();
         bgManagerSaleMenu = new javax.swing.JLabel();
         productManagementTab = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
+        scrollPaneProductManagement = new javax.swing.JScrollPane();
         productManagementTable = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
+        lblProductManagementTitle = new javax.swing.JLabel();
         selectedIDProdManagement = new javax.swing.JTextField();
         selectedNameProdManagement = new javax.swing.JTextField();
         selectedPriceProdManagement = new javax.swing.JTextField();
@@ -934,73 +934,73 @@ public class MainWindow extends javax.swing.JFrame {
         selectedTaxRateProdManagement = new javax.swing.JTextField();
         selectedDiscountProdManagement = new javax.swing.JTextField();
         selectedTypeProdManagement = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        lblProductType = new javax.swing.JLabel();
+        lblProductId = new javax.swing.JLabel();
+        lblProductName = new javax.swing.JLabel();
+        lblProductPrice = new javax.swing.JLabel();
+        lblProductQuantity = new javax.swing.JLabel();
+        lblProductTaxRate = new javax.swing.JLabel();
+        lblProductDiscount = new javax.swing.JLabel();
         btnAddProduct = new javax.swing.JButton();
         btnModifyProduct = new javax.swing.JButton();
         btnDeleteProduct = new javax.swing.JButton();
         btnClearProdManagement = new javax.swing.JButton();
         searchFieldProducts = new javax.swing.JTextField();
-        jLabel25 = new javax.swing.JLabel();
-        btnLogOut2 = new javax.swing.JButton();
+        lblProductSearch = new javax.swing.JLabel();
+        btnLogOutProductManagement = new javax.swing.JButton();
         bgProductManagement = new javax.swing.JLabel();
         employeesManagementTab = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        employeeManagementTabs = new javax.swing.JTabbedPane();
         employeeInfoTab = new javax.swing.JPanel();
-        jScrollPane8 = new javax.swing.JScrollPane();
+        scrollPaneEmployeeManagement = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        javax.swing.JLabel jLabel29 = new javax.swing.JLabel();
-        javax.swing.JButton jButton1 = new javax.swing.JButton();
-        javax.swing.JButton jButton2 = new javax.swing.JButton();
-        javax.swing.JButton jButton3 = new javax.swing.JButton();
-        javax.swing.JLabel jLabel30 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel31 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel32 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel33 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel34 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel35 = new javax.swing.JLabel();
-        javax.swing.JLabel jLabel36 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        javax.swing.JLabel jLabel37 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jButton7 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel38 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        javax.swing.JLabel lblEmployeeTableTitle = new javax.swing.JLabel();
+        javax.swing.JButton btnEmployeeManagementUpdate = new javax.swing.JButton();
+        javax.swing.JButton btnEmployeeManagementAdd = new javax.swing.JButton();
+        javax.swing.JButton btnEmployeeManagementDelete = new javax.swing.JButton();
+        javax.swing.JLabel lblEmpManagementName = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementId = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementPosition = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementWage = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementHours = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementPW = new javax.swing.JLabel();
+        javax.swing.JLabel lblEmpManagementManagerAccess = new javax.swing.JLabel();
+        empManagementName = new javax.swing.JTextField();
+        empManagementId = new javax.swing.JTextField();
+        empManagementWage = new javax.swing.JTextField();
+        empManagementHours = new javax.swing.JTextField();
+        empManagementPWField = new javax.swing.JPasswordField();
+        javax.swing.JLabel lblEmpManagementInfoTitle = new javax.swing.JLabel();
+        empManagementYesRadio = new javax.swing.JCheckBox();
+        empManagementNoRadio = new javax.swing.JCheckBox();
+        btnEmpManagementClear = new javax.swing.JButton();
+        empManagementPostionBox = new javax.swing.JComboBox<>();
+        lblEmpManagementSearch = new javax.swing.JLabel();
+        empManagementSearchField = new javax.swing.JTextField();
         bgEmployeeInfoTab = new javax.swing.JLabel();
         businessDetailsTab = new javax.swing.JPanel();
-        jScrollPane9 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
-        jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        jButton9 = new javax.swing.JButton();
-        lblDay = new javax.swing.JLabel();
-        bgEmployeeManagement1 = new javax.swing.JLabel();
+        scrollPaneBusinessHours = new javax.swing.JScrollPane();
+        busniessHoursTable = new javax.swing.JTable();
+        lblBusinessDetailsTitle = new javax.swing.JLabel();
+        lblBusinessDetailsHoursTitle = new javax.swing.JLabel();
+        lblBusinessDetailsDay = new javax.swing.JLabel();
+        lblBusinessDetailsOpenTime = new javax.swing.JLabel();
+        lblBusinessDetailsCloseTime = new javax.swing.JLabel();
+        businessDetailsOpenBox = new javax.swing.JComboBox<>();
+        businessDetailsCloseBox = new javax.swing.JComboBox<>();
+        btnBusinessHoursUpdate = new javax.swing.JButton();
+        lblBusinessDetailsShowDay = new javax.swing.JLabel();
+        bgTransactionRecords3 = new javax.swing.JLabel();
         scheduleTab = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
-        jScrollPane10 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jLabel49 = new javax.swing.JLabel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
+        lblScheduleTitleEmp = new javax.swing.JLabel();
+        scrollPaneScheduleEmployees = new javax.swing.JScrollPane();
+        scheduleEmployeeNamesTable = new javax.swing.JTable();
+        lblScheduleTitleSch = new javax.swing.JLabel();
+        scrollPaneSchedule = new javax.swing.JScrollPane();
+        scheduleEmployeesTable = new javax.swing.JTable();
+        lblScheduleDay = new javax.swing.JLabel();
+        lblScheduleEndTime = new javax.swing.JLabel();
+        lblScheduleStartTime = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -1008,13 +1008,13 @@ public class MainWindow extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jComboBox4 = new javax.swing.JComboBox<>();
-        jLabel53 = new javax.swing.JLabel();
-        jLabel54 = new javax.swing.JLabel();
-        lblScheduledHours = new javax.swing.JLabel();
-        lblHoursLimit = new javax.swing.JLabel();
-        jLabel57 = new javax.swing.JLabel();
+        lblScheduleScheduledHours = new javax.swing.JLabel();
+        lblScheduleHoursLimit = new javax.swing.JLabel();
+        lblShowScheduledHours = new javax.swing.JLabel();
+        lblShowHoursLimit = new javax.swing.JLabel();
+        lblScheduleOvertime = new javax.swing.JLabel();
         lblOvertime = new javax.swing.JLabel();
-        bgEmployeeManagement2 = new javax.swing.JLabel();
+        bgTransactionRecords2 = new javax.swing.JLabel();
         inputManagementTab = new javax.swing.JPanel();
         pnlInput = new javax.swing.JPanel();
         lblHeader = new javax.swing.JLabel();
@@ -1046,7 +1046,7 @@ public class MainWindow extends javax.swing.JFrame {
         recordsTab = new javax.swing.JPanel();
         recordsTabs = new javax.swing.JTabbedPane();
         transactionsTab = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
+        scrollPaneTranactionRecords = new javax.swing.JScrollPane();
         transactionsRecordsTable = new javax.swing.JTable();
         lastTransaction = new javax.swing.JTextField();
         totalRevenue = new javax.swing.JTextField();
@@ -1060,15 +1060,15 @@ public class MainWindow extends javax.swing.JFrame {
         totalUnitsSoldLabel = new javax.swing.JLabel();
         bgTransactionRecords = new javax.swing.JLabel();
         employeeRecordsTab = new javax.swing.JPanel();
-        jScrollPane12 = new javax.swing.JScrollPane();
+        scrollPaneEmployeeRecords = new javax.swing.JScrollPane();
         employeesRecordsTable = new javax.swing.JTable();
         totalEmployees = new javax.swing.JTextField();
         totalManagers = new javax.swing.JTextField();
         totalHoursWorked = new javax.swing.JTextField();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        bgEmployeeRecords = new javax.swing.JLabel();
+        lblTotalEmployees = new javax.swing.JLabel();
+        lblTotalManagers = new javax.swing.JLabel();
+        lblTotalHoursWorked = new javax.swing.JLabel();
+        bgTransactionRecords1 = new javax.swing.JLabel();
         inputRecordsTab = new javax.swing.JPanel();
         scrlpneInputReport1 = new javax.swing.JScrollPane();
         tblInputReportRecords = new javax.swing.JTable();
@@ -1082,14 +1082,14 @@ public class MainWindow extends javax.swing.JFrame {
         lblTotalTaxAmount1 = new javax.swing.JLabel();
         bgInputRecords = new javax.swing.JLabel();
         productRecordsTab = new javax.swing.JPanel();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        scrollPaneProductReport = new javax.swing.JScrollPane();
         productRecordsTable = new javax.swing.JTable();
         totalProductsField = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
+        lblTotalProducts = new javax.swing.JLabel();
+        lblTotalUnits = new javax.swing.JLabel();
         totalUnitsField = new javax.swing.JTextField();
         inventorySaleValueField = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
+        lblInventorySaleValue = new javax.swing.JLabel();
         bgProductRecords = new javax.swing.JLabel();
 
         jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1136,41 +1136,42 @@ public class MainWindow extends javax.swing.JFrame {
         bgEmployeeManagement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tea Shop Version 0.98");
-        setMinimumSize(new java.awt.Dimension(600, 450));
+        setTitle("Tea Shop Version 1.02");
+        setMinimumSize(new java.awt.Dimension(1000, 620));
+        setPreferredSize(new java.awt.Dimension(1000, 620));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.setMinimumSize(new java.awt.Dimension(600, 420));
-        jPanel2.setPreferredSize(new java.awt.Dimension(600, 420));
-        jPanel2.setLayout(new java.awt.CardLayout());
+        frameTeaShop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        frameTeaShop.setMinimumSize(new java.awt.Dimension(1000, 620));
+        frameTeaShop.setPreferredSize(new java.awt.Dimension(1000, 620));
+        frameTeaShop.setLayout(new java.awt.CardLayout());
 
-        signInWindow.setMinimumSize(new java.awt.Dimension(600, 400));
-        signInWindow.setPreferredSize(new java.awt.Dimension(600, 400));
+        signInWindow.setMinimumSize(new java.awt.Dimension(1000, 620));
+        signInWindow.setPreferredSize(new java.awt.Dimension(1000, 620));
         signInWindow.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tea Shop Sign In");
-        signInWindow.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 600, -1));
-        signInWindow.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 70, -1));
+        lblTitle.setFont(new java.awt.Font("Microsoft JhengHei", 1, 24)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitle.setText("Tea Shop Sign In");
+        signInWindow.add(lblTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1010, -1));
+        signInWindow.add(username, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 130, 70, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Username:");
-        signInWindow.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, -1, -1));
+        lblUsername.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsername.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblUsername.setText("Username:");
+        signInWindow.add(lblUsername, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 130, -1, -1));
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Password:");
-        signInWindow.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        lblPW.setForeground(new java.awt.Color(255, 255, 255));
+        lblPW.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPW.setText("Password:");
+        signInWindow.add(lblPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordActionPerformed(evt);
             }
         });
-        signInWindow.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 70, -1));
+        signInWindow.add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 70, -1));
 
         empSignIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         empSignIn.setText("Employee Sign In");
@@ -1179,7 +1180,7 @@ public class MainWindow extends javax.swing.JFrame {
                 empSignInActionPerformed(evt);
             }
         });
-        signInWindow.add(empSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        signInWindow.add(empSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
 
         manSignIn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         manSignIn.setText("Manager Sign In");
@@ -1188,7 +1189,7 @@ public class MainWindow extends javax.swing.JFrame {
                 manSignInActionPerformed(evt);
             }
         });
-        signInWindow.add(manSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
+        signInWindow.add(manSignIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 220, -1, -1));
 
         quitApplication.setText("Quit Application");
         quitApplication.addActionListener(new java.awt.event.ActionListener() {
@@ -1196,61 +1197,61 @@ public class MainWindow extends javax.swing.JFrame {
                 quitApplicationActionPerformed(evt);
             }
         });
-        signInWindow.add(quitApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
+        signInWindow.add(quitApplication, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, -1, -1));
 
         incorrectPasswordLabel.setForeground(new java.awt.Color(255, 255, 255));
         incorrectPasswordLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         incorrectPasswordLabel.setText("Incorrect password. Try again.");
         incorrectPasswordLabel.setToolTipText("");
-        signInWindow.add(incorrectPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 600, -1));
+        signInWindow.add(incorrectPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1000, -1));
 
         incorrectUserLabel.setForeground(new java.awt.Color(255, 255, 255));
         incorrectUserLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         incorrectUserLabel.setText("User not in system. Try again.");
         incorrectUserLabel.setToolTipText("");
-        signInWindow.add(incorrectUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 600, -1));
+        signInWindow.add(incorrectUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1000, -1));
 
         notManagerLabel.setForeground(new java.awt.Color(255, 255, 255));
         notManagerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         notManagerLabel.setText("User is not a manager. Try again.");
         notManagerLabel.setToolTipText("");
-        signInWindow.add(notManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 600, -1));
+        signInWindow.add(notManagerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 1000, 20));
 
         bgPicture.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureDarkened.jpg"))); // NOI18N
         bgPicture.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bgPicture.setMaximumSize(new java.awt.Dimension(600, 450));
         bgPicture.setMinimumSize(new java.awt.Dimension(600, 450));
         bgPicture.setPreferredSize(new java.awt.Dimension(600, 450));
-        signInWindow.add(bgPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 596, 416));
+        signInWindow.add(bgPicture, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 620));
 
-        jPanel2.add(signInWindow, "card7");
+        frameTeaShop.add(signInWindow, "card7");
 
-        employeeSaleMenu.setMinimumSize(new java.awt.Dimension(600, 420));
-        employeeSaleMenu.setPreferredSize(new java.awt.Dimension(600, 420));
+        employeeSaleMenu.setMinimumSize(new java.awt.Dimension(1000, 620));
+        employeeSaleMenu.setPreferredSize(new java.awt.Dimension(1000, 620));
         employeeSaleMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelEmployee.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Employee Sale Menu");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 49, Short.MAX_VALUE))
+        javax.swing.GroupLayout panelEmployeeLayout = new javax.swing.GroupLayout(panelEmployee);
+        panelEmployee.setLayout(panelEmployeeLayout);
+        panelEmployeeLayout.setHorizontalGroup(
+            panelEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEmployeeLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelEmployeeLayout.setVerticalGroup(
+            panelEmployeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEmployeeLayout.createSequentialGroup()
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 1, Short.MAX_VALUE))
         );
 
-        employeeSaleMenu.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        employeeSaleMenu.add(panelEmployee, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
 
         cartTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         cartTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1273,24 +1274,24 @@ public class MainWindow extends javax.swing.JFrame {
                 cartTablePropertyChange(evt);
             }
         });
-        jScrollPane1.setViewportView(cartTable);
+        empCartScrollTable.setViewportView(cartTable);
 
-        employeeSaleMenu.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 190, 240));
+        employeeSaleMenu.add(empCartScrollTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 320, 450));
 
-        jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Cart");
-        employeeSaleMenu.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 190, -1));
+        lblEmpCartTable.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        lblEmpCartTable.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpCartTable.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmpCartTable.setText("Cart");
+        employeeSaleMenu.add(lblEmpCartTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 320, -1));
 
-        jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Product Log");
-        employeeSaleMenu.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 270, -1));
+        lblEmpProductLogTitle.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
+        lblEmpProductLogTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpProductLogTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmpProductLogTitle.setText("Product Log");
+        employeeSaleMenu.add(lblEmpProductLogTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 500, -1));
 
-        productTable.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        productTable.setModel(new javax.swing.table.DefaultTableModel(
+        empProductLog.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        empProductLog.setModel(new javax.swing.table.DefaultTableModel(
             getProductListLite(store1),
             new String [] {
                 "ID", "Name", "Price", "Quantity"
@@ -1304,31 +1305,31 @@ public class MainWindow extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        productTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        empProductLog.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                productTableMouseClicked(evt);
+                empProductLogMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(productTable);
-        productTable.setAutoCreateRowSorter(true);
+        empScrollPaneProductLog.setViewportView(empProductLog);
+        empProductLog.setAutoCreateRowSorter(true);
         //Set first column (IDs) to be smaller than the rest
-        productTable.getColumnModel().getColumn(0).setPreferredWidth(32);
+        empProductLog.getColumnModel().getColumn(0).setPreferredWidth(32);
         //Set third column (price) to be smaller than the rest
-        productTable.getColumnModel().getColumn(2).setPreferredWidth(45);
+        empProductLog.getColumnModel().getColumn(2).setPreferredWidth(45);
         //Set fourth column (quantity) to be smaller than the rest
-        productTable.getColumnModel().getColumn(3).setPreferredWidth(32);
+        empProductLog.getColumnModel().getColumn(3).setPreferredWidth(32);
 
-        employeeSaleMenu.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 350));
+        employeeSaleMenu.add(empScrollPaneProductLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 560));
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel7.setText("Quantity:");
-        employeeSaleMenu.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        lblEmpQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmpQuantity.setText("Quantity:");
+        employeeSaleMenu.add(lblEmpQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, -1, -1));
 
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel8.setText("ID:");
-        employeeSaleMenu.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, -1));
+        lblEmpID.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmpID.setText("ID:");
+        employeeSaleMenu.add(lblEmpID, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 50, -1));
 
         selectedID.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         selectedID.setPreferredSize(new java.awt.Dimension(90, 22));
@@ -1337,11 +1338,11 @@ public class MainWindow extends javax.swing.JFrame {
                 selectedIDActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(selectedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 110, -1));
+        employeeSaleMenu.add(selectedID, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 120, -1));
 
         selectedQuantity.setName(""); // NOI18N
         selectedQuantity.setPreferredSize(new java.awt.Dimension(90, 22));
-        employeeSaleMenu.add(selectedQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 110, -1));
+        employeeSaleMenu.add(selectedQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 120, -1));
 
         btnAddToCart.setText("Add to Cart");
         btnAddToCart.addActionListener(new java.awt.event.ActionListener() {
@@ -1349,7 +1350,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnAddToCartActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 100, -1));
+        employeeSaleMenu.add(btnAddToCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, 100, -1));
 
         btnClearCart.setText("Clear Cart");
         btnClearCart.addActionListener(new java.awt.event.ActionListener() {
@@ -1357,7 +1358,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnClearCartActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(btnClearCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 90, -1));
+        employeeSaleMenu.add(btnClearCart, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, 90, -1));
 
         subTotalAmount.setEditable(false);
         subTotalAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1367,7 +1368,7 @@ public class MainWindow extends javax.swing.JFrame {
                 subTotalAmountActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(subTotalAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 70, -1));
+        employeeSaleMenu.add(subTotalAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 50, 70, -1));
 
         taxAmount.setEditable(false);
         taxAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1377,12 +1378,12 @@ public class MainWindow extends javax.swing.JFrame {
                 taxAmountActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(taxAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 70, -1));
+        employeeSaleMenu.add(taxAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 70, -1));
 
         totalAmount.setEditable(false);
         totalAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         totalAmount.setText("$0.00");
-        employeeSaleMenu.add(totalAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 70, -1));
+        employeeSaleMenu.add(totalAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 70, -1));
 
         btnSale.setText("Complete Sale");
         btnSale.addActionListener(new java.awt.event.ActionListener() {
@@ -1390,22 +1391,22 @@ public class MainWindow extends javax.swing.JFrame {
                 btnSaleActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(btnSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 110, 30));
+        employeeSaleMenu.add(btnSale, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 110, 30));
 
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel9.setText("Tax:");
-        employeeSaleMenu.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 40, -1));
+        lblEmpTax.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpTax.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmpTax.setText("Tax:");
+        employeeSaleMenu.add(lblEmpTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 80, 40, -1));
 
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Total:");
-        employeeSaleMenu.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 40, -1));
+        lblEmpTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmpTotal.setText("Total:");
+        employeeSaleMenu.add(lblEmpTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 110, 40, -1));
 
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Sub:");
-        employeeSaleMenu.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 40, -1));
+        lblEmpSubTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmpSubTotal.setText("Sub:");
+        employeeSaleMenu.add(lblEmpSubTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 50, 40, -1));
 
         btnLogOut.setText("Log out");
         btnLogOut.addActionListener(new java.awt.event.ActionListener() {
@@ -1413,22 +1414,24 @@ public class MainWindow extends javax.swing.JFrame {
                 btnLogOutActionPerformed(evt);
             }
         });
-        employeeSaleMenu.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, -1, -1));
+        employeeSaleMenu.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 540, -1, -1));
 
         bgEmployeeSaleMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        employeeSaleMenu.add(bgEmployeeSaleMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 420));
+        employeeSaleMenu.add(bgEmployeeSaleMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 620));
 
-        jPanel2.add(employeeSaleMenu, "card3");
+        frameTeaShop.add(employeeSaleMenu, "card3");
 
         managerMenuWindow.setForeground(new java.awt.Color(255, 255, 255));
+        managerMenuWindow.setMinimumSize(new java.awt.Dimension(1000, 620));
+        managerMenuWindow.setPreferredSize(new java.awt.Dimension(1000, 620));
         managerMenuWindow.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 managerMenuWindowFocusGained(evt);
             }
         });
 
-        saleMenuTab.setMinimumSize(new java.awt.Dimension(600, 400));
-        saleMenuTab.setPreferredSize(new java.awt.Dimension(600, 400));
+        saleMenuTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        saleMenuTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         saleMenuTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titlePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -1441,9 +1444,10 @@ public class MainWindow extends javax.swing.JFrame {
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(titlePanelLayout.createSequentialGroup()
-                .addComponent(menuTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(menuTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1474,21 +1478,21 @@ public class MainWindow extends javax.swing.JFrame {
                 cartTableForManagerPropertyChange(evt);
             }
         });
-        jScrollPane3.setViewportView(cartTableForManager);
+        manScrollPanelCartTable.setViewportView(cartTableForManager);
 
-        saleMenuTab.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 160, 190, 210));
+        saleMenuTab.add(manScrollPanelCartTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 310, 390));
 
         cartLabel.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         cartLabel.setForeground(new java.awt.Color(255, 255, 255));
         cartLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cartLabel.setText("Cart");
-        saleMenuTab.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 190, -1));
+        saleMenuTab.add(cartLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 310, -1));
 
         productLogLabel.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         productLogLabel.setForeground(new java.awt.Color(255, 255, 255));
         productLogLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         productLogLabel.setText("Product Log");
-        saleMenuTab.add(productLogLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 270, -1));
+        saleMenuTab.add(productLogLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 490, -1));
 
         productTableForManager.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         productTableForManager.setModel(new javax.swing.table.DefaultTableModel(
@@ -1510,7 +1514,7 @@ public class MainWindow extends javax.swing.JFrame {
                 productTableForManagerMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(productTableForManager);
+        manScrollPaneProductLog.setViewportView(productTableForManager);
         //Set first column (IDs) to be smaller than the rest
         productTableForManager.getColumnModel().getColumn(0).setPreferredWidth(32);
         productTableForManager.getColumnModel().getColumn(0).setMaxWidth(32);
@@ -1524,17 +1528,17 @@ public class MainWindow extends javax.swing.JFrame {
         productTableForManager.getColumnModel().getColumn(3).setMaxWidth(32);
         productTableForManager.getColumnModel().getColumn(3).setMinWidth(32);
 
-        saleMenuTab.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 270, 320));
+        saleMenuTab.add(manScrollPaneProductLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 500));
 
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel15.setText("Quantity:");
-        saleMenuTab.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 80, -1, -1));
+        lblManQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblManQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblManQuantity.setText("Quantity:");
+        saleMenuTab.add(lblManQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 80, -1, -1));
 
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel16.setText("ID:");
-        saleMenuTab.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 50, -1));
+        lblManID.setForeground(new java.awt.Color(255, 255, 255));
+        lblManID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblManID.setText("ID:");
+        saleMenuTab.add(lblManID, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 50, -1));
 
         selectedIDForManager.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         selectedIDForManager.setPreferredSize(new java.awt.Dimension(90, 22));
@@ -1543,27 +1547,27 @@ public class MainWindow extends javax.swing.JFrame {
                 selectedIDForManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(selectedIDForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 50, 110, -1));
+        saleMenuTab.add(selectedIDForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 120, -1));
 
         selectedQuantityForManager.setName(""); // NOI18N
         selectedQuantityForManager.setPreferredSize(new java.awt.Dimension(90, 22));
-        saleMenuTab.add(selectedQuantityForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 80, 110, -1));
+        saleMenuTab.add(selectedQuantityForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 80, 120, -1));
 
-        btnAddToCart1.setText("Add to Cart");
-        btnAddToCart1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddToCartManager.setText("Add to Cart");
+        btnAddToCartManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddToCart1ActionPerformed(evt);
+                btnAddToCartManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(btnAddToCart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 110, 100, -1));
+        saleMenuTab.add(btnAddToCartManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 100, -1));
 
-        btnClearCart1.setText("Clear Cart");
-        btnClearCart1.addActionListener(new java.awt.event.ActionListener() {
+        btnClearCartManager.setText("Clear Cart");
+        btnClearCartManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnClearCart1ActionPerformed(evt);
+                btnClearCartManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(btnClearCart1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 90, -1));
+        saleMenuTab.add(btnClearCartManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 110, 90, -1));
 
         subTotalAmountForManager.setEditable(false);
         subTotalAmountForManager.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1573,7 +1577,7 @@ public class MainWindow extends javax.swing.JFrame {
                 subTotalAmountForManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(subTotalAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 70, -1));
+        saleMenuTab.add(subTotalAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 50, 70, -1));
 
         taxAmountForManager.setEditable(false);
         taxAmountForManager.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -1583,50 +1587,52 @@ public class MainWindow extends javax.swing.JFrame {
                 taxAmountForManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(taxAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 70, -1));
+        saleMenuTab.add(taxAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, 70, -1));
 
         totalAmountForManager.setEditable(false);
         totalAmountForManager.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         totalAmountForManager.setText("$0.00");
-        saleMenuTab.add(totalAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, 70, -1));
+        saleMenuTab.add(totalAmountForManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 110, 70, -1));
 
-        btnSale1.setText("Complete Sale");
-        btnSale1.addActionListener(new java.awt.event.ActionListener() {
+        btnSaleManager.setText("Complete Sale");
+        btnSaleManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSale1ActionPerformed(evt);
+                btnSaleManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(btnSale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 160, 110, 30));
+        saleMenuTab.add(btnSaleManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 160, 110, 30));
 
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel17.setText("Tax:");
-        saleMenuTab.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 80, 40, -1));
+        lblManTax.setForeground(new java.awt.Color(255, 255, 255));
+        lblManTax.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblManTax.setText("Tax:");
+        saleMenuTab.add(lblManTax, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 80, 40, -1));
 
-        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel18.setText("Total:");
-        saleMenuTab.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 40, -1));
+        lblManTotal.setForeground(new java.awt.Color(255, 255, 255));
+        lblManTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblManTotal.setText("Total:");
+        saleMenuTab.add(lblManTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 110, 40, -1));
 
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel19.setText("Sub:");
-        saleMenuTab.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 40, -1));
+        lblManSub.setForeground(new java.awt.Color(255, 255, 255));
+        lblManSub.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblManSub.setText("Sub:");
+        saleMenuTab.add(lblManSub, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 50, 40, -1));
 
-        btnLogOut1.setText("Log out");
-        btnLogOut1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogOutManager.setText("Log out");
+        btnLogOutManager.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogOut1ActionPerformed(evt);
+                btnLogOutManagerActionPerformed(evt);
             }
         });
-        saleMenuTab.add(btnLogOut1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 80, 20));
+        saleMenuTab.add(btnLogOutManager, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, 80, 20));
 
         bgManagerSaleMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        saleMenuTab.add(bgManagerSaleMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 600, 420));
+        saleMenuTab.add(bgManagerSaleMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 1000, 620));
 
         managerMenuWindow.addTab("Sale Menu", saleMenuTab);
         saleMenuTab.getAccessibleContext().setAccessibleName("Sale Menu");
 
+        productManagementTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        productManagementTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         productManagementTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         productManagementTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1648,8 +1654,8 @@ public class MainWindow extends javax.swing.JFrame {
                 productManagementTableMouseClicked(evt);
             }
         });
-        jScrollPane5.setViewportView(productManagementTable);
-        jScrollPane5.setViewportView(productManagementTable);
+        scrollPaneProductManagement.setViewportView(productManagementTable);
+        scrollPaneProductManagement.setViewportView(productManagementTable);
         productManagementTable.setAutoCreateRowSorter(true);
         if (productManagementTable.getColumnModel().getColumnCount() > 0) {
             productManagementTable.getColumnModel().getColumn(0).setMinWidth(35);
@@ -1672,67 +1678,67 @@ public class MainWindow extends javax.swing.JFrame {
             productManagementTable.getColumnModel().getColumn(6).setMaxWidth(35);
         }
 
-        productManagementTab.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, 320));
+        productManagementTab.add(scrollPaneProductManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 810, 500));
 
-        jLabel12.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel12.setText("Product Management");
-        productManagementTab.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 140, -1));
+        lblProductManagementTitle.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
+        lblProductManagementTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductManagementTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblProductManagementTitle.setText("Product Management");
+        productManagementTab.add(lblProductManagementTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 170, -1));
 
         selectedIDProdManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedIDProdManagementActionPerformed(evt);
             }
         });
-        productManagementTab.add(selectedIDProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 70, -1));
-        productManagementTab.add(selectedNameProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 70, -1));
-        productManagementTab.add(selectedPriceProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 70, -1));
-        productManagementTab.add(selectedQuantityProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 70, -1));
-        productManagementTab.add(selectedTaxRateProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 70, -1));
-        productManagementTab.add(selectedDiscountProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 70, -1));
+        productManagementTab.add(selectedIDProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 90, -1));
+        productManagementTab.add(selectedNameProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 90, -1));
+        productManagementTab.add(selectedPriceProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 90, -1));
+        productManagementTab.add(selectedQuantityProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 120, 90, -1));
+        productManagementTab.add(selectedTaxRateProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 90, -1));
+        productManagementTab.add(selectedDiscountProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 90, -1));
 
         selectedTypeProdManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedTypeProdManagementActionPerformed(evt);
             }
         });
-        productManagementTab.add(selectedTypeProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 70, -1));
+        productManagementTab.add(selectedTypeProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 90, -1));
 
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel13.setText("Type:");
-        productManagementTab.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 50, -1));
+        lblProductType.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductType.setText("Type:");
+        productManagementTab.add(lblProductType, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 50, -1));
 
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel14.setText("ID:");
-        productManagementTab.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 50, -1));
+        lblProductId.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductId.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductId.setText("ID:");
+        productManagementTab.add(lblProductId, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 50, -1));
 
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel20.setText("Name:");
-        productManagementTab.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 50, -1));
+        lblProductName.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductName.setText("Name:");
+        productManagementTab.add(lblProductName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 50, -1));
 
-        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel21.setText("Price:");
-        productManagementTab.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 50, -1));
+        lblProductPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductPrice.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductPrice.setText("Price:");
+        productManagementTab.add(lblProductPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 50, -1));
 
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel22.setText("Quantity:");
-        productManagementTab.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 50, -1));
+        lblProductQuantity.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductQuantity.setText("Quantity:");
+        productManagementTab.add(lblProductQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 50, -1));
 
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel23.setText("Tax Rate:");
-        productManagementTab.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 50, -1));
+        lblProductTaxRate.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductTaxRate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductTaxRate.setText("Tax Rate:");
+        productManagementTab.add(lblProductTaxRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 50, -1));
 
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel24.setText("Discount:");
-        productManagementTab.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 50, -1));
+        lblProductDiscount.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductDiscount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblProductDiscount.setText("Discount:");
+        productManagementTab.add(lblProductDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 50, -1));
 
         btnAddProduct.setText("Add Product");
         btnAddProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -1740,7 +1746,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnAddProductActionPerformed(evt);
             }
         });
-        productManagementTab.add(btnAddProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 120, -1));
+        productManagementTab.add(btnAddProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 140, -1));
 
         btnModifyProduct.setText("Modify by ID");
         btnModifyProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -1748,7 +1754,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnModifyProductActionPerformed(evt);
             }
         });
-        productManagementTab.add(btnModifyProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 120, -1));
+        productManagementTab.add(btnModifyProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 140, -1));
 
         btnDeleteProduct.setText("Delete by ID");
         btnDeleteProduct.addActionListener(new java.awt.event.ActionListener() {
@@ -1756,7 +1762,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnDeleteProductActionPerformed(evt);
             }
         });
-        productManagementTab.add(btnDeleteProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 120, -1));
+        productManagementTab.add(btnDeleteProduct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 140, -1));
 
         btnClearProdManagement.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnClearProdManagement.setText("Clear All");
@@ -1765,7 +1771,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnClearProdManagementActionPerformed(evt);
             }
         });
-        productManagementTab.add(btnClearProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 20));
+        productManagementTab.add(btnClearProdManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 100, 20));
 
         searchFieldProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1777,32 +1783,37 @@ public class MainWindow extends javax.swing.JFrame {
                 searchFieldProductsKeyReleased(evt);
             }
         });
-        productManagementTab.add(searchFieldProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 160, -1));
+        productManagementTab.add(searchFieldProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 520, 170, -1));
 
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel25.setText("Search:");
-        productManagementTab.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 340, 70, -1));
+        lblProductSearch.setForeground(new java.awt.Color(255, 255, 255));
+        lblProductSearch.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblProductSearch.setText("Search:");
+        productManagementTab.add(lblProductSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 50, -1));
 
-        btnLogOut2.setText("Log out");
-        btnLogOut2.addActionListener(new java.awt.event.ActionListener() {
+        btnLogOutProductManagement.setText("Log out");
+        btnLogOutProductManagement.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLogOut2ActionPerformed(evt);
+                btnLogOutProductManagementActionPerformed(evt);
             }
         });
-        productManagementTab.add(btnLogOut2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, 80, 20));
+        productManagementTab.add(btnLogOutProductManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 520, 80, 20));
 
         bgProductManagement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        productManagementTab.add(bgProductManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 600, 420));
+        productManagementTab.add(bgProductManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 1000, 620));
 
         managerMenuWindow.addTab("Product Manangement", productManagementTab);
 
+        employeesManagementTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        employeesManagementTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         employeesManagementTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTabbedPane1.setForeground(new java.awt.Color(255, 255, 255));
-        jTabbedPane1.setOpaque(true);
-        jTabbedPane1.setPreferredSize(new java.awt.Dimension(600, 400));
+        employeeManagementTabs.setForeground(new java.awt.Color(255, 255, 255));
+        employeeManagementTabs.setMinimumSize(new java.awt.Dimension(1000, 620));
+        employeeManagementTabs.setOpaque(true);
+        employeeManagementTabs.setPreferredSize(new java.awt.Dimension(1000, 620));
 
+        employeeInfoTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        employeeInfoTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         employeeInfoTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -1818,127 +1829,135 @@ public class MainWindow extends javax.swing.JFrame {
                 jTable1MouseClicked(evt);
             }
         });
-        jScrollPane8.setViewportView(jTable1);
+        scrollPaneEmployeeManagement.setViewportView(jTable1);
 
-        employeeInfoTab.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 39, 347, 223));
+        employeeInfoTab.add(scrollPaneEmployeeManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 39, 730, 420));
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText("List of Employees");
-        employeeInfoTab.add(jLabel29, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 11, -1, -1));
+        lblEmployeeTableTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmployeeTableTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmployeeTableTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEmployeeTableTitle.setText("List of Employees");
+        employeeInfoTab.add(lblEmployeeTableTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 11, 730, -1));
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton1.setText("Update");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnEmployeeManagementUpdate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEmployeeManagementUpdate.setText("Update");
+        btnEmployeeManagementUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnEmployeeManagementUpdateActionPerformed(evt);
             }
         });
-        employeeInfoTab.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 274, -1, -1));
+        employeeInfoTab.add(btnEmployeeManagementUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 320, 90, -1));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton2.setText("Add");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnEmployeeManagementAdd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEmployeeManagementAdd.setText("Add");
+        btnEmployeeManagementAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnEmployeeManagementAddActionPerformed(evt);
             }
         });
-        employeeInfoTab.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(297, 274, 56, -1));
+        employeeInfoTab.add(btnEmployeeManagementAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 320, 90, -1));
 
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton3.setText("Delete");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEmployeeManagementDelete.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEmployeeManagementDelete.setText("Delete");
+        btnEmployeeManagementDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEmployeeManagementDeleteActionPerformed(evt);
             }
         });
-        employeeInfoTab.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(518, 274, -1, -1));
+        employeeInfoTab.add(btnEmployeeManagementDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 360, 90, -1));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("Name");
-        employeeInfoTab.add(jLabel30, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 39, -1, -1));
+        lblEmpManagementName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementName.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementName.setText("Name");
+        employeeInfoTab.add(lblEmpManagementName, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 80, -1, -1));
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText("Id Number");
-        employeeInfoTab.add(jLabel31, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 71, -1, -1));
+        lblEmpManagementId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementId.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementId.setText("Id Number");
+        employeeInfoTab.add(lblEmpManagementId, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 110, -1, -1));
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText("Position");
-        employeeInfoTab.add(jLabel32, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 105, -1, -1));
+        lblEmpManagementPosition.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementPosition.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementPosition.setText("Position");
+        employeeInfoTab.add(lblEmpManagementPosition, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 150, -1, -1));
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText("Wage");
-        employeeInfoTab.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 139, 37, -1));
+        lblEmpManagementWage.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementWage.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementWage.setText("Wage");
+        employeeInfoTab.add(lblEmpManagementWage, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 37, -1));
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText("Hours");
-        employeeInfoTab.add(jLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 173, -1, -1));
+        lblEmpManagementHours.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementHours.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementHours.setText("Hours");
+        employeeInfoTab.add(lblEmpManagementHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 220, -1, -1));
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText("Password");
-        employeeInfoTab.add(jLabel35, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 207, -1, -1));
+        lblEmpManagementPW.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementPW.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementPW.setText("Password");
+        employeeInfoTab.add(lblEmpManagementPW, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 250, -1, -1));
 
-        jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel36.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel36.setText("Manager Access?");
-        employeeInfoTab.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 241, -1, -1));
-        employeeInfoTab.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(413, 39, 178, -1));
-        employeeInfoTab.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(443, 71, 148, -1));
-        employeeInfoTab.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 139, 177, -1));
-        employeeInfoTab.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 173, 177, -1));
-        employeeInfoTab.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(435, 207, 156, -1));
+        lblEmpManagementManagerAccess.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementManagerAccess.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementManagerAccess.setText("Manager Access?");
+        employeeInfoTab.add(lblEmpManagementManagerAccess, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, -1, -1));
+        employeeInfoTab.add(empManagementName, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 178, -1));
+        employeeInfoTab.add(empManagementId, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 110, 148, -1));
+        employeeInfoTab.add(empManagementWage, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 177, -1));
+        employeeInfoTab.add(empManagementHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 177, -1));
+        employeeInfoTab.add(empManagementPWField, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 156, -1));
 
-        jLabel37.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel37.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel37.setText("Information");
-        employeeInfoTab.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 103, -1));
+        lblEmpManagementInfoTitle.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementInfoTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementInfoTitle.setText("Information");
+        employeeInfoTab.add(lblEmpManagementInfoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 103, -1));
 
-        jCheckBox1.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setText("Yes");
-        employeeInfoTab.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(488, 242, -1, -1));
+        empManagementYesRadio.setForeground(new java.awt.Color(255, 255, 255));
+        empManagementYesRadio.setText("Yes");
+        employeeInfoTab.add(empManagementYesRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 280, -1, -1));
 
-        jCheckBox2.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setText("No");
-        employeeInfoTab.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(541, 242, -1, -1));
+        empManagementNoRadio.setForeground(new java.awt.Color(255, 255, 255));
+        empManagementNoRadio.setText("No");
+        employeeInfoTab.add(empManagementNoRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, -1, -1));
 
-        jButton7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton7.setText("Clear");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnEmpManagementClear.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEmpManagementClear.setText("Clear");
+        btnEmpManagementClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnEmpManagementClearActionPerformed(evt);
             }
         });
-        employeeInfoTab.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 274, -1, -1));
+        employeeInfoTab.add(btnEmpManagementClear, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 360, 90, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Admin", "Barista", "Manager", "Shift Lead" }));
-        employeeInfoTab.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(432, 105, 160, -1));
+        empManagementPostionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Admin", "Barista", "Manager", "Shift Lead" }));
+        employeeInfoTab.add(empManagementPostionBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 150, 160, -1));
 
-        jLabel38.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel38.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel38.setText("SEARCH:");
-        employeeInfoTab.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 277, -1, -1));
+        lblEmpManagementSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblEmpManagementSearch.setForeground(new java.awt.Color(255, 255, 255));
+        lblEmpManagementSearch.setText("SEARCH:");
+        employeeInfoTab.add(lblEmpManagementSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
 
-        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+        empManagementSearchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empManagementSearchFieldActionPerformed(evt);
+            }
+        });
+        empManagementSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField3KeyPressed(evt);
+                empManagementSearchFieldKeyPressed(evt);
             }
         });
-        employeeInfoTab.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 277, 192, -1));
+        employeeInfoTab.add(empManagementSearchField, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 200, -1));
 
         bgEmployeeInfoTab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        employeeInfoTab.add(bgEmployeeInfoTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -65, 600, 420));
+        employeeInfoTab.add(bgEmployeeInfoTab, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -65, 1000, 620));
 
-        jTabbedPane1.addTab("Employee Information", employeeInfoTab);
+        employeeManagementTabs.addTab("Employee Information", employeeInfoTab);
 
+        businessDetailsTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        businessDetailsTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         businessDetailsTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        busniessHoursTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Sunday", "9:00", "14:00"},
                 {"Monday", "6:00", "17:00"},
@@ -1952,77 +1971,80 @@ public class MainWindow extends javax.swing.JFrame {
                 "Day", "Open", "Close"
             }
         ));
-        jTable5.addMouseListener(new java.awt.event.MouseAdapter() {
+        busniessHoursTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable5MouseClicked(evt);
+                busniessHoursTableMouseClicked(evt);
             }
         });
-        jScrollPane9.setViewportView(jTable5);
+        scrollPaneBusinessHours.setViewportView(busniessHoursTable);
 
-        businessDetailsTab.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 61, 310, 179));
+        businessDetailsTab.add(scrollPaneBusinessHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 670, 170));
 
-        jLabel39.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel39.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("Business Hours");
-        businessDetailsTab.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, -1));
+        lblBusinessDetailsTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblBusinessDetailsTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBusinessDetailsTitle.setText("Business Hours");
+        businessDetailsTab.add(lblBusinessDetailsTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 300, -1));
 
-        jLabel40.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel40.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel40.setText("Update Hours");
-        businessDetailsTab.add(jLabel40, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 20, 150, -1));
+        lblBusinessDetailsHoursTitle.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblBusinessDetailsHoursTitle.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsHoursTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBusinessDetailsHoursTitle.setText("Update Hours");
+        businessDetailsTab.add(lblBusinessDetailsHoursTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 130, 150, -1));
 
-        jLabel41.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel41.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel41.setText("Day");
-        businessDetailsTab.add(jLabel41, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 30, -1));
+        lblBusinessDetailsDay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblBusinessDetailsDay.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsDay.setText("Day");
+        businessDetailsTab.add(lblBusinessDetailsDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, 30, -1));
 
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel42.setText("Open Time");
-        businessDetailsTab.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        lblBusinessDetailsOpenTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblBusinessDetailsOpenTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsOpenTime.setText("Open Time");
+        businessDetailsTab.add(lblBusinessDetailsOpenTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, -1, -1));
 
-        jLabel43.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel43.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel43.setText("Close Time");
-        businessDetailsTab.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, -1, -1));
+        lblBusinessDetailsCloseTime.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblBusinessDetailsCloseTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsCloseTime.setText("Close Time");
+        businessDetailsTab.add(lblBusinessDetailsCloseTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, -1, -1));
 
-        jComboBox6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
-        businessDetailsTab.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
+        businessDetailsOpenBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        businessDetailsOpenBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
+        businessDetailsTab.add(businessDetailsOpenBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, -1, -1));
 
-        jComboBox7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
-        businessDetailsTab.add(jComboBox7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 150, -1, -1));
+        businessDetailsCloseBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        businessDetailsCloseBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
+        businessDetailsTab.add(businessDetailsCloseBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 260, -1, -1));
 
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jButton9.setText("Update");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
+        btnBusinessHoursUpdate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBusinessHoursUpdate.setText("Update");
+        btnBusinessHoursUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
+                btnBusinessHoursUpdateActionPerformed(evt);
             }
         });
-        businessDetailsTab.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 200, -1, -1));
+        businessDetailsTab.add(btnBusinessHoursUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 310, -1, -1));
 
-        lblDay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblDay.setForeground(new java.awt.Color(255, 255, 255));
-        lblDay.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        businessDetailsTab.add(lblDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 70, 90, 20));
+        lblBusinessDetailsShowDay.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblBusinessDetailsShowDay.setForeground(new java.awt.Color(255, 255, 255));
+        lblBusinessDetailsShowDay.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        businessDetailsTab.add(lblBusinessDetailsShowDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 180, 90, 20));
 
-        bgEmployeeManagement1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        businessDetailsTab.add(bgEmployeeManagement1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -35, 600, 420));
+        bgTransactionRecords3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
+        businessDetailsTab.add(bgTransactionRecords3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, 630));
 
-        jTabbedPane1.addTab("Business Details", businessDetailsTab);
+        employeeManagementTabs.addTab("Business Details", businessDetailsTab);
 
+        scheduleTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        scheduleTab.setPreferredSize(new java.awt.Dimension(1000, 620));
         scheduleTab.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel48.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel48.setText("Employees");
-        scheduleTab.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 15, -1, -1));
+        lblScheduleTitleEmp.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblScheduleTitleEmp.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleTitleEmp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblScheduleTitleEmp.setText("Employees");
+        scheduleTab.add(lblScheduleTitleEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 210, -1));
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        scheduleEmployeeNamesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -2030,21 +2052,22 @@ public class MainWindow extends javax.swing.JFrame {
                 "Name"
             }
         ));
-        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+        scheduleEmployeeNamesTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable2MouseClicked(evt);
+                scheduleEmployeeNamesTableMouseClicked(evt);
             }
         });
-        jScrollPane10.setViewportView(jTable2);
+        scrollPaneScheduleEmployees.setViewportView(scheduleEmployeeNamesTable);
 
-        scheduleTab.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 41, 129, 273));
+        scheduleTab.add(scrollPaneScheduleEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 51, 220, 460));
 
-        jLabel49.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setText("Schedule");
-        scheduleTab.add(jLabel49, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 15, -1, -1));
+        lblScheduleTitleSch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblScheduleTitleSch.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleTitleSch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblScheduleTitleSch.setText("Schedule");
+        scheduleTab.add(lblScheduleTitleSch, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 20, 530, -1));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        scheduleEmployeesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -2052,26 +2075,26 @@ public class MainWindow extends javax.swing.JFrame {
                 "Day", "Start Time", "End Time", "Daily Hour", "Role"
             }
         ));
-        jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
+        scheduleEmployeesTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable3MouseClicked(evt);
+                scheduleEmployeesTableMouseClicked(evt);
             }
         });
-        jScrollPane11.setViewportView(jTable3);
+        scrollPaneSchedule.setViewportView(scheduleEmployeesTable);
 
-        scheduleTab.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(153, 41, 247, 273));
+        scheduleTab.add(scrollPaneSchedule, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 540, 460));
 
-        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel50.setText("Day");
-        scheduleTab.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 44, -1, -1));
+        lblScheduleDay.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleDay.setText("Day");
+        scheduleTab.add(lblScheduleDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 60, -1, -1));
 
-        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel51.setText("End Time");
-        scheduleTab.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 124, -1, -1));
+        lblScheduleEndTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleEndTime.setText("End Time");
+        scheduleTab.add(lblScheduleEndTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 140, -1, -1));
 
-        jLabel52.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel52.setText("Start Time");
-        scheduleTab.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 84, -1, -1));
+        lblScheduleStartTime.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleStartTime.setText("Start Time");
+        scheduleTab.add(lblScheduleStartTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 100, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton4.setText("Add");
@@ -2080,7 +2103,7 @@ public class MainWindow extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        scheduleTab.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 155, -1, -1));
+        scheduleTab.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 170, -1, -1));
 
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton5.setText("Update");
@@ -2089,7 +2112,7 @@ public class MainWindow extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-        scheduleTab.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 155, -1, -1));
+        scheduleTab.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 170, -1, -1));
 
         jButton6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton6.setText("Delete");
@@ -2098,7 +2121,7 @@ public class MainWindow extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
-        scheduleTab.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 194, -1, -1));
+        scheduleTab.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 210, -1, -1));
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jButton8.setText("Clear");
@@ -2107,40 +2130,43 @@ public class MainWindow extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        scheduleTab.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 194, -1, -1));
+        scheduleTab.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 210, -1, -1));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
-        scheduleTab.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 81, -1, -1));
+        scheduleTab.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 100, -1, -1));
 
         jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00" }));
-        scheduleTab.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 121, -1, -1));
+        scheduleTab.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 140, -1, -1));
 
         jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N/A", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" }));
-        scheduleTab.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 41, 99, -1));
+        scheduleTab.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 60, 99, -1));
 
-        jLabel53.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel53.setText("Scheduled Hours:");
-        scheduleTab.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 233, -1, -1));
+        lblScheduleScheduledHours.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleScheduledHours.setText("Scheduled Hours:");
+        scheduleTab.add(lblScheduleScheduledHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, -1, -1));
 
-        jLabel54.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel54.setText("Hours Limit:");
-        scheduleTab.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 255, -1, -1));
-        scheduleTab.add(lblScheduledHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 233, 43, -1));
-        scheduleTab.add(lblHoursLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(489, 255, 43, -1));
+        lblScheduleHoursLimit.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleHoursLimit.setText("Hours Limit:");
+        scheduleTab.add(lblScheduleHoursLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, -1, -1));
+        scheduleTab.add(lblShowScheduledHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 43, -1));
+        scheduleTab.add(lblShowHoursLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, 43, -1));
 
-        jLabel57.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel57.setText("Overtime:");
-        scheduleTab.add(jLabel57, new org.netbeans.lib.awtextra.AbsoluteConstraints(412, 277, -1, -1));
-        scheduleTab.add(lblOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(476, 277, 43, -1));
+        lblScheduleOvertime.setForeground(new java.awt.Color(255, 255, 255));
+        lblScheduleOvertime.setText("Overtime:");
+        scheduleTab.add(lblScheduleOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, -1, -1));
+        scheduleTab.add(lblOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, 43, -1));
 
-        bgEmployeeManagement2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        scheduleTab.add(bgEmployeeManagement2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -35, 600, 390));
+        bgTransactionRecords2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
+        scheduleTab.add(bgTransactionRecords2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, 630));
 
-        jTabbedPane1.addTab("Schedule", scheduleTab);
+        employeeManagementTabs.addTab("Schedule", scheduleTab);
 
-        employeesManagementTab.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 390));
+        employeesManagementTab.add(employeeManagementTabs, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 590));
 
         managerMenuWindow.addTab("Employee Management", employeesManagementTab);
+
+        inputManagementTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        inputManagementTab.setPreferredSize(new java.awt.Dimension(1000, 620));
 
         pnlInput.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -2148,47 +2174,47 @@ public class MainWindow extends javax.swing.JFrame {
         lblHeader.setForeground(new java.awt.Color(255, 255, 255));
         lblHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeader.setText("Input Management");
-        pnlInput.add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 163, 22));
+        pnlInput.add(lblHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 180, 22));
 
         lblLineItemID.setForeground(new java.awt.Color(255, 255, 255));
         lblLineItemID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblLineItemID.setText("ID:");
-        pnlInput.add(lblLineItemID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 76, -1));
+        pnlInput.add(lblLineItemID, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 76, -1));
 
         lblVendorName.setForeground(new java.awt.Color(255, 255, 255));
         lblVendorName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVendorName.setText("Vendor Name:");
-        pnlInput.add(lblVendorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
+        pnlInput.add(lblVendorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
 
         lblVendorCategory.setForeground(new java.awt.Color(255, 255, 255));
         lblVendorCategory.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVendorCategory.setText("Category:");
-        pnlInput.add(lblVendorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 76, -1));
+        pnlInput.add(lblVendorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 76, -1));
 
         lblInputName.setForeground(new java.awt.Color(255, 255, 255));
         lblInputName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblInputName.setText("Input Name:");
-        pnlInput.add(lblInputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 76, -1));
+        pnlInput.add(lblInputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 76, -1));
 
         lblUnitCost.setForeground(new java.awt.Color(255, 255, 255));
         lblUnitCost.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblUnitCost.setText("Unit Cost $");
-        pnlInput.add(lblUnitCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 76, -1));
+        pnlInput.add(lblUnitCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 76, -1));
 
         lblQuantity.setForeground(new java.awt.Color(255, 255, 255));
         lblQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblQuantity.setText("Quantity:");
-        pnlInput.add(lblQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 76, -1));
+        pnlInput.add(lblQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 76, -1));
 
         lblDiscount.setForeground(new java.awt.Color(255, 255, 255));
         lblDiscount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDiscount.setText("Discount %");
-        pnlInput.add(lblDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 76, -1));
+        pnlInput.add(lblDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 76, -1));
 
         lblTaxRate.setForeground(new java.awt.Color(255, 255, 255));
         lblTaxRate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblTaxRate.setText("Tax Rate %");
-        pnlInput.add(lblTaxRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 76, -1));
+        pnlInput.add(lblTaxRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 76, -1));
 
         txtLineItemID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2203,56 +2229,56 @@ public class MainWindow extends javax.swing.JFrame {
                 txtLineItemIDKeyReleased(evt);
             }
         });
-        pnlInput.add(txtLineItemID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 75, -1));
+        pnlInput.add(txtLineItemID, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 90, -1));
 
         txtVendorName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtVendorNameKeyPressed(evt);
             }
         });
-        pnlInput.add(txtVendorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 75, -1));
+        pnlInput.add(txtVendorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 90, -1));
 
         txtVendorCategory.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtVendorCategoryKeyPressed(evt);
             }
         });
-        pnlInput.add(txtVendorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 75, -1));
+        pnlInput.add(txtVendorCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 90, -1));
 
         txtInputName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtInputNameKeyPressed(evt);
             }
         });
-        pnlInput.add(txtInputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 75, -1));
+        pnlInput.add(txtInputName, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 90, -1));
 
         txtUnitCost.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUnitCostKeyPressed(evt);
             }
         });
-        pnlInput.add(txtUnitCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 75, -1));
+        pnlInput.add(txtUnitCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 90, -1));
 
         txtQuantity.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtQuantityKeyPressed(evt);
             }
         });
-        pnlInput.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 75, -1));
+        pnlInput.add(txtQuantity, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 90, -1));
 
         txtDiscount.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtDiscountKeyPressed(evt);
             }
         });
-        pnlInput.add(txtDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 270, 75, -1));
+        pnlInput.add(txtDiscount, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 90, -1));
 
         txtTaxRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtTaxRateKeyPressed(evt);
             }
         });
-        pnlInput.add(txtTaxRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 75, -1));
+        pnlInput.add(txtTaxRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 320, 90, -1));
 
         btnAdd.setFont(new java.awt.Font("Mshtakan", 1, 14)); // NOI18N
         btnAdd.setText("Add");
@@ -2261,7 +2287,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        pnlInput.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 59, -1));
+        pnlInput.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 500, 70, -1));
 
         btnUpdate.setFont(new java.awt.Font("Mshtakan", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
@@ -2275,7 +2301,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        pnlInput.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, -1));
+        pnlInput.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, -1, -1));
 
         btnDelete.setFont(new java.awt.Font("Mshtakan", 1, 14)); // NOI18N
         btnDelete.setText("Delete");
@@ -2284,7 +2310,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        pnlInput.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
+        pnlInput.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
 
         btnReset.setFont(new java.awt.Font("Mshtakan", 1, 14)); // NOI18N
         btnReset.setText("Reset");
@@ -2293,7 +2319,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
-        pnlInput.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 350, -1, -1));
+        pnlInput.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 500, 80, -1));
 
         tblInputReport.setFont(new java.awt.Font("Mshtakan", 0, 10)); // NOI18N
         tblInputReport.setModel(new javax.swing.table.DefaultTableModel(
@@ -2351,7 +2377,7 @@ public class MainWindow extends javax.swing.JFrame {
             tblInputReport.getColumnModel().getColumn(11).setPreferredWidth(50);
         }
 
-        pnlInput.add(scrlpneInputReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 6, 430, 330));
+        pnlInput.add(scrlpneInputReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 800, 480));
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2363,15 +2389,15 @@ public class MainWindow extends javax.swing.JFrame {
                 txtSearchKeyReleased(evt);
             }
         });
-        pnlInput.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 205, -1));
+        pnlInput.add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, 205, -1));
 
         lblSearch.setFont(new java.awt.Font("Mshtakan", 0, 14)); // NOI18N
         lblSearch.setForeground(new java.awt.Color(255, 255, 255));
         lblSearch.setText("Search:");
-        pnlInput.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 350, 51, -1));
+        pnlInput.add(lblSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 500, 51, -1));
 
         bgInputManagement.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        pnlInput.add(bgInputManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 600, 420));
+        pnlInput.add(bgInputManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -34, 1000, 620));
 
         javax.swing.GroupLayout inputManagementTabLayout = new javax.swing.GroupLayout(inputManagementTab);
         inputManagementTab.setLayout(inputManagementTabLayout);
@@ -2385,6 +2411,9 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         managerMenuWindow.addTab("Input Management", inputManagementTab);
+
+        recordsTab.setMinimumSize(new java.awt.Dimension(1000, 620));
+        recordsTab.setPreferredSize(new java.awt.Dimension(1000, 620));
 
         recordsTabs.setForeground(new java.awt.Color(255, 255, 255));
 
@@ -2418,7 +2447,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         int lastID = store1.getTransactions()-1;
         lastTransaction.setText(lastID + "");
-        jScrollPane6.setViewportView(transactionsRecordsTable);
+        scrollPaneTranactionRecords.setViewportView(transactionsRecordsTable);
         if (transactionsRecordsTable.getColumnModel().getColumnCount() > 0) {
             transactionsRecordsTable.getColumnModel().getColumn(0).setMinWidth(40);
             transactionsRecordsTable.getColumnModel().getColumn(0).setPreferredWidth(40);
@@ -2428,7 +2457,7 @@ public class MainWindow extends javax.swing.JFrame {
             transactionsRecordsTable.getColumnModel().getColumn(4).setMaxWidth(50);
         }
 
-        transactionsTab.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 290));
+        transactionsTab.add(scrollPaneTranactionRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
 
         lastTransaction.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         lastTransaction.addActionListener(new java.awt.event.ActionListener() {
@@ -2436,7 +2465,7 @@ public class MainWindow extends javax.swing.JFrame {
                 lastTransactionActionPerformed(evt);
             }
         });
-        transactionsTab.add(lastTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(471, 316, 90, -1));
+        transactionsTab.add(lastTransaction, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 470, 90, -1));
 
         totalRevenue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         totalRevenue.addActionListener(new java.awt.event.ActionListener() {
@@ -2444,44 +2473,44 @@ public class MainWindow extends javax.swing.JFrame {
                 totalRevenueActionPerformed(evt);
             }
         });
-        transactionsTab.add(totalRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 316, 90, -1));
+        transactionsTab.add(totalRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, 90, -1));
 
         totalSubTotalRevenue.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        transactionsTab.add(totalSubTotalRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 316, 90, -1));
+        transactionsTab.add(totalSubTotalRevenue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 90, -1));
 
         totalTaxCollected.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        transactionsTab.add(totalTaxCollected, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 316, 100, -1));
+        transactionsTab.add(totalTaxCollected, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 100, -1));
 
         totalUnitsSold.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        transactionsTab.add(totalUnitsSold, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 316, 90, -1));
+        transactionsTab.add(totalUnitsSold, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 90, -1));
 
         lastTransactionLabel.setForeground(new java.awt.Color(255, 255, 255));
         lastTransactionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lastTransactionLabel.setText("Last Transaction");
-        transactionsTab.add(lastTransactionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(461, 294, 110, -1));
+        transactionsTab.add(lastTransactionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 110, -1));
 
         totalRevenueLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalRevenueLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalRevenueLabel.setText("Total Revenue");
-        transactionsTab.add(totalRevenueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 294, 90, -1));
+        transactionsTab.add(totalRevenueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 450, 90, -1));
 
         totalSubTotalRevenueLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalSubTotalRevenueLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalSubTotalRevenueLabel.setText("Sub Total Revenue");
-        transactionsTab.add(totalSubTotalRevenueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(127, 294, 110, -1));
+        transactionsTab.add(totalSubTotalRevenueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 450, 110, -1));
 
         totalTaxCollectedLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalTaxCollectedLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalTaxCollectedLabel.setText("Total Tax Collected");
-        transactionsTab.add(totalTaxCollectedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(245, 294, -1, -1));
+        transactionsTab.add(totalTaxCollectedLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, -1, -1));
 
         totalUnitsSoldLabel.setForeground(new java.awt.Color(255, 255, 255));
         totalUnitsSoldLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         totalUnitsSoldLabel.setText("Total Units Sold");
-        transactionsTab.add(totalUnitsSoldLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 294, 90, -1));
+        transactionsTab.add(totalUnitsSoldLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 90, -1));
 
         bgTransactionRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        transactionsTab.add(bgTransactionRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 600, 430));
+        transactionsTab.add(bgTransactionRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, 630));
 
         recordsTabs.addTab("Transaction Report", transactionsTab);
 
@@ -2500,36 +2529,36 @@ public class MainWindow extends javax.swing.JFrame {
                 employeesRecordsTableMouseClicked(evt);
             }
         });
-        jScrollPane12.setViewportView(employeesRecordsTable);
+        scrollPaneEmployeeRecords.setViewportView(employeesRecordsTable);
 
-        employeeRecordsTab.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 290));
+        employeeRecordsTab.add(scrollPaneEmployeeRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
 
         totalEmployees.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        employeeRecordsTab.add(totalEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 70, -1));
+        employeeRecordsTab.add(totalEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, 70, -1));
 
         totalManagers.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        employeeRecordsTab.add(totalManagers, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 70, -1));
+        employeeRecordsTab.add(totalManagers, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, 70, -1));
 
         totalHoursWorked.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        employeeRecordsTab.add(totalHoursWorked, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 80, -1));
+        employeeRecordsTab.add(totalHoursWorked, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 470, 80, -1));
 
-        jLabel44.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel44.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel44.setText("Total Employees");
-        employeeRecordsTab.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 110, -1));
+        lblTotalEmployees.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalEmployees.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalEmployees.setText("Total Employees");
+        employeeRecordsTab.add(lblTotalEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 110, -1));
 
-        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel45.setText("Total Managers");
-        employeeRecordsTab.add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 90, -1));
+        lblTotalManagers.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalManagers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalManagers.setText("Total Managers");
+        employeeRecordsTab.add(lblTotalManagers, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 90, -1));
 
-        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel46.setText("Total Hours Worked");
-        employeeRecordsTab.add(jLabel46, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 120, -1));
+        lblTotalHoursWorked.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalHoursWorked.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalHoursWorked.setText("Total Hours Worked");
+        employeeRecordsTab.add(lblTotalHoursWorked, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, 120, -1));
 
-        bgEmployeeRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        employeeRecordsTab.add(bgEmployeeRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -60, 600, 410));
+        bgTransactionRecords1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
+        employeeRecordsTab.add(bgTransactionRecords1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, 630));
 
         recordsTabs.addTab("Employee Records", employeeRecordsTab);
 
@@ -2576,12 +2605,12 @@ public class MainWindow extends javax.swing.JFrame {
         });
         scrlpneInputReport1.setViewportView(tblInputReportRecords);
 
-        inputRecordsTab.add(scrlpneInputReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 290));
+        inputRecordsTab.add(scrlpneInputReport1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
 
         lblTotalNetCost1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalNetCost1.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalNetCost1.setText("Total Net $");
-        inputRecordsTab.add(lblTotalNetCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 290, -1, -1));
+        inputRecordsTab.add(lblTotalNetCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 450, -1, -1));
 
         txtTotalGrossCost.setEditable(false);
         txtTotalGrossCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -2590,37 +2619,37 @@ public class MainWindow extends javax.swing.JFrame {
                 txtTotalGrossCostActionPerformed(evt);
             }
         });
-        inputRecordsTab.add(txtTotalGrossCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 90, -1));
+        inputRecordsTab.add(txtTotalGrossCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 90, -1));
 
         lblTotalGrossCost1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalGrossCost1.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalGrossCost1.setText("Total Gross $");
-        inputRecordsTab.add(lblTotalGrossCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        inputRecordsTab.add(lblTotalGrossCost1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 450, -1, -1));
 
         txtTotalNetCost.setEditable(false);
         txtTotalNetCost.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        inputRecordsTab.add(txtTotalNetCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 80, -1));
+        inputRecordsTab.add(txtTotalNetCost, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 80, -1));
 
         txtTotalDiscountAmount.setEditable(false);
         txtTotalDiscountAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        inputRecordsTab.add(txtTotalDiscountAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, 90, -1));
+        inputRecordsTab.add(txtTotalDiscountAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 90, -1));
 
         lblTotalDiscountAmount1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalDiscountAmount1.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalDiscountAmount1.setText("Total Discount $");
-        inputRecordsTab.add(lblTotalDiscountAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        inputRecordsTab.add(lblTotalDiscountAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 450, -1, -1));
 
         txtTotalTaxAmount.setEditable(false);
         txtTotalTaxAmount.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        inputRecordsTab.add(txtTotalTaxAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 310, 80, -1));
+        inputRecordsTab.add(txtTotalTaxAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 470, 80, -1));
 
         lblTotalTaxAmount1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalTaxAmount1.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalTaxAmount1.setText("Total Tax $");
-        inputRecordsTab.add(lblTotalTaxAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, -1, -1));
+        inputRecordsTab.add(lblTotalTaxAmount1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, -1));
 
         bgInputRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        inputRecordsTab.add(bgInputRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 600, 430));
+        inputRecordsTab.add(bgInputRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, -1, 630));
 
         recordsTabs.addTab("Input Report", inputRecordsTab);
 
@@ -2648,36 +2677,36 @@ public class MainWindow extends javax.swing.JFrame {
                 productRecordsTableMouseClicked(evt);
             }
         });
-        jScrollPane7.setViewportView(productRecordsTable);
+        scrollPaneProductReport.setViewportView(productRecordsTable);
 
-        productRecordsTab.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 290));
+        productRecordsTab.add(scrollPaneProductReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 440));
 
         totalProductsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        productRecordsTab.add(totalProductsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 80, 30));
+        productRecordsTab.add(totalProductsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 80, 30));
 
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel26.setText("Total Products");
-        productRecordsTab.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 294, 84, -1));
+        lblTotalProducts.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalProducts.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalProducts.setText("Total Products");
+        productRecordsTab.add(lblTotalProducts, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 450, 84, -1));
 
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel27.setText("Total Units");
-        productRecordsTab.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 294, 84, -1));
+        lblTotalUnits.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalUnits.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTotalUnits.setText("Total Units");
+        productRecordsTab.add(lblTotalUnits, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 84, -1));
 
         totalUnitsField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        productRecordsTab.add(totalUnitsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 310, 84, 30));
+        productRecordsTab.add(totalUnitsField, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 470, 84, 30));
 
         inventorySaleValueField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        productRecordsTab.add(inventorySaleValueField, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 106, 30));
+        productRecordsTab.add(inventorySaleValueField, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 106, 30));
 
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("Inventory Sale Value");
-        productRecordsTab.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 294, -1, -1));
+        lblInventorySaleValue.setForeground(new java.awt.Color(255, 255, 255));
+        lblInventorySaleValue.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblInventorySaleValue.setText("Inventory Sale Value");
+        productRecordsTab.add(lblInventorySaleValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 450, -1, -1));
 
         bgProductRecords.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
-        productRecordsTab.add(bgProductRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 600, 430));
+        productRecordsTab.add(bgProductRecords, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -70, 1000, 630));
 
         recordsTabs.addTab("Product Report", productRecordsTab);
 
@@ -2685,9 +2714,7 @@ public class MainWindow extends javax.swing.JFrame {
         recordsTab.setLayout(recordsTabLayout);
         recordsTabLayout.setHorizontalGroup(
             recordsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(recordsTabLayout.createSequentialGroup()
-                .addComponent(recordsTabs, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(recordsTabs)
         );
         recordsTabLayout.setVerticalGroup(
             recordsTabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2696,29 +2723,29 @@ public class MainWindow extends javax.swing.JFrame {
 
         managerMenuWindow.addTab("Reports", recordsTab);
 
-        jPanel2.add(managerMenuWindow, "card4");
+        frameTeaShop.add(managerMenuWindow, "card4");
         managerMenuWindow.getAccessibleContext().setAccessibleName("Sale Menu");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(frameTeaShop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(frameTeaShop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setBounds(0, 0, 616, 416);
+        setBounds(0, 0, 1016, 628);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLogOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOut1ActionPerformed
+    private void btnLogOutManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutManagerActionPerformed
         signInWindow.setVisible(true);
         managerMenuWindow.setVisible(false);
-    }//GEN-LAST:event_btnLogOut1ActionPerformed
+    }//GEN-LAST:event_btnLogOutManagerActionPerformed
 
-    private void btnSale1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSale1ActionPerformed
+    private void btnSaleManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleManagerActionPerformed
         if(store1.getCart().isEmpty())
         {
             //TODO make label visibile that cart is empty
@@ -2761,7 +2788,7 @@ public class MainWindow extends javax.swing.JFrame {
             taxAmountForManager.setText(store1.getCurrentTax(store1));
             totalAmountForManager.setText(store1.getCurrentTotal(store1));
         }
-    }//GEN-LAST:event_btnSale1ActionPerformed
+    }//GEN-LAST:event_btnSaleManagerActionPerformed
 
     private void taxAmountForManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_taxAmountForManagerActionPerformed
         // TODO add your handling code here:
@@ -2771,7 +2798,7 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_subTotalAmountForManagerActionPerformed
 
-    private void btnClearCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearCart1ActionPerformed
+    private void btnClearCartManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearCartManagerActionPerformed
         if(!store1.getCart().isEmpty()){
             int value = JOptionPane.showConfirmDialog(this,
                 "Are you sure you want to clear the cart?");
@@ -2795,9 +2822,9 @@ public class MainWindow extends javax.swing.JFrame {
 
             }
         }
-    }//GEN-LAST:event_btnClearCart1ActionPerformed
+    }//GEN-LAST:event_btnClearCartManagerActionPerformed
 
-    private void btnAddToCart1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCart1ActionPerformed
+    private void btnAddToCartManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToCartManagerActionPerformed
         
         if((Integer)selectedQuantityForManager.getValue()>0){
             store1.addToCart(store1.getProductList().get(Integer.parseInt(selectedIDForManager.getText())), (Integer)selectedQuantityForManager.getValue());
@@ -2816,7 +2843,7 @@ public class MainWindow extends javax.swing.JFrame {
         } else {
             //TODO: add negative/zero catch
         }
-    }//GEN-LAST:event_btnAddToCart1ActionPerformed
+    }//GEN-LAST:event_btnAddToCartManagerActionPerformed
 
     private void selectedIDForManagerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedIDForManagerActionPerformed
         // TODO add your handling code here:
@@ -2936,11 +2963,11 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectedIDActionPerformed
 
-    private void productTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productTableMouseClicked
-        int index = productTable.getSelectedRow();
-        String tempId = productTable.getValueAt(index,0).toString();
+    private void empProductLogMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empProductLogMouseClicked
+        int index = empProductLog.getSelectedRow();
+        String tempId = empProductLog.getValueAt(index,0).toString();
         selectedID.setText(tempId);
-    }//GEN-LAST:event_productTableMouseClicked
+    }//GEN-LAST:event_empProductLogMouseClicked
 
     private void cartTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_cartTablePropertyChange
         // TODO add your handling code here:
@@ -3384,10 +3411,10 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selectedTypeProdManagementActionPerformed
 
-    private void btnLogOut2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOut2ActionPerformed
+    private void btnLogOutProductManagementActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutProductManagementActionPerformed
         signInWindow.setVisible(true);
         managerMenuWindow.setVisible(false);
-    }//GEN-LAST:event_btnLogOut2ActionPerformed
+    }//GEN-LAST:event_btnLogOutProductManagementActionPerformed
 
     private void searchFieldProductsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldProductsActionPerformed
         
@@ -3904,23 +3931,23 @@ public class MainWindow extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
 
-        jTextField1.setText(oName);
-        jTextField2.setText(oId);
-        jComboBox1.setSelectedItem(oPosition);
-        jTextField4.setText(oWage);
-        jTextField5.setText(oHours);
-        jPasswordField1.setText(oPass);
-        jCheckBox1.setSelected(type1);
-        jCheckBox2.setSelected(type2);
+        empManagementName.setText(oName);
+        empManagementId.setText(oId);
+        empManagementPostionBox.setSelectedItem(oPosition);
+        empManagementWage.setText(oWage);
+        empManagementHours.setText(oHours);
+        empManagementPWField.setText(oPass);
+        empManagementYesRadio.setSelected(type1);
+        empManagementNoRadio.setSelected(type2);
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnEmployeeManagementUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeManagementUpdateActionPerformed
         // updates row
         int row = jTable1.getSelectedRow();
         boolean end = false;
 
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
 
         if (row < 0)
         {
@@ -3930,12 +3957,12 @@ public class MainWindow extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         } else
         {
-            String name = jTextField1.getText();
-            String id = jTextField2.getText();
-            String position = jComboBox1.getSelectedItem().toString();
-            String wage = jTextField4.getText();
-            String hours = jTextField5.getText();
-            String pass = jPasswordField1.getText();
+            String name = empManagementName.getText();
+            String id = empManagementId.getText();
+            String position = empManagementPostionBox.getSelectedItem().toString();
+            String wage = empManagementWage.getText();
+            String hours = empManagementHours.getText();
+            String pass = empManagementPWField.getText();
             String type = "";
 
             for(int i=0; i<jTable1.getRowCount(); i++){
@@ -3958,10 +3985,10 @@ public class MainWindow extends javax.swing.JFrame {
                 }
             }
 
-            if(jCheckBox1.isSelected())
+            if(empManagementYesRadio.isSelected())
             {
                 type = "Yes";
-            } else if(jCheckBox2.isSelected())
+            } else if(empManagementNoRadio.isSelected())
             {
                 type = "No";
             } else {
@@ -3998,23 +4025,23 @@ public class MainWindow extends javax.swing.JFrame {
             updateCSVEmployee();
 
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnEmployeeManagementUpdateActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnEmployeeManagementAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeManagementAddActionPerformed
         // add employee
-        String name = jTextField1.getText();
-        String id = jTextField2.getText();
-        String position = jComboBox1.getSelectedItem().toString();
-        String wage = jTextField4.getText();
-        String hours = jTextField5.getText();
-        String pass = jPasswordField1.getText();
+        String name = empManagementName.getText();
+        String id = empManagementId.getText();
+        String position = empManagementPostionBox.getSelectedItem().toString();
+        String wage = empManagementWage.getText();
+        String hours = empManagementHours.getText();
+        String pass = empManagementPWField.getText();
         String type = "";
         boolean end = false;
 
-        if(jCheckBox1.isSelected())
+        if(empManagementYesRadio.isSelected())
         {
             type = "Yes";
-        } else if(jCheckBox2.isSelected())
+        } else if(empManagementNoRadio.isSelected())
         {
             type = "No";
         } else {
@@ -4059,7 +4086,7 @@ public class MainWindow extends javax.swing.JFrame {
             return;
         } else {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+            DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
             model.addRow(new Object[]{name, id, position, wage, hours, pass, type});
             model2.addRow(new Object[]{name});
         }
@@ -4068,9 +4095,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         createCSVSchedule(name);
         updateCSVEmployee();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnEmployeeManagementAddActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEmployeeManagementDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmployeeManagementDeleteActionPerformed
         // delete row
         int row = jTable1.getSelectedRow();
 
@@ -4083,42 +4110,42 @@ public class MainWindow extends javax.swing.JFrame {
         } else
         {
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+            DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
             model.removeRow(row);
-            jTable2.setRowSelectionInterval(row, row);
+            scheduleEmployeeNamesTable.setRowSelectionInterval(row, row);
             model2.removeRow(row);
 
             updateCSVEmployee();
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEmployeeManagementDeleteActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnEmpManagementClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpManagementClearActionPerformed
         clear();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnEmpManagementClearActionPerformed
 
-    private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
+    private void empManagementSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_empManagementSearchFieldKeyPressed
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(model1);
         jTable1.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(jTextField3.getText().trim()));
-    }//GEN-LAST:event_jTextField3KeyPressed
+        tr.setRowFilter(RowFilter.regexFilter(empManagementSearchField.getText().trim()));
+    }//GEN-LAST:event_empManagementSearchFieldKeyPressed
 
-    private void jTable5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable5MouseClicked
-        DefaultTableModel model5 = (DefaultTableModel) jTable5.getModel();
+    private void busniessHoursTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_busniessHoursTableMouseClicked
+        DefaultTableModel model5 = (DefaultTableModel) busniessHoursTable.getModel();
 
-        String oDay = model5.getValueAt(jTable5.getSelectedRow(), 0).toString();
-        String oOpen = model5.getValueAt(jTable5.getSelectedRow(), 1).toString();
-        String oClose = model5.getValueAt(jTable5.getSelectedRow(), 2).toString();
+        String oDay = model5.getValueAt(busniessHoursTable.getSelectedRow(), 0).toString();
+        String oOpen = model5.getValueAt(busniessHoursTable.getSelectedRow(), 1).toString();
+        String oClose = model5.getValueAt(busniessHoursTable.getSelectedRow(), 2).toString();
 
-        lblDay.setText(oDay);
-        jComboBox6.setSelectedItem(oOpen);
-        jComboBox7.setSelectedItem(oClose);
-    }//GEN-LAST:event_jTable5MouseClicked
+        lblBusinessDetailsShowDay.setText(oDay);
+        businessDetailsOpenBox.setSelectedItem(oOpen);
+        businessDetailsCloseBox.setSelectedItem(oClose);
+    }//GEN-LAST:event_busniessHoursTableMouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        int row = jTable5.getSelectedRow();
+    private void btnBusinessHoursUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusinessHoursUpdateActionPerformed
+        int row = busniessHoursTable.getSelectedRow();
 
-        DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
+        DefaultTableModel model = (DefaultTableModel) busniessHoursTable.getModel();
 
         if (row < 0)
         {
@@ -4128,9 +4155,9 @@ public class MainWindow extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         } else
         {
-            String day = lblDay.getText();
-            String open = jComboBox6.getSelectedItem().toString();
-            String close = jComboBox7.getSelectedItem().toString();
+            String day = lblBusinessDetailsShowDay.getText();
+            String open = businessDetailsOpenBox.getSelectedItem().toString();
+            String close = businessDetailsCloseBox.getSelectedItem().toString();
 
             String[] hmOpen = open.split(":");
             double startH = Integer.parseInt(hmOpen[0]);
@@ -4150,49 +4177,49 @@ public class MainWindow extends javax.swing.JFrame {
                     "Logical Error",
                     JOptionPane.ERROR_MESSAGE);
             } else {
-                model.setValueAt(day, jTable5.getSelectedRow(), 0);
-                model.setValueAt(open, jTable5.getSelectedRow(), 1);
-                model.setValueAt(close, jTable5.getSelectedRow(), 2);
+                model.setValueAt(day, busniessHoursTable.getSelectedRow(), 0);
+                model.setValueAt(open, busniessHoursTable.getSelectedRow(), 1);
+                model.setValueAt(close, busniessHoursTable.getSelectedRow(), 2);
 
                 updateCSVBusinessHours();
             }
         }
-    }//GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btnBusinessHoursUpdateActionPerformed
 
-    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+    private void scheduleEmployeeNamesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleEmployeeNamesTableMouseClicked
         // Select Employee name in scheduler
-        DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
-        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) scheduleEmployeesTable.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
 
         model3.setRowCount(0);
-        jLabel18.setText("");
-        String name = model2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        lblManTotal.setText("");
+        String name = model2.getValueAt(scheduleEmployeeNamesTable.getSelectedRow(), 0).toString();
         readCSVEmpHours(name);
         populateOvertime();
-    }//GEN-LAST:event_jTable2MouseClicked
+    }//GEN-LAST:event_scheduleEmployeeNamesTableMouseClicked
 
-    private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
+    private void scheduleEmployeesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_scheduleEmployeesTableMouseClicked
         // Updates values in scheduler
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
-        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
-        String name = model2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        DefaultTableModel model = (DefaultTableModel) scheduleEmployeesTable.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
+        String name = model2.getValueAt(scheduleEmployeeNamesTable.getSelectedRow(), 0).toString();
 
-        String oDay = model.getValueAt(jTable3.getSelectedRow(), 0).toString();
-        String oStart = model.getValueAt(jTable3.getSelectedRow(), 1).toString();
-        String oEnd = model.getValueAt(jTable3.getSelectedRow(), 2).toString();
+        String oDay = model.getValueAt(scheduleEmployeesTable.getSelectedRow(), 0).toString();
+        String oStart = model.getValueAt(scheduleEmployeesTable.getSelectedRow(), 1).toString();
+        String oEnd = model.getValueAt(scheduleEmployeesTable.getSelectedRow(), 2).toString();
 
         jComboBox2.setSelectedItem(oStart);
         jComboBox3.setSelectedItem(oEnd);
         jComboBox4.setSelectedItem(oDay);
 
         updateCSVEmpHours(name);
-    }//GEN-LAST:event_jTable3MouseClicked
+    }//GEN-LAST:event_scheduleEmployeesTableMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // adds shift
-        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
-        DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
-        String name = model2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+        DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) scheduleEmployeesTable.getModel();
+        String name = model2.getValueAt(scheduleEmployeeNamesTable.getSelectedRow(), 0).toString();
         String day = jComboBox4.getSelectedItem().toString();
         String start = jComboBox2.getSelectedItem().toString();
         String end = jComboBox3.getSelectedItem().toString();
@@ -4209,10 +4236,10 @@ public class MainWindow extends javax.swing.JFrame {
         endM = endM/60;
         double endT = endH + endM;
 
-        for(int i=0; i<jTable3.getRowCount(); i++){
-            if(day.equals(jTable3.getValueAt(i, 0))){
-                String startValue = jTable3.getValueAt(i, 1).toString();
-                String endValue = jTable3.getValueAt(i, 2).toString();
+        for(int i=0; i<scheduleEmployeesTable.getRowCount(); i++){
+            if(day.equals(scheduleEmployeesTable.getValueAt(i, 0))){
+                String startValue = scheduleEmployeesTable.getValueAt(i, 1).toString();
+                String endValue = scheduleEmployeesTable.getValueAt(i, 2).toString();
 
                 String[] hourMinSt = startValue.split(":");
                 double stH = Integer.parseInt(hourMinSt[0]);
@@ -4259,7 +4286,7 @@ public class MainWindow extends javax.swing.JFrame {
         } else{
             double dHours = endT - startT;
             DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
-            int row = jTable2.getSelectedRow();
+            int row = scheduleEmployeeNamesTable.getSelectedRow();
             String role = model1.getValueAt(row, 2).toString();
 
             if (endT <= startT){
@@ -4279,9 +4306,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // edit shift
-        int row = jTable3.getSelectedRow();
+        int row = scheduleEmployeesTable.getSelectedRow();
 
-        DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model = (DefaultTableModel) scheduleEmployeesTable.getModel();
 
         if (row < 0)
         {
@@ -4314,8 +4341,8 @@ public class MainWindow extends javax.swing.JFrame {
                     JOptionPane.ERROR_MESSAGE);
             } else{
                 double dHours = endT - startT;
-                DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
-                String name = model2.getValueAt(jTable2.getSelectedRow(), 0).toString();
+                DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
+                String name = model2.getValueAt(scheduleEmployeeNamesTable.getSelectedRow(), 0).toString();
                 String role = model.getValueAt(row, 4).toString();
 
                 if (endT <= startT){
@@ -4324,11 +4351,11 @@ public class MainWindow extends javax.swing.JFrame {
                         "Invalid shift times.",
                         JOptionPane.ERROR_MESSAGE);
                 } else {
-                    model.setValueAt(day, jTable3.getSelectedRow(), 0);
-                    model.setValueAt(start, jTable3.getSelectedRow(), 1);
-                    model.setValueAt(end, jTable3.getSelectedRow(), 2);
-                    model.setValueAt(dHours, jTable3.getSelectedRow(), 3);
-                    model.setValueAt(role, jTable3.getSelectedRow(), 4);
+                    model.setValueAt(day, scheduleEmployeesTable.getSelectedRow(), 0);
+                    model.setValueAt(start, scheduleEmployeesTable.getSelectedRow(), 1);
+                    model.setValueAt(end, scheduleEmployeesTable.getSelectedRow(), 2);
+                    model.setValueAt(dHours, scheduleEmployeesTable.getSelectedRow(), 3);
+                    model.setValueAt(role, scheduleEmployeesTable.getSelectedRow(), 4);
                     populateOvertime();
                     updateCSVEmpHours(name);
                 }
@@ -4338,9 +4365,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // delete shift
-        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
-        String name = model2.getValueAt(jTable2.getSelectedRow(), 0).toString();
-        int row = jTable3.getSelectedRow();
+        DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
+        String name = model2.getValueAt(scheduleEmployeeNamesTable.getSelectedRow(), 0).toString();
+        int row = scheduleEmployeesTable.getSelectedRow();
 
         if (row < 0)
         {
@@ -4350,7 +4377,7 @@ public class MainWindow extends javax.swing.JFrame {
                 JOptionPane.ERROR_MESSAGE);
         } else
         {
-            DefaultTableModel model = (DefaultTableModel) jTable3.getModel();
+            DefaultTableModel model = (DefaultTableModel) scheduleEmployeesTable.getModel();
             model.removeRow(row);
             clearSch();
         }
@@ -4366,14 +4393,15 @@ public class MainWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_employeesRecordsTableMouseClicked
 
+    private void empManagementSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empManagementSearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empManagementSearchFieldActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgEmployeeInfoTab;
     private javax.swing.JLabel bgEmployeeManagement;
-    private javax.swing.JLabel bgEmployeeManagement1;
-    private javax.swing.JLabel bgEmployeeManagement2;
-    private javax.swing.JLabel bgEmployeeRecords;
     private javax.swing.JLabel bgEmployeeSaleMenu;
     private javax.swing.JLabel bgInputManagement;
     private javax.swing.JLabel bgInputRecords;
@@ -4382,33 +4410,55 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel bgProductManagement;
     private javax.swing.JLabel bgProductRecords;
     private javax.swing.JLabel bgTransactionRecords;
+    private javax.swing.JLabel bgTransactionRecords1;
+    private javax.swing.JLabel bgTransactionRecords2;
+    private javax.swing.JLabel bgTransactionRecords3;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddProduct;
     private javax.swing.JButton btnAddToCart;
-    private javax.swing.JButton btnAddToCart1;
+    private javax.swing.JButton btnAddToCartManager;
+    private javax.swing.JButton btnBusinessHoursUpdate;
     private javax.swing.JButton btnClearCart;
-    private javax.swing.JButton btnClearCart1;
+    private javax.swing.JButton btnClearCartManager;
     private javax.swing.JButton btnClearProdManagement;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteProduct;
+    private javax.swing.JButton btnEmpManagementClear;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnLogOut1;
-    private javax.swing.JButton btnLogOut2;
+    private javax.swing.JButton btnLogOutManager;
+    private javax.swing.JButton btnLogOutProductManagement;
     private javax.swing.JButton btnModifyProduct;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSale;
-    private javax.swing.JButton btnSale1;
+    private javax.swing.JButton btnSaleManager;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> businessDetailsCloseBox;
+    private javax.swing.JComboBox<String> businessDetailsOpenBox;
     private javax.swing.JPanel businessDetailsTab;
+    private javax.swing.JTable busniessHoursTable;
     private javax.swing.JLabel cartLabel;
     private javax.swing.JTable cartTable;
     private javax.swing.JTable cartTableForManager;
+    private javax.swing.JScrollPane empCartScrollTable;
+    private javax.swing.JTextField empManagementHours;
+    private javax.swing.JTextField empManagementId;
+    private javax.swing.JTextField empManagementName;
+    private javax.swing.JCheckBox empManagementNoRadio;
+    private javax.swing.JPasswordField empManagementPWField;
+    private javax.swing.JComboBox<String> empManagementPostionBox;
+    private javax.swing.JTextField empManagementSearchField;
+    private javax.swing.JTextField empManagementWage;
+    private javax.swing.JCheckBox empManagementYesRadio;
+    private javax.swing.JTable empProductLog;
+    private javax.swing.JScrollPane empScrollPaneProductLog;
     private javax.swing.JButton empSignIn;
     private javax.swing.JPanel employeeInfoTab;
+    private javax.swing.JTabbedPane employeeManagementTabs;
     private javax.swing.JPanel employeeRecordsTab;
     private javax.swing.JPanel employeeSaleMenu;
     private javax.swing.JPanel employeesManagementTab;
     private javax.swing.JTable employeesRecordsTable;
+    private javax.swing.JPanel frameTeaShop;
     private javax.swing.JLabel incorrectPasswordLabel;
     private javax.swing.JLabel incorrectUserLabel;
     private javax.swing.JPanel inputManagementTab;
@@ -4417,110 +4467,81 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel38;
-    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
-    private javax.swing.JLabel jLabel54;
-    private javax.swing.JLabel jLabel57;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane10;
-    private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane12;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTable jTable5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField lastTransaction;
     private javax.swing.JLabel lastTransactionLabel;
-    private javax.swing.JLabel lblDay;
+    private javax.swing.JLabel lblBusinessDetailsCloseTime;
+    private javax.swing.JLabel lblBusinessDetailsDay;
+    private javax.swing.JLabel lblBusinessDetailsHoursTitle;
+    private javax.swing.JLabel lblBusinessDetailsOpenTime;
+    private javax.swing.JLabel lblBusinessDetailsShowDay;
+    private javax.swing.JLabel lblBusinessDetailsTitle;
     private javax.swing.JLabel lblDiscount;
+    private javax.swing.JLabel lblEmpCartTable;
+    private javax.swing.JLabel lblEmpID;
+    private javax.swing.JLabel lblEmpManagementSearch;
+    private javax.swing.JLabel lblEmpProductLogTitle;
+    private javax.swing.JLabel lblEmpQuantity;
+    private javax.swing.JLabel lblEmpSubTotal;
+    private javax.swing.JLabel lblEmpTax;
+    private javax.swing.JLabel lblEmpTotal;
     private javax.swing.JLabel lblHeader;
-    private javax.swing.JLabel lblHoursLimit;
     private javax.swing.JLabel lblInputName;
+    private javax.swing.JLabel lblInventorySaleValue;
     private javax.swing.JLabel lblLineItemID;
+    private javax.swing.JLabel lblManID;
+    private javax.swing.JLabel lblManQuantity;
+    private javax.swing.JLabel lblManSub;
+    private javax.swing.JLabel lblManTax;
+    private javax.swing.JLabel lblManTotal;
     private javax.swing.JLabel lblOvertime;
+    private javax.swing.JLabel lblPW;
+    private javax.swing.JLabel lblProductDiscount;
+    private javax.swing.JLabel lblProductId;
+    private javax.swing.JLabel lblProductManagementTitle;
+    private javax.swing.JLabel lblProductName;
+    private javax.swing.JLabel lblProductPrice;
+    private javax.swing.JLabel lblProductQuantity;
+    private javax.swing.JLabel lblProductSearch;
+    private javax.swing.JLabel lblProductTaxRate;
+    private javax.swing.JLabel lblProductType;
     private javax.swing.JLabel lblQuantity;
-    private javax.swing.JLabel lblScheduledHours;
+    private javax.swing.JLabel lblScheduleDay;
+    private javax.swing.JLabel lblScheduleEndTime;
+    private javax.swing.JLabel lblScheduleHoursLimit;
+    private javax.swing.JLabel lblScheduleOvertime;
+    private javax.swing.JLabel lblScheduleScheduledHours;
+    private javax.swing.JLabel lblScheduleStartTime;
+    private javax.swing.JLabel lblScheduleTitleEmp;
+    private javax.swing.JLabel lblScheduleTitleSch;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JLabel lblShowHoursLimit;
+    private javax.swing.JLabel lblShowScheduledHours;
     private javax.swing.JLabel lblTaxRate;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotalDiscountAmount1;
+    private javax.swing.JLabel lblTotalEmployees;
     private javax.swing.JLabel lblTotalGrossCost1;
+    private javax.swing.JLabel lblTotalHoursWorked;
+    private javax.swing.JLabel lblTotalManagers;
     private javax.swing.JLabel lblTotalNetCost1;
+    private javax.swing.JLabel lblTotalProducts;
     private javax.swing.JLabel lblTotalTaxAmount1;
+    private javax.swing.JLabel lblTotalUnits;
     private javax.swing.JLabel lblUnitCost;
+    private javax.swing.JLabel lblUsername;
     private javax.swing.JLabel lblVendorCategory;
     private javax.swing.JLabel lblVendorName;
+    private javax.swing.JScrollPane manScrollPaneProductLog;
+    private javax.swing.JScrollPane manScrollPanelCartTable;
     private javax.swing.JButton manSignIn;
     private javax.swing.JTabbedPane managerMenuWindow;
     private javax.swing.JMenu menuInputReport;
@@ -4533,6 +4554,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemUpdate;
     private javax.swing.JLabel menuTitleLabel;
     private javax.swing.JLabel notManagerLabel;
+    private javax.swing.JPanel panelEmployee;
     private javax.swing.JPasswordField password;
     private javax.swing.JPanel pnlInput;
     private javax.swing.JLabel productLogLabel;
@@ -4540,15 +4562,24 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JTable productManagementTable;
     private javax.swing.JPanel productRecordsTab;
     private javax.swing.JTable productRecordsTable;
-    private javax.swing.JTable productTable;
     private javax.swing.JTable productTableForManager;
     private javax.swing.JButton quitApplication;
     private javax.swing.JPanel recordsTab;
     private javax.swing.JTabbedPane recordsTabs;
     private javax.swing.JPanel saleMenuTab;
+    private javax.swing.JTable scheduleEmployeeNamesTable;
+    private javax.swing.JTable scheduleEmployeesTable;
     private javax.swing.JPanel scheduleTab;
     private javax.swing.JScrollPane scrlpneInputReport;
     private javax.swing.JScrollPane scrlpneInputReport1;
+    private javax.swing.JScrollPane scrollPaneBusinessHours;
+    private javax.swing.JScrollPane scrollPaneEmployeeManagement;
+    private javax.swing.JScrollPane scrollPaneEmployeeRecords;
+    private javax.swing.JScrollPane scrollPaneProductManagement;
+    private javax.swing.JScrollPane scrollPaneProductReport;
+    private javax.swing.JScrollPane scrollPaneSchedule;
+    private javax.swing.JScrollPane scrollPaneScheduleEmployees;
+    private javax.swing.JScrollPane scrollPaneTranactionRecords;
     private javax.swing.JTextField searchFieldProducts;
     private javax.swing.JTextField selectedDiscountProdManagement;
     private javax.swing.JTextField selectedID;
@@ -4732,7 +4763,7 @@ public class MainWindow extends javax.swing.JFrame {
         try
         {
             DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
-            DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+            DefaultTableModel model2 = (DefaultTableModel) scheduleEmployeeNamesTable.getModel();
             DefaultTableModel modelRecords = (DefaultTableModel) employeesRecordsTable.getModel();
             
             File file = new File(filenameEmployee);
@@ -4788,14 +4819,14 @@ public class MainWindow extends javax.swing.JFrame {
     }
     
     public void clear(){
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jComboBox1.setSelectedItem("N/A");
-        jTextField4.setText("");
-        jTextField5.setText("");
-        jPasswordField1.setText("");
-        jCheckBox1.setSelected(false);
-        jCheckBox2.setSelected(true);
+        empManagementName.setText("");
+        empManagementId.setText("");
+        empManagementPostionBox.setSelectedItem("N/A");
+        empManagementWage.setText("");
+        empManagementHours.setText("");
+        empManagementPWField.setText("");
+        empManagementYesRadio.setSelected(false);
+        empManagementNoRadio.setSelected(true);
     }
     
     public void clearSch(){
@@ -4808,7 +4839,7 @@ public class MainWindow extends javax.swing.JFrame {
         String csvName = name + ".csv";
         try {
 
-        DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) scheduleEmployeesTable.getModel();
         File file = new File(csvName);
             try (FileWriter csv = new FileWriter(file)) {
                 for (int i = 0; i < model3.getRowCount(); i++) {
@@ -4825,7 +4856,7 @@ public class MainWindow extends javax.swing.JFrame {
         String fileName = name + ".csv";
         try
         {
-            DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
+            DefaultTableModel model3 = (DefaultTableModel) scheduleEmployeesTable.getModel();
             
             File file = new File(fileName);
             FileReader fr = new FileReader(file);
@@ -4866,7 +4897,7 @@ public class MainWindow extends javax.swing.JFrame {
     }    
     
     public void populateOvertime(){
-        DefaultTableModel model3 = (DefaultTableModel) jTable3.getModel();
+        DefaultTableModel model3 = (DefaultTableModel) scheduleEmployeesTable.getModel();
         DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
         
         double total = 0;
@@ -4876,10 +4907,10 @@ public class MainWindow extends javax.swing.JFrame {
             total = total + adder;
         }
         String tots = Double.toString(total);
-        lblScheduledHours.setText(tots);
-        int row = jTable2.getSelectedRow();
+        lblShowScheduledHours.setText(tots);
+        int row = scheduleEmployeeNamesTable.getSelectedRow();
         String schHour = model1.getValueAt(row, 3).toString();
-        lblHoursLimit.setText(schHour);
+        lblShowHoursLimit.setText(schHour);
         double schHours = Double.parseDouble(schHour);
         double ovtD = total - schHours;
         String ovt = Double.toString(ovtD);
@@ -4897,7 +4928,7 @@ public class MainWindow extends javax.swing.JFrame {
     public void readCSVBusinessHours(){
         try
         {
-            DefaultTableModel model5 = (DefaultTableModel) jTable5.getModel();
+            DefaultTableModel model5 = (DefaultTableModel) busniessHoursTable.getModel();
             
             File file = new File(filenameBusiness);
             FileReader fr = new FileReader(file);
@@ -4926,7 +4957,7 @@ public class MainWindow extends javax.swing.JFrame {
        
         try {
 
-            DefaultTableModel model5 = (DefaultTableModel) jTable5.getModel();
+            DefaultTableModel model5 = (DefaultTableModel) busniessHoursTable.getModel();
             File file = new File(filenameBusiness);
             try (FileWriter csv = new FileWriter(file)) {
                 for (int i = 0; i < model5.getRowCount(); i++) {
