@@ -2,6 +2,8 @@
 BUILD OUTPUT DESCRIPTION
 ========================
 
+1. Make sure that you open the "dist" folder to run the executable Jar file "GuiTeaShopV4" by simply double clicking it. 
+
 When you build an Java application project that has a main class, the IDE
 automatically copies all of the JAR
 files on the projects classpath to your projects dist/lib folder. The IDE
