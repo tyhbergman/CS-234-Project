@@ -2,7 +2,7 @@
 BUILD OUTPUT DESCRIPTION
 ========================
 
-1. Download the ZIP file from github and make sure the directory is mapped to the "dist" folder, as this is where the executable Jar file titles "GuiTeaShopV4" is located. 
+1. Download the ZIP file from github and make sure the directory is mapped to the "dist" folder, as this is where the executable Jar file titled "GuiTeaShopV4" is located. 
 
 When you build an Java application project that has a main class, the IDE
 automatically copies all of the JAR
