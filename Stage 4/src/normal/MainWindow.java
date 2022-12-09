@@ -860,6 +860,7 @@ public class MainWindow extends javax.swing.JFrame {
         menuItemReturntoMM = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         bgEmployeeManagement = new javax.swing.JLabel();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         frameTeaShop = new javax.swing.JPanel();
         signInWindow = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
@@ -1138,7 +1139,6 @@ public class MainWindow extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tea Shop Version 1.02");
         setMinimumSize(new java.awt.Dimension(1000, 620));
-        setPreferredSize(new java.awt.Dimension(1000, 620));
 
         frameTeaShop.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         frameTeaShop.setMinimumSize(new java.awt.Dimension(1000, 620));
@@ -1276,7 +1276,7 @@ public class MainWindow extends javax.swing.JFrame {
         });
         empCartScrollTable.setViewportView(cartTable);
 
-        employeeSaleMenu.add(empCartScrollTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 320, 450));
+        employeeSaleMenu.add(empCartScrollTable, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 160, 320, 430));
 
         lblEmpCartTable.setFont(new java.awt.Font("Microsoft YaHei", 1, 12)); // NOI18N
         lblEmpCartTable.setForeground(new java.awt.Color(255, 255, 255));
@@ -1319,7 +1319,7 @@ public class MainWindow extends javax.swing.JFrame {
         //Set fourth column (quantity) to be smaller than the rest
         empProductLog.getColumnModel().getColumn(3).setPreferredWidth(32);
 
-        employeeSaleMenu.add(empScrollPaneProductLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 560));
+        employeeSaleMenu.add(empScrollPaneProductLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 490, 540));
 
         lblEmpQuantity.setForeground(new java.awt.Color(255, 255, 255));
         lblEmpQuantity.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1830,6 +1830,11 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         scrollPaneEmployeeManagement.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(5).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(0);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(0);
+        }
 
         employeeInfoTab.add(scrollPaneEmployeeManagement, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 39, 730, 420));
 
@@ -1911,10 +1916,12 @@ public class MainWindow extends javax.swing.JFrame {
         lblEmpManagementInfoTitle.setText("Information");
         employeeInfoTab.add(lblEmpManagementInfoTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 50, 103, -1));
 
+        buttonGroup1.add(empManagementYesRadio);
         empManagementYesRadio.setForeground(new java.awt.Color(255, 255, 255));
         empManagementYesRadio.setText("Yes");
         employeeInfoTab.add(empManagementYesRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 280, -1, -1));
 
+        buttonGroup1.add(empManagementNoRadio);
         empManagementNoRadio.setForeground(new java.awt.Color(255, 255, 255));
         empManagementNoRadio.setText("No");
         employeeInfoTab.add(empManagementNoRadio, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, -1, -1));
@@ -2148,12 +2155,18 @@ public class MainWindow extends javax.swing.JFrame {
         lblScheduleHoursLimit.setForeground(new java.awt.Color(255, 255, 255));
         lblScheduleHoursLimit.setText("Hours Limit:");
         scheduleTab.add(lblScheduleHoursLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 270, -1, -1));
+
+        lblShowScheduledHours.setForeground(new java.awt.Color(255, 255, 255));
         scheduleTab.add(lblShowScheduledHours, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 250, 43, -1));
+
+        lblShowHoursLimit.setForeground(new java.awt.Color(255, 255, 255));
         scheduleTab.add(lblShowHoursLimit, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 270, 43, -1));
 
         lblScheduleOvertime.setForeground(new java.awt.Color(255, 255, 255));
         lblScheduleOvertime.setText("Overtime:");
         scheduleTab.add(lblScheduleOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 290, -1, -1));
+
+        lblOvertime.setForeground(new java.awt.Color(255, 255, 255));
         scheduleTab.add(lblOvertime, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 290, 43, -1));
 
         bgTransactionRecords2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/normal/resources/bgPictureBlurred.jpg"))); // NOI18N
@@ -4436,6 +4449,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> businessDetailsOpenBox;
     private javax.swing.JPanel businessDetailsTab;
     private javax.swing.JTable busniessHoursTable;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel cartLabel;
     private javax.swing.JTable cartTable;
     private javax.swing.JTable cartTableForManager;
